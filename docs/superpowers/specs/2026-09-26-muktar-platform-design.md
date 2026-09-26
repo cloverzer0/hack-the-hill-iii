@@ -220,7 +220,7 @@ The route is `/petition/<draftId>/submit`. It is a single centred column.
 ### 6.4 Sponsor email
 `src/lib/mp/sponsorEmail.ts` contains pure functions.
 
-`buildLetter({ mp, draft, postalCode? })` returns this template:
+`buildLetter({ mp, title, postalCode? })` returns the template below. `postalCode` is set only when the MP was found from the user's own postal code during this visit. Without it, which covers an MP picked through "Choose a different MP" and a page reload, the letter leaves out the "I'm a constituent in <riding>." sentence and signs off `[Your name], [Postal code]`. This stops the letter claiming to be from a constituent when it isn't.
 
 ```
 Dear <MP name>,
