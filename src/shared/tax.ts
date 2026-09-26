@@ -9,7 +9,7 @@ type Payroll = { pensionDeduction: number; payrollCredits: number }
 
 type ProvinceRules = {
   brackets: Bracket[]
-  basicPersonalAmount: number | ((income: number) => number)
+  basicPersonalAmount: number | ((netIncome: number) => number)
   claimsPayrollCredits: boolean // false for Quebec, which gives no provincial credit for QPP/EI/QPIP
   claimsEmploymentAmount?: boolean // only Yukon mirrors the federal Canada employment amount
   adjust?: (basicTax: number, taxable: number) => number // surtaxes, premiums and low-income reductions
@@ -100,7 +100,7 @@ function payrollContributions(income: number, province: string): Payroll {
  *	Get the federal basic personal amount, which shrinks for high incomes. Yukon uses the same amount.
  *
  * Args:
- *	- income: yearly income in dollars
+ *	- income: net income in dollars (after the CPP/QPP deduction), which is what the phase-out is based on
  *
  * Returns:
  *	number: the basic personal amount in dollars, between 14,156 and 15,705
@@ -115,7 +115,7 @@ function federalBasicPersonalAmount(income: number) {
  *	Get the Nova Scotia basic personal amount, which is $3,000 higher for incomes up to $25,000 and phases down to $8,481 by $75,000.
  *
  * Args:
- *	- income: yearly income in dollars
+ *	- income: net income in dollars (after the CPP/QPP deduction), which is what the phase-out is based on
  *
  * Returns:
  *	number: the basic personal amount in dollars, between 8,481 and 11,481
@@ -214,11 +214,11 @@ export function estimateTax(income: number, province: string): TaxEstimate {
   const employmentAmount = Math.min(canadaEmploymentAmount, income)
 
   // Non-refundable credits are worth the lowest bracket rate times the credit amount.
-  const federalCredits = federalBrackets[0].rate * (federalBasicPersonalAmount(income) + employmentAmount + payrollCredits)
+  const federalCredits = federalBrackets[0].rate * (federalBasicPersonalAmount(taxable) + employmentAmount + payrollCredits)
   const basicFederal = Math.max(0, taxFromBrackets(taxable, federalBrackets) - federalCredits)
   const federal = province === 'QC' ? basicFederal * (1 - quebecAbatement) : basicFederal
 
-  const bpa = typeof rules.basicPersonalAmount === 'function' ? rules.basicPersonalAmount(income) : rules.basicPersonalAmount
+  const bpa = typeof rules.basicPersonalAmount === 'function' ? rules.basicPersonalAmount(taxable) : rules.basicPersonalAmount
   const creditBase = bpa + (rules.claimsPayrollCredits ? payrollCredits : 0) + (rules.claimsEmploymentAmount ? employmentAmount : 0)
   const basicProvincial = Math.max(0, taxFromBrackets(taxable, rules.brackets) - rules.brackets[0].rate * creditBase)
   const provincial = rules.adjust ? rules.adjust(basicProvincial, taxable) : basicProvincial
