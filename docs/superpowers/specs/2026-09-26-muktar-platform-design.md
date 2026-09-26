@@ -250,8 +250,8 @@ These are built so the flow works end to end, and each is meant to be replaced.
 
 | Stand-in | Replaced by | How to swap |
 |---|---|---|
-| `src/mock/stories.ts`: about 3 stories in the shared story shape from `TASKS.md`, and a `getStory(id)` function | Raphael's `GET /spending/:id` | Change `getStory` to call the API |
-| `/dev/petition`: a dev-only page listing mock stories, each with a "Start a petition" link to `/petition/new?story=<id>` | Izu's screen 04 action card | Screen 04 links to `/petition/new?story=<id>`. "Cancel" and "Back to spending" then point at the story page. |
+| `src/lib/stories.ts`: `getStory(id)` and `listStories()`, which read Great's `pipeline/stories.json` (18 real stories in the shared story shape) | Raphael's `GET /spending/:id` | Change the two functions to call the API. Callers don't change. |
+| `/dev/petition`: a dev-only page listing every story, each with a "Start a petition" link to `/petition/new?story=<id>` | Izu's screen 04 action card | Screen 04 links to `/petition/new?story=<id>`. "Cancel" and "Back to spending" then point at the story page. |
 | Screens 05–06 and step 3 | Izu's final visual pass (Task 3) | Restyle in place. The API and routes stay. |
 | `users` and `drafts` tables, Drizzle setup, `/api/me/drafts` | Raphael's DB and API (Task 2) | He extends `src/db/schema.ts` |
 
@@ -277,7 +277,7 @@ src/app/petition/[id]/page.tsx
 src/app/petition/[id]/sponsor/page.tsx
 src/app/petition/[id]/submit/page.tsx
 src/app/petition/_components/     StepHeader, PetitionForm, ProcessExplainer, MpCard, MpSearch, LetterEditor, SendOptions, CopyField
-src/mock/stories.ts
+src/lib/stories.ts                reads pipeline/stories.json
 src/app/dev/petition/page.tsx
 drizzle.config.ts, drizzle/
 .env.example
@@ -334,7 +334,7 @@ Preview deploys have changing URLs, so Auth0 login is not supported on them. Use
 1. **Auth:** Auth0 client, `proxy.ts`, dev bypass, `requireUser`, `apiFetch`, and `.env.example`.
 2. **Database:** Drizzle schema, migrations, the user upsert in `onCallback`, and the drafts API with its route tests.
 3. **MP lookup:** the Represent client, `/api/mp`, `/api/mps`, the sponsor email builders, and their unit tests.
-4. **Screens:** mock stories, `/dev/petition`, steps 1–3, and the browser walkthrough.
+4. **Screens:** `src/lib/stories.ts`, `/dev/petition`, steps 1–3, and the browser walkthrough.
 5. **Deploy:** Vercel setup, then a walkthrough on the production URL.
 
 Branches follow `TASKS.md`: `platform/auth` (1–2), `platform/mp-lookup` (3), and `platform/draft-deploy` (4–5).
