@@ -25,7 +25,7 @@ const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 export async function createDraft(userId: string, input: CreateDraftInput): Promise<Draft> {
   const [row] = await db
     .insert(drafts)
-    .values({ userId, ...input })
+    .values({ ...input, userId })
     .returning();
   return toDraft(row);
 }
