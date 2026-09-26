@@ -31,6 +31,10 @@ A user enters income + province, sees their federal tax broken down by where it 
    - **Data stories (main source):** programs whose spending jumped a lot from one year to the next. Example: military aircraft buying went from $0.8B (2022–23) to $3.3B (2024–25) → "Military aircraft spending quadrupled in two years."
    - **News stories (extra):** scraped news for things the data doesn't show, like one-off contracts.
 
+## Branches
+
+One branch per task, named `<area>/<task>` (listed under each task below). Merge into `main` via PR when a phase works.
+
 ## Who owns what
 
 | Person | Area |
@@ -78,16 +82,19 @@ The spending item (story) shape everyone builds against:
 ## Izu (UI)
 
 ### Task 1: Build the onboarding + tax overview (screens 01–02)
+Branch: `ui/onboarding-overview`
 - **Phase 1:** Set up the frontend project and design tokens (colours, type, spacing from the wireframe). Build screen 01 (income input with auto-format, province dropdown defaulting from locale) and screen 02 with mock numbers.
 - **Phase 2:** Save income and province to local storage. Plug in Raphael's tax calculator and `GET /breakdown` (top 7 programs + "All other"). Horizontal bar list.
 - **Phase 3:** "Edit" link back to 01, "How we calculate" link, loading/error states, check at 390pt width.
 
 ### Task 2: Build the spending feed + detail page (screens 03–04)
+Branch: `ui/feed-detail`
 - **Phase 1:** Create `mock/spending.json` (~5 items in the shared shape). Build feed cards, department filter chips, bottom tab bar and the detail page from mock data.
 - **Phase 2:** Swap mock data for `GET /spending?department=` and `GET /spending/:id`. Show personal share using the formula in Decisions #3. Detail page in order: facts → "How this relates to you" → sources → action card.
 - **Phase 3:** Both action card states: open petition (progress bar, Join → ourcommons.ca, Start different) vs. none (Start a petition only). Empty feed state, image fallbacks.
 
 ### Task 3: Build the petition flow (screens 05–06)
+Branch: `ui/petition-flow`
 - **Phase 1:** Screen 05 form (title with 250-char counter, issue with "Whereas" helper, requested action, 6-step explainer under the form). Screen 06 layout (postal code + Find, MP card, email template) with a sample MP.
 - **Phase 2:** Wire to Muktar's `GET /mp?postal=` and draft endpoints. Step progress bar (1 of 3, 2 of 3). Editable sponsorship email.
 - **Phase 3:** Login prompt when tapping "Start a petition", step 3 hand-off screen, validation messages, final visual pass across all screens.
@@ -97,16 +104,19 @@ The spending item (story) shape everyone builds against:
 ## Raphael (Data)
 
 ### Task 1: Build the tax calculator + breakdown
+Branch: `data/tax-breakdown`
 - **Phase 1:** Tax calculator as a pure function: 2024 federal + provincial brackets → `{ federal, provincial, total, effectiveRate }`. Check a few incomes against an online Canadian tax calculator.
 - **Phase 2:** From programs_spending.csv (2024–25): compute **total federal spending** (Decisions #3) and the top 7 programs. Write a plain-English name for each of the 7. Serve via `GET /breakdown` → `[{ name, amount, percent }]` + "All other programs".
 - **Phase 3:** Unit tests for a few incomes per province. Write the "How we calculate" content with sources.
 
 ### Task 2: Build the database + spending API
+Branch: `data/db-api`
 - **Phase 1:** Set up Postgres (Tiger Data if going for that prize; it's still Postgres). Load the 3 GC InfoBase files into tables: `programs_spending`, `programs`, `organizations`. Also create `stories`, `petitions`, `users` (Auth0 `sub`), `drafts`.
 - **Phase 2:** Endpoints `GET /spending?department=`, `GET /spending/:id`, `GET /departments` (for filter chips), and `POST /internal/spending` (Great's scripts write stories here, protected with a shared secret).
 - **Phase 3:** Include the matched petition inline in `/spending` responses. Endpoints `POST /me/drafts`, `GET /me/drafts`, `PATCH /me/drafts/:id` using Muktar's auth middleware.
 
 ### Task 3: Build the petition sync
+Branch: `data/petition-sync`
 - **Phase 1:** Figure out how to get open e-petitions from ourcommons.ca (export or scrape). Pull a handful by hand into `petitions`.
 - **Phase 2:** Scheduled job that refreshes open petitions and signature counts.
 - **Phase 3 (stretch, Tiger Data prize):** Store hourly snapshots `(petition_id, time, count)` as a hypertable, expose a trend endpoint for a signature chart on screen 04.
@@ -116,16 +126,19 @@ The spending item (story) shape everyone builds against:
 ## Great (Stories)
 
 ### Task 1: Build data stories from spending jumps (main feed source)
+Branch: `stories/data-stories`
 - **Phase 1:** Using programs_spending.csv + programs.csv, find programs with the biggest jumps (or drops) between years, e.g. 2022–23 → 2024–25. Ignore tiny programs (e.g. under $50M) and `ISS` internal services rows. Pick ~20 good ones by hand.
 - **Phase 2:** Script that turns each jump into a story in the shared shape: plain-English headline, neutral "What happened" summary (LLM can draft it from the program name + numbers), `source_type: "data"`. Push to `POST /internal/spending`.
 - **Phase 3:** Hand-check the top ~15 stories so the demo feed is accurate and readable.
 
 ### Task 2: Build the news pipeline (extra stories)
+Branch: `stories/news-pipeline`
 - **Phase 1:** Pull CBC / CTV / Google News RSS with queries like "federal government spent", "contract", "$ million". Save raw articles locally.
 - **Phase 2:** LLM extraction per article → `amount, department, date, level`, a neutral headline and summary. Drop `level: provincial`. Match to a `program_code` if possible. Push with `source_type: "news"`.
 - **Phase 3:** Dedupe the same story across outlets. Find or generate images. Run it on a schedule.
 
 ### Task 3: Build petition matching
+Branch: `stories/petition-matching`
 - **Phase 1:** Hand-match a few stories to open e-petitions to see what a good match looks like.
 - **Phase 2:** For each story, find candidate petitions from Raphael's `petitions` table (keywords or embeddings), then an LLM yes/no check. Set `petition` or leave it `null`.
 - **Phase 3:** Review matches for the demo stories and fix bad ones by hand. Make sure the demo story has a live petition.
@@ -135,16 +148,19 @@ The spending item (story) shape everyone builds against:
 ## Muktar (Everything else)
 
 ### Task 1: Build auth (Auth0)
+Branch: `platform/auth`
 - **Phase 1:** Create the Auth0 tenant and app, share env vars with the team.
 - **Phase 2:** Auth0 login in the frontend, triggered only from "Start a petition". JWT validation middleware on the API for `/me/*` routes.
 - **Phase 3:** Create the user row on first login. Make sure logged-out users can still use screens 01–04 with no prompts.
 
 ### Task 2: Build MP lookup + sponsor email
+Branch: `platform/mp-lookup`
 - **Phase 1:** Test the Open North Represent API: `https://represent.opennorth.ca/postcodes/K1P1A4/` → MP name, riding, email, phones.
 - **Phase 2:** `GET /mp?postal=` endpoint wrapping it (return only the federal MP). Sponsor email template filled from the draft + MP.
 - **Phase 3:** "Send request by email" opens a `mailto:` link with subject and body. "Choose a different MP" flow. Handle bad postal codes.
 
 ### Task 3: Build the draft flow + deploy + demo
+Branch: `platform/draft-deploy`
 - **Phase 1:** Set up hosting (e.g. Vercel) with env vars so there's a deploy URL from the start.
 - **Phase 2:** Draft flow: step 1 saves the draft, step 2 attaches the MP, step 3 hands off to ourcommons.ca with the text ready to copy.
 - **Phase 3:** End-to-end test of the full path on the deployed URL. Demo script, pitch deck, final deploy.
