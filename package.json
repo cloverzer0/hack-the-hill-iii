@@ -11,7 +11,8 @@
     "test:watch": "vitest",
     "db:generate": "drizzle-kit generate",
     "db:migrate": "drizzle-kit migrate",
-    "db:load": "tsx pipeline/load_db.ts"
+    "db:load": "tsx pipeline/load_db.ts",
+    "petitions:sync": "tsx pipeline/sync_petitions.ts"
   },
   "dependencies": {
     "@auth0/nextjs-auth0": "^4.30.0",
