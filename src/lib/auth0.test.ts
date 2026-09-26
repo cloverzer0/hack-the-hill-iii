@@ -31,6 +31,15 @@ describe("onCallback", () => {
     expect(res.headers.get("location")).toBe("http://localhost:3000/");
   });
 
+  it("redirects to / when returnTo points to another origin", async () => {
+    const res = await onCallback(
+      null,
+      { appBaseUrl: "http://localhost:3000", returnTo: "//evil.example" },
+      session,
+    );
+    expect(res.headers.get("location")).toBe("http://localhost:3000/");
+  });
+
   it("still logs the user in when saving the row fails", async () => {
     vi.mocked(upsertUser).mockRejectedValue(new Error("db down"));
     vi.spyOn(console, "error").mockImplementation(() => {});

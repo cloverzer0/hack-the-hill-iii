@@ -27,7 +27,17 @@ export const onCallback: OnCallbackHook = async (error, ctx, session) => {
   if (!base) {
     return new NextResponse("APP_BASE_URL is not set", { status: 500 });
   }
-  return NextResponse.redirect(new URL(ctx.returnTo || "/", base));
+  const appUrl = new URL(base);
+  let destination: URL;
+  try {
+    destination = new URL(ctx.returnTo || "/", appUrl);
+  } catch {
+    destination = new URL("/", appUrl);
+  }
+  if (destination.origin !== appUrl.origin) {
+    destination = new URL("/", appUrl);
+  }
+  return NextResponse.redirect(destination);
 };
 
 let client: Auth0Client | null = null;
