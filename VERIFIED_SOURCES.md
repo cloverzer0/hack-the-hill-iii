@@ -6,7 +6,7 @@ Every number in the app comes from one of these. Checked on 2026-09-26.
 
 Dataset page: https://open.canada.ca/data/en/dataset/a35cf382-690c-4221-a971-cf0fd189a46f
 
-Downloaded into `pipeline/data/` (gitignored, re-download with the links below):
+Downloaded into `pipeline/data/` (gitignored, re-download with the links below), then loaded into the Neon database with `npm run db:migrate` and `npm run db:load` (tables `programs_spending`, `programs`, `organizations`, `program_labels`):
 
 | File | Used for | Download |
 |---|---|---|
@@ -16,7 +16,7 @@ Downloaded into `pipeline/data/` (gitignored, re-download with the links below):
 
 Notes:
 - `year = 2024` means fiscal year April 2024 – March 2025 ("2024–25").
-- Sum of `expenditure` for 2024 = **$472.5B** across 1,228 programs (built by `pipeline/build_breakdown.py`).
+- Sum of `expenditure` for 2024 = **$472.5B** across 1,228 programs. The app computes it in the database (`GET /api/breakdown`, `src/lib/breakdown.ts`). `pipeline/build_breakdown.py` is a standalone offline copy of the same calculation (not used by the app) that gives the same result.
 - "Fiscal Arrangements with Provinces and Territories" ($40.0B) = Equalization + Canada Social Transfer + Territorial Formula Financing, net of Quebec's tax-point recovery.
 - CRA "Benefits" ($16.2B): which benefits it contains is **not yet verified**. It doesn't match any single CRA line (see below). Check before the pitch.
 - Program structure changed in 2018; don't compare program codes across that year.
