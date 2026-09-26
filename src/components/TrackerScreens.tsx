@@ -11,7 +11,7 @@ const dateLabel = (value: string) => new Intl.DateTimeFormat('en-CA', { dateStyl
 export function ReceiptScreen({ inputs, navigate }: { inputs: UserInputs; navigate: (path: string) => void }) {
   const tax = federalTax(inputs.income)
   const scale = inputs.income / 75_000
-  const rows = receiptCategories.map((category) => ({ ...category, personal: Math.round(category.amount * scale) }))
+  const rows = receiptCategories.map((category) => ({ ...category, personal: Math.round(tax * category.percent / 100) }))
   const operationalPercent = rows.filter((row) => row.id === 'departments' || row.id === 'defence').reduce((sum, row) => sum + row.percent, 0)
 
   return (
