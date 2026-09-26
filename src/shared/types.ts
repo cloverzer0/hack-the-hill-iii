@@ -20,7 +20,7 @@ export type SpendingItem = {
   source_type: 'data' | 'news'
   level: 'federal'
   sources: Source[]
-  image_url: string
+  image_url: string | null
   petition: { number: string; title: string; signatures: number; closes: string; url: string } | null
   recipient: string
   originalValue: number
