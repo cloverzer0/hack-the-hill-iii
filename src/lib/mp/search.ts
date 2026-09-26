@@ -4,7 +4,7 @@ export const MAX_RESULTS = 20;
 
 /** Lowercases and strips accents so "belanger" matches "Bélanger". */
 function fold(text: string): string {
-  return text.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
+  return text.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
 }
 
 export function searchMps(mps: Mp[], query: string): Mp[] {

@@ -1762,7 +1762,7 @@ Expected: FAIL, because `./search` cannot be resolved.
 
 - [ ] **Step 8: Implement search**
 
-Create `src/lib/mp/search.ts`. It strips accents with a `[̀-ͯ]` range, not `\p{Diacritic}`, because the tsconfig targets ES2017.
+Create `src/lib/mp/search.ts`. It strips accents with a `[\u0300-\u036f]` range, not `\p{Diacritic}`, because the tsconfig targets ES2017.
 
 ```ts
 import type { Mp } from "@/lib/mp/types";
@@ -1771,7 +1771,7 @@ export const MAX_RESULTS = 20;
 
 /** Lowercases and strips accents so "belanger" matches "Bélanger". */
 function fold(text: string): string {
-  return text.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
+  return text.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
 }
 
 export function searchMps(mps: Mp[], query: string): Mp[] {
