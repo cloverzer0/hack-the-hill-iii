@@ -147,3 +147,6 @@ vite.config.ts.timestamp-*
 
 # Personal Claude Code instructions
 CLAUDE.md
+
+# Izu's branch-specific task brief
+izu-tasks.md
