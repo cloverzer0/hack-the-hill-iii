@@ -176,15 +176,20 @@ def main():
     print(f"Wrote {len(stories)} stories to {OUT}")
 
     if args.push:
-        url, secret = os.environ["SPENDING_API_URL"].rstrip("/"), os.environ["INTERNAL_SECRET"]
-        req = urllib.request.Request(
-            f"{url}/internal/spending",
-            data=json.dumps(stories).encode(),
-            headers={"Content-Type": "application/json", "X-Internal-Secret": secret},
-            method="POST",
-        )
-        with urllib.request.urlopen(req) as res:
-            print(f"Pushed to {url}/internal/spending: HTTP {res.status}")
+        push(stories)
+
+
+def push(stories):
+    """POST stories to $SPENDING_API_URL/internal/spending (also used by build_news.py)."""
+    url, secret = os.environ["SPENDING_API_URL"].rstrip("/"), os.environ["INTERNAL_SECRET"]
+    req = urllib.request.Request(
+        f"{url}/internal/spending",
+        data=json.dumps(stories).encode(),
+        headers={"Content-Type": "application/json", "X-Internal-Secret": secret},
+        method="POST",
+    )
+    with urllib.request.urlopen(req) as res:
+        print(f"Pushed to {url}/internal/spending: HTTP {res.status}")
 
 
 if __name__ == "__main__":
