@@ -43,11 +43,27 @@ Notes:
 - CPP: 5.95% (base 4.95% + first additional 1%) on earnings $3,500 – $68,500; CPP2: 4% on $68,500 – $73,200
 - EI: 1.66% up to $63,200 insurable earnings (max premium $1,049.12)
 
-Ontario 2024 (verified, same T4032-ON page): basic personal amount $12,399; brackets 5.05% to $51,446, 9.15% to $102,894, 11.16% to $150,000, 12.16% to $220,000, 13.16% above.
+All provinces and territories except Quebec (verified, CRA T4127 Payroll Deductions Formulas, 119th edition, January 2024, tables 8.1 and 8.2): brackets, rates, basic personal amounts, Ontario surtax, Ontario health premium, Ontario and BC low-income tax reductions, Nova Scotia and Yukon basic personal amount rules.
+https://www.canada.ca/en/revenue-agency/services/forms-publications/payroll/payroll-deductions-t4127-payroll-deductions-formulas/t4127-jan-119th-edition-effective-january-1-2024/t4127-jan-payroll-deductions-formulas-computer-programs.html
+Every bracket was re-checked against the table's own "K" constants (no copy errors).
 
-Other provinces/territories: use each province's T4032 January 2024 page (same URL pattern, e.g. `t4032bc-january-2024`). Add each one here when verified.
+Quebec 2024:
+- Brackets 14% to $51,780, 19% to $103,545, 24% to $126,000, 25.75% above; basic personal amount $18,056. Source: EY Tax Alert 2024 no. 15, https://www.ey.com/en_ca/technical/tax/tax-alerts/2024/tax-alert-2024-no-15 (Revenu Québec blocks automated fetches; official page: https://www.revenuquebec.ca/en/citizens/income-tax-return/completing-your-income-tax-return/income-tax-rates/)
+- QPP 6.4% (base 5.4% + 1% first additional), EI 1.32% up to $63,200, QPIP 0.494% up to $94,000, federal abatement 16.5%. Source: CRA T4032-QC January 2024, https://www.canada.ca/en/revenue-agency/services/forms-publications/payroll/t4032-payroll-deductions-tables-previous-years/t4032qc-january-2024/t4032qc-january-general-information.html
 
-## Tax checks (compare our calculator against these)
+Not modelled (small or situational): Quebec's deduction for workers and its other credits, low-income reductions outside ON and BC.
 
-- Wealthsimple tax calculator: https://www.wealthsimple.com/en-ca/tool/tax-calculator (pick the 2024 tax year)
-- TaxTips.ca Canadian tax calculator: https://www.taxtips.ca/calculators/canadian-tax/canadian-tax-calculator.htm
+## Tax checks
+
+Online 2024 calculators are gone (Wealthsimple and TaxTips now only offer 2025–2026), so the calculator is checked against CRA's own 2024 payroll tax tables:
+- T4032-ON January 2024, monthly tables (claim code 1): https://www.canada.ca/content/dam/cra-arc/migration/cra-arc/tx/bsnss/tpcs/pyrll/t4032/2024/t4032on-1-12pp-24eng.pdf
+
+| Income (≈) | Federal: ours / CRA | Ontario: ours / CRA |
+|---|---|---|
+| $30,108 | 1,633 / 1,634 | 1,085 / 1,085 |
+| $49,884 | 4,374 / 4,375 | 2,320 / 2,321 |
+| $75,000 | 8,920 / 8,958 | 4,562 / 4,579 |
+| $100,140 | 14,074 / 14,112 | 7,019 / 7,040 |
+| $150,456 | 26,472 / 26,521 | 15,271 / 15,305 |
+
+Above $68,500 we are lower by exactly $188 × the marginal rate. $188 is the CPP2 contribution, which the payroll tables don't deduct but the tax return does (line 22215), so ours matches the return.
