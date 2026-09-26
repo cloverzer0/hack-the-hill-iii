@@ -151,6 +151,9 @@ next-env.d.ts
 # Personal Claude Code instructions
 CLAUDE.md
 
+# Izu's local agent collaboration guide
+AGENT.md
+
 # Personal plan for the current task
 implementation.md
 
