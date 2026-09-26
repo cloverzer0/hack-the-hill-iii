@@ -1,5 +1,14 @@
 export type Source = { label: string; url: string }
 
+export type TaxEstimate = {
+  fiscalYear: string
+  federal: number
+  provincial?: number
+  total?: number
+  effectiveRate?: number
+  source: Source
+}
+
 export type UserInputs = {
   income: number
   province: string
@@ -41,5 +50,24 @@ export type Category = {
   percent: number
   description: string
   drillable: boolean
+  source: Source
+}
+
+export type BreakdownResponse = {
+  fiscalYear: string
+  totalFederalSpending: number
+  categories: Category[]
+  source: Source
+}
+
+export type SpendingResponse = {
+  fiscalYear: string
+  totalFederalSpending: number
+  items: SpendingItem[]
+  source: Source
+}
+
+export type DepartmentsResponse = {
+  departments: string[]
   source: Source
 }
