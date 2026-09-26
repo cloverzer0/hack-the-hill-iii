@@ -187,12 +187,12 @@ The route is `/petition/<draftId>/sponsor`. If the draft is missing, the page sh
 - **Left column:**
   - "Ask an MP to sponsor it" and the explainer text from the wireframe.
   - A postal code input and a **Find** button that calls `GET /api/mp`.
-  - On success the **MP card** shows photo, name, riding, party, email, Hill office and riding office. The MP is saved with `PATCH { mp }`. If `draft.mp` is already set, the card shows on load.
+  - On success the **MP card** shows photo, name, riding, party, email, Hill office and riding office. The MP is saved, and any edited letter is reset to the template, in one `PATCH { mp, sponsorEmail: null }`. If `draft.mp` is already set, the card shows on load.
   - Inline errors:
     - `invalid_postal`: "Enter a postal code like K1P 1A4"
     - `not_found`: "We couldn't find that postal code"
-    - `lookup_failed`: "Couldn't reach the MP directory", with a "Try again" button.
-  - **Choose a different MP** opens a search box that calls `GET /api/mps?q=` after a 300ms pause in typing. It lists name, riding and party. Picking one sets the card and runs `PATCH { mp }`.
+    - `lookup_failed`: "Couldn't reach the MP directory.", followed by a single "Try again" button.
+  - **Choose a different MP** opens a search box that calls `GET /api/mps?q=` after a 300ms pause in typing. It lists name, riding and party. Picking one sets the card and runs `PATCH { mp, sponsorEmail: null }`, so a letter edited for the previous MP is never sent to the new one.
 - **Right column:**
   - The **Sponsorship request** letter. It is generated from the template in §6.4 unless `draft.sponsorEmail` is set.
   - **Edit** swaps it for a textarea, which saves on blur with `PATCH { sponsorEmail }`. "Reset to template" sends `sponsorEmail: null`.
@@ -220,7 +220,7 @@ The route is `/petition/<draftId>/submit`. It is a single centred column.
 ### 6.4 Sponsor email
 `src/lib/mp/sponsorEmail.ts` contains pure functions.
 
-`buildLetter({ mp, title, postalCode? })` returns the template below. `postalCode` is set only when the MP was found from the user's own postal code during this visit. Without it, which covers an MP picked through "Choose a different MP" and a page reload, the letter leaves out the "I'm a constituent in <riding>." sentence and signs off `[Your name], [Postal code]`. This stops the letter claiming to be from a constituent when it isn't.
+`buildLetter({ mp, title, constituent })` returns the template below. `constituent` is true only when the MP was found from the user's own postal code during this visit. When it is false, which covers an MP picked through "Choose a different MP" and a page reload, the letter leaves out the "I'm a constituent in <riding>." sentence, so it never claims to be from a constituent when it isn't. The sign-off is always the placeholder `[Your name], [Postal code]`, which the user fills in in their email. The letter text can be saved, so it must never contain a real postal code.
 
 ```
 Dear <MP name>,
@@ -230,7 +230,7 @@ I'm a constituent in <riding>. I've drafted an e-petition, "<title>," and I'm as
 Sponsoring does not mean you endorse it. It allows constituents to sign and, with 500 signatures, have it presented in the House.
 
 Thank you,
-[Your name], <postal code, formatted "K1P 1A4", or "[Postal code]" if unknown>
+[Your name], [Postal code]
 ```
 
 `buildEmail({ letter, draft })` returns:

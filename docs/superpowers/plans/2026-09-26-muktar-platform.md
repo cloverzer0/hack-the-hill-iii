@@ -52,6 +52,14 @@
 4. **`/dev/petition` stays available in production** until Izu's screen 04 exists. The production walkthrough in Task 9 starts there.
 5. **Petition pages get a real title:** `Start a petition · wheredoesmytaxgo`.
 
+## Revisions made during execution
+
+Human decisions from the Task 7 review. These replace the Task 5 and Task 7 reference code above.
+
+1. **Sign-off.** The letter's sign-off is always `[Your name], [Postal code]`, as the wireframe shows. `buildLetter` takes a boolean `constituent` instead of `postalCode`, and `formatPostal` is removed. The letter text can be saved, so it must never contain a real postal code.
+2. **Switching MP.** Picking a different MP resets the letter to the template, and saves both in one `PATCH { mp, sponsorEmail: null }`.
+3. **Lookup errors.** A lookup error is stored as `{ message, canRetry }`. `lookup_failed` shows "Couldn't reach the MP directory." with a single [Try again] button.
+
 ## Branches
 
 The branches follow `TASKS.md`. Each one builds on the previous one.
