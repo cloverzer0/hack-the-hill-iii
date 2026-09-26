@@ -16,7 +16,10 @@ Downloaded into `pipeline/data/` (gitignored, re-download with the links below):
 
 Notes:
 - `year = 2024` means fiscal year April 2024 – March 2025 ("2024–25").
-- Sum of `expenditure` for 2024 = **$472.5B**. Employment Insurance benefits are not in this dataset.
+- Sum of `expenditure` for 2024 = **$472.5B** across 1,228 programs (built by `pipeline/build_breakdown.py`).
+- Not in this dataset: Employment Insurance benefits (~$23B; only EI's $0.13B running cost appears) and the Canada Child Benefit (~$26B). That's why the total is below the ~$520B headline figure.
+- "Fiscal Arrangements with Provinces and Territories" ($40.0B) = Equalization + Canada Social Transfer + Territorial Formula Financing, net of Quebec's tax-point recovery.
+- CRA "Benefits" ($16.2B): which benefits it contains is **not yet verified**. Check before the pitch.
 - Program structure changed in 2018; don't compare program codes across that year.
 
 ## Tax calculation (2024 tax year, Canada Revenue Agency)
