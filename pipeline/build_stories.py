@@ -1,8 +1,9 @@
 """Turn the picked spending jumps into feed stories in the shared shape (TASKS.md "Shared contract").
 
 Reads pipeline/picked.csv (from find_jumps.py) + raw GC InfoBase CSVs in pipeline/data/, and writes
-pipeline/stories.json. Headlines/summaries are drafted by Claude when ANTHROPIC_API_KEY is set
-(cached in pipeline/llm_cache.json so each story is generated once); otherwise a plain template is used.
+pipeline/stories.json. Headlines/summaries come from the title/summary columns in picked.csv when
+filled in; otherwise Claude drafts them when ANTHROPIC_API_KEY is set (cached in pipeline/llm_cache.json
+so each story is generated once); otherwise a plain template is used.
 
 Usage:
   python3 pipeline/build_stories.py            # build stories.json
@@ -123,7 +124,7 @@ def main():
 
         client = anthropic.Anthropic()
     else:
-        print("No ANTHROPIC_API_KEY: using template headlines (cached LLM drafts still used).")
+        print("No ANTHROPIC_API_KEY: stories without a hand-written title use the template.")
 
     stories = []
     for _, p in picked.iterrows():
@@ -139,9 +140,13 @@ def main():
             "phrase": change_phrase(old_v, new_v),
         }
 
-        # Cache key changes if the facts change, so edited data gets a fresh draft.
-        key = hashlib.sha256(PROMPT.format(**f).encode()).hexdigest()[:16]
-        draft = Draft(**cache[key]) if key in cache else None
+        # Hand-written title/summary in picked.csv wins over LLM drafts and the template.
+        if p.get("title") and p.get("summary"):
+            draft = Draft(title=p["title"], summary=p["summary"])
+        else:
+            # Cache key changes if the facts change, so edited data gets a fresh draft.
+            key = hashlib.sha256(PROMPT.format(**f).encode()).hexdigest()[:16]
+            draft = Draft(**cache[key]) if key in cache else None
         if draft is None and client:
             draft = llm_draft(client, f)
             if draft:
