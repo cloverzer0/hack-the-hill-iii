@@ -21,6 +21,7 @@ import pandas as pd
 from pydantic import BaseModel
 
 from find_jumps import fy, load
+from make_images import image_url
 
 HERE = Path(__file__).parent
 CACHE = HERE / "llm_cache.json"
@@ -167,7 +168,7 @@ def main():
             "source_type": "data",
             "level": "federal",
             "sources": [SOURCE],
-            "image_url": None,
+            "image_url": image_url(p["dept_code"]),
             "petition": None,
         })
 

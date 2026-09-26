@@ -3,7 +3,8 @@
 Reads pipeline/news_raw.json (from fetch_news.py). Gemini reads each headline and pulls out the amount,
 department, program and level, and writes a neutral headline + summary. Anything that isn't Canadian
 federal spending (provincial, foreign, not about spending) is dropped. Gemini's answers are cached in
-pipeline/news_llm_cache.json so each article is read once. Writes pipeline/news_stories.json.
+pipeline/news_llm_cache.json so each article is read once. The same story from several outlets is
+merged into one, with every outlet kept as a source. Writes pipeline/news_stories.json.
 
 Needs GEMINI_API_KEY (in the environment or the repo's .env).
 
@@ -16,7 +17,10 @@ import argparse
 import hashlib
 import json
 import os
+import re
 import time
+from collections import Counter
+from datetime import date
 from pathlib import Path
 from typing import Literal, Optional
 
@@ -24,6 +28,7 @@ from pydantic import BaseModel
 
 from build_stories import push
 from find_jumps import load
+from make_images import image_url
 
 HERE = Path(__file__).parent
 RAW = HERE / "news_raw.json"
@@ -100,6 +105,54 @@ def catalog():
     depts = dict(zip(df["dept_code"], df["dept_name"]))
     lines = "\n".join(f"{d} | {p} | {depts[d]} | {n}" for (d, p), n in sorted(programs.items()))
     return programs, depts, lines
+
+
+# Words too common in spending headlines to tell two stories apart.
+STOPWORDS = set("""a an and at by for from in into of on or the to with over up nearly more than about
+new canada canadian canada's federal government ottawa feds invests invest investing investment
+announces announced funding receives million billion m b support boost gets provides""".split())
+SAME_AMOUNT, SAME_DAYS = 0.02, 14
+
+
+def words(text):
+    return {w for w in re.findall(r"[a-z][a-z'.-]+", text.lower()) if w not in STOPWORDS}
+
+
+def same_event(a, b):
+    """Same amount (within 2%), within 14 days, and at least one distinctive word in common."""
+    if abs(a["amount"] - b["amount"]) > SAME_AMOUNT * max(a["amount"], b["amount"]):
+        return False
+    if abs((date.fromisoformat(a["date"]) - date.fromisoformat(b["date"])).days) > SAME_DAYS:
+        return False
+    return bool(a["_words"] & b["_words"])
+
+
+def dedupe(stories):
+    """Merge the same story from different outlets into one, keeping every outlet as a source."""
+    group = list(range(len(stories)))
+
+    def root(i):
+        while group[i] != i:
+            i = group[i]
+        return i
+
+    for i in range(len(stories)):
+        for j in range(i):
+            if same_event(stories[i], stories[j]):
+                group[root(i)] = root(j)
+
+    merged = []
+    for members in {r: [s for k, s in enumerate(stories) if root(k) == r] for r in map(root, range(len(stories)))}.values():
+        # Outlets can disagree on the department; go with the majority, then the earliest article.
+        dept = Counter(s["dept_code"] for s in members).most_common(1)[0][0]
+        pick = min((s for s in members if s["dept_code"] == dept), key=lambda s: (s["program_code"] is None, s["date"]))
+        sources = []
+        for s in sorted(members, key=lambda s: s["date"]):
+            sources += [src for src in s["sources"] if src["label"] not in {x["label"] for x in sources}]
+        merged.append(pick | {"date": min(s["date"] for s in members), "sources": sources})
+    for s in merged:
+        s.pop("_words")
+    return sorted(merged, key=lambda s: s["date"], reverse=True)
 
 
 def extract(client, system, articles):
@@ -181,12 +234,15 @@ def main():
             "source_type": "news",
             "level": "federal",
             "sources": [{"label": a["outlet"], "url": a["link"]}],
-            "image_url": None,
+            "image_url": image_url(e["dept_code"]),
             "petition": None,
+            "_words": words(a["title"]) | words(e["title"]),
         })
 
+    found = len(stories)
+    stories = dedupe(stories)
     OUT.write_text(json.dumps(stories, indent=2, ensure_ascii=False) + "\n")
-    print(f"Wrote {len(stories)} stories to {OUT.relative_to(HERE.parent)}")
+    print(f"Wrote {len(stories)} stories to {OUT.relative_to(HERE.parent)} ({found - len(stories)} duplicates merged)")
     print("Dropped: " + ", ".join(f"{n} {r}" for r, n in sorted(dropped.items(), key=lambda x: -x[1])))
 
     if args.push:

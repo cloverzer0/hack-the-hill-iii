@@ -84,27 +84,6 @@
     "petition": null
   },
   {
-    "id": "news-3b546059c116",
-    "title": "Federal government invests $76 million in Toronto national basketball centre",
-    "summary": "The federal government is investing $76 million to build a national basketball centre in Toronto.",
-    "amount": 76000000,
-    "date": "2026-09-17",
-    "fiscal_year": "2026-27",
-    "department": "Office of Infrastructure of Canada",
-    "dept_code": "OICC",
-    "program_code": "BYC02",
-    "source_type": "news",
-    "level": "federal",
-    "sources": [
-      {
-        "label": "canada.constructconnect.com",
-        "url": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxNVWhjWE9tal9VZm5XWEMtZ2JZaU9tQjNjSWI3X254VmxWSjJqUk5GRm9tMTN5ME1fdmNsQzgtWGZGZ0F3WFJFYnVJall2NVcwdm1UM0doV3pqRFk2ek5veVo1TlF6Tk9PZldGRVdtdU0zZzlXVE1Qc0VaczJqYU5CSU9FVHp1ZmJRVU1yekQ5bzAtMlc1a0hyeFlVbDZzMXJMaTdFb3RtYmNPbWpfWlJKaW5wTWJ6dTdwMmQ5eUc3bTFXQllJTTFnQXVlekZHRElVRFNqV1FYYw?oc=5"
-      }
-    ],
-    "image_url": null,
-    "petition": null
-  },
-  {
     "id": "news-eaa7e7ea18a7",
     "title": "Canada invests $140 million in quantum computing firm Xanadu",
     "summary": "The Canadian government is investing $140 million in the quantum computing company Xanadu.",
@@ -162,6 +141,18 @@
       {
         "label": "CTV News",
         "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxQYnNCSnJyOXp3ZExpbE03cGFzaDBqS1NQS3lIQi1VazN4REc4RkRYcjAwZWV3WUxwWmdtUXpQN0RBY0d3dVZkM2pwOWNUVXlFU2NqcnpkVGlIV1RXclg3ekZWYm9tbFllalk2Z0RJUzBDbkFkSFNPaVhwcGZoNEd4MFl0S3dvS05YM2dZc3B3Xy14T05Fd0Y5by00ckZoVWxtd21nTl9lcnBBd2k4SzBHNnFteDZVYjVOc1pxME5oR193dDQ?oc=5"
+      },
+      {
+        "label": "paNOW",
+        "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxQa2NLbnZLZkxJZS15OWZ0SmNPWUQ0WTRVWGdWWXRiWnZPTm5lTVhRcURkSGJKNEhRMEdhU2hReWk0U1dmSzVuQkdlMG5iMXItVHhwRG5WVUJPT2VtQWl6Tm9HUnJaUVNQOC1zbHdzb2UyR3lMeUgtcXZvODBsTWIweXlDT2JFX0ZWSTZUWmJqQ05nN0JkdVJoa09lVktpVlFqY1F4YzR6UGVPekZM?oc=5"
+      },
+      {
+        "label": "Sportsnet.ca",
+        "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxObWx1dGxPZkhJSFVWR0lfODR4RDJmVlpRM2otQm1xQ3YyeXZJNnQ3MjF6TUl3T3ozdlpqNXpsWkJTLXpNT1E3T2tJLTBUMXhzQnZET2c5Z0hlSFMtVXd2SENiSTdaazh1SGxNZElCQ3NzM3AyNzB4VmU4V3c4UDVzamttNEtyRVdqeUZzdEdHeVZUN2Jma3BOZ1JSX1d0NVUxd0h6TThqRDRQUUJtYnk5SllwQ0VlMEZqU0tYR1lPdEU?oc=5"
+      },
+      {
+        "label": "canada.constructconnect.com",
+        "url": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxNVWhjWE9tal9VZm5XWEMtZ2JZaU9tQjNjSWI3X254VmxWSjJqUk5GRm9tMTN5ME1fdmNsQzgtWGZGZ0F3WFJFYnVJall2NVcwdm1UM0doV3pqRFk2ek5veVo1TlF6Tk9PZldGRVdtdU0zZzlXVE1Qc0VaczJqYU5CSU9FVHp1ZmJRVU1yekQ5bzAtMlc1a0hyeFlVbDZzMXJMaTdFb3RtYmNPbWpfWlJKaW5wTWJ6dTdwMmQ5eUc3bTFXQllJTTFnQXVlekZHRElVRFNqV1FYYw?oc=5"
       }
     ],
     "image_url": null,
@@ -183,24 +174,7 @@
       {
         "label": "windsoriteDOTca News",
         "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxPQnZmQ3NJWEVJbEhGZVdjREhHTy1pQjVoSHZFV2ZRMTBzZ2Z3VXBnUEtaN1Y2LW90S2ZENWwyck5BZVd0OWpnbjVzNVY2MUZBV3AyZ0RySWRUQi1FVVppby10ZFBDS0NQLXdkWGNHb2paU2kzRXpGczJ0clMyNDdTMEhydjQzQk1ERlhocnJqN0N3bEVINVpleTFIOEd3UQ?oc=5"
-      }
-    ],
-    "image_url": null,
-    "petition": null
-  },
-  {
-    "id": "news-aeb999a5f4ba",
-    "title": "Government of Canada invests nearly $7.5 million in Windsor Airport",
-    "summary": "The federal government has announced an investment of nearly $7.5 million for critical infrastructure projects at Windsor International Airport.",
-    "amount": 7500000,
-    "date": "2026-09-16",
-    "fiscal_year": "2026-27",
-    "department": "Transport Canada",
-    "dept_code": "TC",
-    "program_code": "BTY03",
-    "source_type": "news",
-    "level": "federal",
-    "sources": [
+      },
       {
         "label": "The Globe and Mail",
         "url": "https://news.google.com/rss/articles/CBMiqAJBVV95cUxQZHNQWHJNcE1XZmR3RVZBeDdOaGU3blFydDZOUzE2ZHlWZWRseEFDODVkaEpYSm41UnJRV0Y4dDhsUlZ4UEFjRE9YOGhnLU1SYnZPeEFoeXYtYmlhZGtwUVFJWWlaYVhKMjljNU54MkpPMjd4MlRRYlBadm1hNTN0VFJWcXozSER2bGtERVdTQmhhZ3pmTS1vMk9yUkE2bEw2YVUwR2RNcWRSb25LSXZvdVpBb045eGhGSUtBTVRBOGFMR3lWQ3lEcWlsR25WdVJpdnp0LThJM2VuTS1wUFdlVXF6ZHIyTDk0eUdjbkJ4VlBGeGhveVl3NTJ0Um1MREVoWDRXZUhfRTYxb25tZnRYU0w4MFdjSmZWZEk2Q0J2aThkdmhUZGVvaw?oc=5"
@@ -231,27 +205,6 @@
     "petition": null
   },
   {
-    "id": "news-bdaa1de2391b",
-    "title": "Federal government invests $76 million in Toronto national basketball centre",
-    "summary": "The federal government is investing $76 million to support a national basketball centre in Toronto.",
-    "amount": 76000000,
-    "date": "2026-09-16",
-    "fiscal_year": "2026-27",
-    "department": "Office of Infrastructure of Canada",
-    "dept_code": "OICC",
-    "program_code": "BYC02",
-    "source_type": "news",
-    "level": "federal",
-    "sources": [
-      {
-        "label": "paNOW",
-        "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxQa2NLbnZLZkxJZS15OWZ0SmNPWUQ0WTRVWGdWWXRiWnZPTm5lTVhRcURkSGJKNEhRMEdhU2hReWk0U1dmSzVuQkdlMG5iMXItVHhwRG5WVUJPT2VtQWl6Tm9HUnJaUVNQOC1zbHdzb2UyR3lMeUgtcXZvODBsTWIweXlDT2JFX0ZWSTZUWmJqQ05nN0JkdVJoa09lVktpVlFqY1F4YzR6UGVPekZM?oc=5"
-      }
-    ],
-    "image_url": null,
-    "petition": null
-  },
-  {
     "id": "news-753dd62e809f",
     "title": "Federal government invests $2.6 million in migratory bird conservation",
     "summary": "The federal government is investing $2.6 million to support migratory bird monitoring and conservation programs across Canada.",
@@ -267,24 +220,7 @@
       {
         "label": "Yahoo! Finance Canada",
         "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxOSDF2Q3dhZWhtR09jYmRzVjM1T0lQTmhicVJaOW1rMkd6eHZ6ZDllanBaNWRZUjdVaWZfMFRZWXoxVjMxUXFBQjV6YWUwZ2FWRGk5RV9ReVRHRlJrOFN0RXlXdHlJYWdLOVhmMXZEWnBjOTBtbDFDY0tjaklzMWpRNlRUSzlZZw?oc=5"
-      }
-    ],
-    "image_url": null,
-    "petition": null
-  },
-  {
-    "id": "news-b99275561b60",
-    "title": "Federal government invests $2.6M in migratory bird monitoring and conservation",
-    "summary": "The federal government is investing $2.6 million to support migratory bird monitoring and conservation programs across Canada.",
-    "amount": 2600000,
-    "date": "2026-09-16",
-    "fiscal_year": "2026-27",
-    "department": "Environment and Climate Change Canada",
-    "dept_code": "EC",
-    "program_code": "BGT02",
-    "source_type": "news",
-    "level": "federal",
-    "sources": [
+      },
       {
         "label": "Yahoo Finance",
         "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxOZXRCeUE0Rk1LTWR5TjAxeTJvZks2eDlyTmFXU0JlZml3dDBHMGNKdzZXdXR0aVg1elYzdlZFYlh4OV9GdHpyZENxV0RCWnRqR2lGSlNvdXNoSUNZOWc4cGVQTXpKbWJra3F0LUt4d1FuRmVOMk5JZnlqZzZMRjZFTUxPTlZGS3kxX0FlUUVhTVVuWG5LblNWaHV4Yw?oc=5"
@@ -309,27 +245,6 @@
       {
         "label": "CBC",
         "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxNTVd3SWQtWFBSN2p3UDd6XzhmV09uSklvNUhHdTdiek1PbGdGdTRoYnBYa3FzUEx5MUFfa25sSm03ZzJVbWV4R3U1bHRYaXM5Q2liYW03Q1cxdk1YaFZySlpldUcwdFFQZ0Rpc24zOWpxX2d1ME1qUUdiMDNQSXJzTVM4bF9QbnBXWmpxSXZrV0JsUUJfSy1V?oc=5"
-      }
-    ],
-    "image_url": null,
-    "petition": null
-  },
-  {
-    "id": "news-376c6a97c600",
-    "title": "Federal government invests $76M in national basketball centre in Toronto",
-    "summary": "The federal government is investing $76 million into a new national basketball centre located in Toronto.",
-    "amount": 76000000,
-    "date": "2026-09-16",
-    "fiscal_year": "2026-27",
-    "department": "Canadian Heritage",
-    "dept_code": "CH",
-    "program_code": "BSF01",
-    "source_type": "news",
-    "level": "federal",
-    "sources": [
-      {
-        "label": "Sportsnet.ca",
-        "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxObWx1dGxPZkhJSFVWR0lfODR4RDJmVlpRM2otQm1xQ3YyeXZJNnQ3MjF6TUl3T3ozdlpqNXpsWkJTLXpNT1E3T2tJLTBUMXhzQnZET2c5Z0hlSFMtVXd2SENiSTdaazh1SGxNZElCQ3NzM3AyNzB4VmU4V3c4UDVzamttNEtyRVdqeUZzdEdHeVZUN2Jma3BOZ1JSX1d0NVUxd0h6TThqRDRQUUJtYnk5SllwQ0VlMEZqU0tYR1lPdEU?oc=5"
       }
     ],
     "image_url": null,
@@ -582,27 +497,14 @@
       {
         "label": "CityNews Edmonton",
         "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxPajZVODNmTTVydWR5VGFLVGM0ZnFycUJRejFmckpUUkVKSHVCeDVKY0lJbkVTUDFUN3FQWDZIdXAza0RlQm83WnpYc00yTG8xbEk4emc5RnlpT0h3WFdBRnNGZHFJM0J2XzlJTFpPamszcUZiSEg0YUZrR0FMMUZQSnB5Z0JYQzk1M2lUYXQ3RmVrSzlnZ2VzcVpLTWlMRy1ZcG1kWlNSY3lUcDNzRVE?oc=5"
-      }
-    ],
-    "image_url": null,
-    "petition": null
-  },
-  {
-    "id": "news-76c1e20cce2f",
-    "title": "Federal government commits $4.7 billion for VIA Rail cars in Ontario and Quebec",
-    "summary": "Ottawa announced $4.7 billion for new VIA Rail passenger cars to be manufactured in Ontario and Quebec.",
-    "amount": 4700000000,
-    "date": "2026-09-03",
-    "fiscal_year": "2026-27",
-    "department": "Transport Canada",
-    "dept_code": "TC",
-    "program_code": "BTY03",
-    "source_type": "news",
-    "level": "federal",
-    "sources": [
+      },
       {
         "label": "CBC",
         "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxQYlBQS2x4Q19wTEw4S2dXLUI0Tm1NSDc3eWlqeVl0bWlTQ3d0Mm9aeEg1Q2l4a3FpNi1aRG9FUVVidUdjcTlxVHdmUnJuMGtXeG5iQS1seGJDNGNud1N3bVFPTGtfQUI0bzQzWFF6d0lLcW5kdmxiZVRQOEgwVVNZS1lXZ2g?oc=5"
+      },
+      {
+        "label": "BNN Bloomberg",
+        "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxNRmpiOEQwbXFSNE92ZXF0alRsb1BjcEViREV6V0JVZ2dhX0N4T3ZadmZnc2M1S0RiTmJjUTh6cjFwdS1IR0VRck12b0tEZkFuSzdVUzhwVlk4SUdrb243dlpsYXBuSmw3VXVraUZzNy1FOFJJOVN1Nktic0R0TFB2MWNMdkItQzBuUFROd3pjaS00NEM1MmpHeHhPZlZ5cTEzOElkaHpOQURuaXd2RDMtdVRoejU?oc=5"
       }
     ],
     "image_url": null,
@@ -630,27 +532,6 @@
     "petition": null
   },
   {
-    "id": "news-3bad748a137f",
-    "title": "Federal government allocates $4.7 billion for new VIA Rail train cars",
-    "summary": "The federal government is investing $4.7 billion to purchase new Canadian-made VIA Rail passenger cars.",
-    "amount": 4700000000,
-    "date": "2026-09-03",
-    "fiscal_year": "2026-27",
-    "department": "Transport Canada",
-    "dept_code": "TC",
-    "program_code": "BTY03",
-    "source_type": "news",
-    "level": "federal",
-    "sources": [
-      {
-        "label": "BNN Bloomberg",
-        "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxNRmpiOEQwbXFSNE92ZXF0alRsb1BjcEViREV6V0JVZ2dhX0N4T3ZadmZnc2M1S0RiTmJjUTh6cjFwdS1IR0VRck12b0tEZkFuSzdVUzhwVlk4SUdrb243dlpsYXBuSmw3VXVraUZzNy1FOFJJOVN1Nktic0R0TFB2MWNMdkItQzBuUFROd3pjaS00NEM1MmpHeHhPZlZ5cTEzOElkaHpOQURuaXd2RDMtdVRoejU?oc=5"
-      }
-    ],
-    "image_url": null,
-    "petition": null
-  },
-  {
     "id": "news-4db66bb84f11",
     "title": "Canada invests $67.8 million in urban forestry through FCM",
     "summary": "The federal government and the Federation of Canadian Municipalities are investing $67.8 million in urban forestry projects.",
@@ -666,24 +547,7 @@
       {
         "label": "PR Newswire Canada",
         "url": "https://news.google.com/rss/articles/CBMilgJBVV95cUxQc1dKMkc5OXh5OVdJdi0zemNtMGd3YW5xYV8zZ0FjQnNZZTF2MVdWSjAzV0NwR1BSMkYtWnhCZVFVZGRJYklHR0liZG9TUXVoY19seHlRdzZDMWFjNUFNcHQyYXdrakg4UEloVkNQYkM0MlFIR3pfOUJjV0Q1aURyelRKZFZBYmxMNTlSNTNPY05WQWFkT3ZyTy1YaUNydjd6U2Q3RldycXBoamk3SzVTZWtjQll1ZGZ3NE41M3cwNUhUdnE1OGRpYUptQTRWRFIycWRnTEpzX2hNV1lrVHRrR19yM1k1c2M2SFF5VmpVaW5fOWZsZkRLbmFUc1JNRzFZZS1YVmgwS1VJWFlrQVNtVFV2cWtUUQ?oc=5"
-      }
-    ],
-    "image_url": null,
-    "petition": null
-  },
-  {
-    "id": "news-132e38686a2e",
-    "title": "Government invests $67.8 million in urban tree canopy initiative",
-    "summary": "Federal funding of $67.8 million is being directed to urban forestry projects in partnership with FCM.",
-    "amount": 67800000,
-    "date": "2026-09-03",
-    "fiscal_year": "2026-27",
-    "department": "Natural Resources Canada",
-    "dept_code": "NR",
-    "program_code": "BTL08",
-    "source_type": "news",
-    "level": "federal",
-    "sources": [
+      },
       {
         "label": "The Globe and Mail",
         "url": "https://news.google.com/rss/articles/CBMiuwJBVV95cUxOZEFVYmhDcG9MRGxEYmJzaldOUXk2UTdVUFdHaXZCbHdPOFpDZUJNNkoySW1NeTk3a3lXWTFLMXZVMTJJcUlxMHZXTGUtOUgxX1ZzSmFPazcwa2E5dnBIWnh6dmFaRUR1YXVJekprUGxKLWdNS0tiUE41V19sei1GMEN0MS1iYTdQNmNRd3RnLW9aM0xQUS1QdHVxNVlOQ0Exc3ptaTJGTHNXa0NxMHJMX2ZQSkJvR0N3ZFFMeTFpLVJ2dnV1cGo4QnRqTkJqbl9BT0txX1c4Y0E2QUVxTmlkdDJlR0tacndyX0pLYlA5cG93MHVnWUk4UGdfZzVRcThYbFpfQi1mYW9oRll2eVlSNkNYWkkwNEZDUkpTeE92SkUzSXJSVWNTbVNZYUs4ZmNNZXdESnpTVjliU1k?oc=5"
@@ -729,6 +593,10 @@
       {
         "label": "CBC",
         "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxOakx0dlpsT3hVQXppaHI3N252UVVxNm52M1RwdHUwTEJYZEhsR1ZpTGxnVEFDNjc5eS0wU2JmU1ctdmZSaEhQMzZTaU90Z3dHcnBXZlpLNm9hNnNBMTJDVHBTVzJ1dnVaSTZOR2hSbzRRMnhGX2NyNlJQd2JLc2ctUHdlczZzeWdWdW4wcUJuTzhBM084aGVHcmhxY291OVVCNjhfZ0UycnlpUQ?oc=5"
+      },
+      {
+        "label": "PR Newswire Canada",
+        "url": "https://news.google.com/rss/articles/CBMixgJBVV95cUxOOE5KWjJjSmJkRkVjRGNMTlBsd3ZpWm9wVG1FelE2Uk10R01hOFRFcUxhcmtZSXBWN2dDX3A2a1VhTjNIdVdTWUxJcGI4ZTBSbUlJMXFqM05UQnYtdVV6WXRlRzVibGlxNi1sc3kyVFZXMllfSkF0dVhRbjZBQ3d0SU1fU0RITmd2NEtqQzhsaVZLa1hBRU5GUjNSYkVQWFhzRGVUNDdZV3pSOTM4dlE2UGpJeHJpSWtOYkZZSUUtZmVhbEVwLTByQmVDcmxLLWh4ZjBYQUd1dWhqTnF1TVFXVnZKQXhtTEptcS05SnBBdmVNLUNpWU1WNGt1TERob2FQRzlLWGt2NmNqMUdqUGVRWW5jTHhFQm1IM3BtUXVET2RKTUFCZ1NUQmJKT3MwVFhHbFJudTdSZlNmTkpHSm92ZzRlaGlNUQ?oc=5"
       }
     ],
     "image_url": null,
@@ -750,27 +618,6 @@
       {
         "label": "Money.ca",
         "url": "https://news.google.com/rss/articles/CBMiigFBVV95cUxNV0FMZ2ZWVl9HTmpyQ1h0RXJsNWo0NEFrZkJxRW95TkNhekp5QjlKRzFHRFJpNGs4ZnNjdFVzSHBEcUNhc2VocDgtQ1RDWXItZ3hvajJkNlZmbTB3dTc2NUdrd2VxOXh0T2xOaTM4cGRVb3FPSGI0SGJTZ0NralJYNUNSX1VlQl9KTXc?oc=5"
-      }
-    ],
-    "image_url": null,
-    "petition": null
-  },
-  {
-    "id": "news-e10f944544c5",
-    "title": "Canada invests close to $130 million in Cape Breton heritage assets",
-    "summary": "The federal government is investing close to $130 million in critical infrastructure and heritage places in Cape Breton and Canso.",
-    "amount": 130000000,
-    "date": "2026-09-02",
-    "fiscal_year": "2026-27",
-    "department": "Parks Canada",
-    "dept_code": "PCA",
-    "program_code": null,
-    "source_type": "news",
-    "level": "federal",
-    "sources": [
-      {
-        "label": "PR Newswire Canada",
-        "url": "https://news.google.com/rss/articles/CBMixgJBVV95cUxOOE5KWjJjSmJkRkVjRGNMTlBsd3ZpWm9wVG1FelE2Uk10R01hOFRFcUxhcmtZSXBWN2dDX3A2a1VhTjNIdVdTWUxJcGI4ZTBSbUlJMXFqM05UQnYtdVV6WXRlRzVibGlxNi1sc3kyVFZXMllfSkF0dVhRbjZBQ3d0SU1fU0RITmd2NEtqQzhsaVZLa1hBRU5GUjNSYkVQWFhzRGVUNDdZV3pSOTM4dlE2UGpJeHJpSWtOYkZZSUUtZmVhbEVwLTByQmVDcmxLLWh4ZjBYQUd1dWhqTnF1TVFXVnZKQXhtTEptcS05SnBBdmVNLUNpWU1WNGt1TERob2FQRzlLWGt2NmNqMUdqUGVRWW5jTHhFQm1IM3BtUXVET2RKTUFCZ1NUQmJKT3MwVFhHbFJudTdSZlNmTkpHSm92ZzRlaGlNUQ?oc=5"
       }
     ],
     "image_url": null,
@@ -819,48 +666,6 @@
     "petition": null
   },
   {
-    "id": "news-5b7954ba916a",
-    "title": "Quantum computing firm receives $195 million federal boost",
-    "summary": "A quantum computing company received $195 million in federal funding to establish operations at a former soup factory site.",
-    "amount": 195000000,
-    "date": "2026-08-29",
-    "fiscal_year": "2026-27",
-    "department": "Innovation, Science and Economic Development Canada",
-    "dept_code": "ISC",
-    "program_code": "BNP01",
-    "source_type": "news",
-    "level": "federal",
-    "sources": [
-      {
-        "label": "CBC",
-        "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxNQVlFVXJ5NnhHbU14WEFTeFBhY0hYUmNQTkp6bmtReDdnLWxWV3NjVGhBeVp3RS05TXRqZ1JPNGlKY1VzMHI3MFdueTl4TEtNbWliT1pfM2ZLRFBMX2t4VGUxTnRrbkg0WjlPRFZRYUlUUnc0U3hGVjc2ZXpISlNWY3BXdFNMVHg5WmtR?oc=5"
-      }
-    ],
-    "image_url": null,
-    "petition": null
-  },
-  {
-    "id": "news-3a681a54ddcd",
-    "title": "Canada backs Xanadu with $195 million loan for quantum plant",
-    "summary": "The federal government provided a $195 million revenue-linked loan to Xanadu for a quantum photonics plant in Toronto.",
-    "amount": 195000000,
-    "date": "2026-08-29",
-    "fiscal_year": "2026-27",
-    "department": "Innovation, Science and Economic Development Canada",
-    "dept_code": "ISC",
-    "program_code": "BNP01",
-    "source_type": "news",
-    "level": "federal",
-    "sources": [
-      {
-        "label": "ascendants.in",
-        "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxOaHdVNG4xZlU5Wkh1YWhHRjNSMi1fVXdIdFNTZUFkQUNwNnhER0ZtMWFxWGhDLWN0blN5X2xXQ0lTaVBFaUU2NkRreXJFRTg1UGw3U25XLTM2dkt2eDFUUnZacWZsdnJhbGMtOGg0c1FXOUZqUEJSWVppVnJxMWVJSDlMYzJuMERBTkl4X2tzN2VIOFBNYkhsYUxDeDlKWUhiOHlQUXJGR2paWWR4Qzd4OGJKX3dWWTVpOXc?oc=5"
-      }
-    ],
-    "image_url": null,
-    "petition": null
-  },
-  {
     "id": "news-bdd7ca62dcef",
     "title": "Xanadu secures $195 million from federal government for quantum computing",
     "summary": "Xanadu secured $195 million in federal backing to advance quantum computing initiatives in Canada.",
@@ -876,6 +681,26 @@
       {
         "label": "The Globe and Mail",
         "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxOY0FldlJDN1pVajhGOThUVnFCbXNDWXhDejJXQktkc1k1NWxxeGJaaXVPNGJhUlBFZEpKelo1amRFVFl1Q0NRT1RHUm9raXhsNmJ0NXhFYkl5bVI5TDN0OWk0dS13Yy1RYWVtMEpjZ2JRVHBnY0hIZEptdGJyb2thejRzSS1laGFzRUlGUTNJbEwtR0VKQl9sdGt3RUxfV2psYTJzQmQ4a3ptRDA2M2wxX1dsWDhLRmp6MVBybA?oc=5"
+      },
+      {
+        "label": "Financial Post",
+        "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxQQmZ6QjBxVURjS3pQdXR4WGNvajRQeVpMTFhnUUN4LUlsN2kwTjZPMXl3NmlIQ2h4X0ZUOTVlVXFtWHZwcnhKMEktRjdWUzRoYTdDUGhnblU4cUZwYjBaTW5naXdrOTNyLTNENHQ2LXVuaUg5LXo0UDQxOTU4NEtUN1UyX3cyRkR0ZHNoRg?oc=5"
+      },
+      {
+        "label": "Quantum Zeitgeist",
+        "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxPQ1I2UUgydTRwMDJHZHlVVmhZVU9OVXozRVVjalRjZWxYZVJicjBsb19uSmw0NGhLaFdwUjRCTnNpbE5YeUJlTlIwZ2M1cHpWblBuQWNNSzY2NExOR05xSEVyUWVaNjVTTXNtQ2ZpelUxcnJzV1RwMHVDaTNYOVkxZA?oc=5"
+      },
+      {
+        "label": "Moomoo",
+        "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxQYVBfYm9qZ3lyNVdyU1VqVzBJTnU4S1FXVENqVUlLTklEVURfcndKcXBLcTFaaVN3VmlOM3RzZmkxYjh3bnBIMkVVVlgwUWphUlVzblhJMkZlYjB3WjVEN2VYY2hLWnlxOF9XMGpVamJJbU9lYnU5Xzh3RHF2YVMxSGJYeHU4cGd2bGNKeGE3WjlnRldaWHV2UmFxRGJ3OFM2bHAxbDJfVnJnWTVzT0lMaFpiOG8yVFRL?oc=5"
+      },
+      {
+        "label": "CBC",
+        "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxNQVlFVXJ5NnhHbU14WEFTeFBhY0hYUmNQTkp6bmtReDdnLWxWV3NjVGhBeVp3RS05TXRqZ1JPNGlKY1VzMHI3MFdueTl4TEtNbWliT1pfM2ZLRFBMX2t4VGUxTnRrbkg0WjlPRFZRYUlUUnc0U3hGVjc2ZXpISlNWY3BXdFNMVHg5WmtR?oc=5"
+      },
+      {
+        "label": "ascendants.in",
+        "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxOaHdVNG4xZlU5Wkh1YWhHRjNSMi1fVXdIdFNTZUFkQUNwNnhER0ZtMWFxWGhDLWN0blN5X2xXQ0lTaVBFaUU2NkRreXJFRTg1UGw3U25XLTM2dkt2eDFUUnZacWZsdnJhbGMtOGg0c1FXOUZqUEJSWVppVnJxMWVJSDlMYzJuMERBTkl4X2tzN2VIOFBNYkhsYUxDeDlKWUhiOHlQUXJGR2paWWR4Qzd4OGJKX3dWWTVpOXc?oc=5"
       }
     ],
     "image_url": null,
@@ -897,90 +722,10 @@
       {
         "label": "canada.ca",
         "url": "https://news.google.com/rss/articles/CBMirgJBVV95cUxNZkFmVGJuNmttenJGeW4xNXkwZkFNOWw1RUppVF9VRlR0MjYta0tTeHJfMklBc1A4cDlRZ1dpN0ZHYXNOQkY4cW42RHdqLThDWGVBcmlRQmtPTGpEUlBFUjc4Nzlvc3V1eUhRUjIwcmF2clhNUmpKTmRfVE9vaUxnLVoySGhIS1E1a0JpdnpZaGpNa0RmZE82RS16dHRSUVFtdWlmZGd5aHVjWHk5VjhadXExWUx4QldxTUd1SFNyMFFoN2d2T1JOMnFTYkJFVl9wanpnSktIVEpoYm1GVlFfUWUzRFNRZmVOdWNqNlMzeGNpRmtheEJVLWZzTjBkWUdGN2F2eG1Nd2s4Tl9YY0dYVXpaR0FQQzYxN1VXcVVITTdESjhwUXVYdHBjYy0zdw?oc=5"
-      }
-    ],
-    "image_url": null,
-    "petition": null
-  },
-  {
-    "id": "news-1cc5432a3151",
-    "title": "Federal government invests over $10 million in Lower Mainland businesses",
-    "summary": "The federal government is investing over $10 million to assist Lower Mainland businesses dealing with trade disruptions.",
-    "amount": 10000000,
-    "date": "2026-08-28",
-    "fiscal_year": "2026-27",
-    "department": "Pacific Economic Development Agency of Canada",
-    "dept_code": "PCAN",
-    "program_code": "BYK02",
-    "source_type": "news",
-    "level": "federal",
-    "sources": [
+      },
       {
         "label": "The Globe and Mail",
         "url": "https://news.google.com/rss/articles/CBMivgJBVV95cUxNYTVnQzFhZjZEdEFjTnNZVDJ1bE5BYUR3SDVxejlzNnBtQW1WX2JaaGlOcWVNdmtCV01YVU95RFh0aW9DWHZBVW9xeXRzSjRyMXk3OVhpZTFWdE5FNkRMRXNVM1RjVnEtM3NaZzk5SkNCR3VXN0hHblh3NWMyck9iUU0yNGxvMmZMbzhLT29heFF6cHdkM0pqN2V0TDNXTFBUV05vWjRNM2ZDSVZTSVVqeDYyeXJrTlNJdzlLclczVmpyLVR4QWR6MzZzWk15blcxdzl1SEFJRTc5LTdPWnIwN2xhZVFJQXpraWcxU0RQLWRwaUd3ZUNkUWpaWS1EOWpHMk9Oc3FoYWZOT21OSFI1RUtGaWZlU0tkcWJEUHlDNnJVVE1tMkhPVnVUY1hZa2xKd2t5WlQ0YmNtVkdTalE?oc=5"
-      }
-    ],
-    "image_url": null,
-    "petition": null
-  },
-  {
-    "id": "news-0695339cc4ce",
-    "title": "Ottawa invests $195 million in quantum manufacturing by Xanadu",
-    "summary": "The federal government is providing $195 million to support quantum manufacturing efforts by Xanadu.",
-    "amount": 195000000,
-    "date": "2026-08-28",
-    "fiscal_year": "2026-27",
-    "department": "Innovation, Science and Economic Development Canada",
-    "dept_code": "ISC",
-    "program_code": "BNP01",
-    "source_type": "news",
-    "level": "federal",
-    "sources": [
-      {
-        "label": "Financial Post",
-        "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxQQmZ6QjBxVURjS3pQdXR4WGNvajRQeVpMTFhnUUN4LUlsN2kwTjZPMXl3NmlIQ2h4X0ZUOTVlVXFtWHZwcnhKMEktRjdWUzRoYTdDUGhnblU4cUZwYjBaTW5naXdrOTNyLTNENHQ2LXVuaUg5LXo0UDQxOTU4NEtUN1UyX3cyRkR0ZHNoRg?oc=5"
-      }
-    ],
-    "image_url": null,
-    "petition": null
-  },
-  {
-    "id": "news-17edb595ebd5",
-    "title": "Canada invests $195 million in Xanadu for quantum manufacturing",
-    "summary": "Canada is providing $195 million to Xanadu to support quantum computer manufacturing.",
-    "amount": 195000000,
-    "date": "2026-08-28",
-    "fiscal_year": "2026-27",
-    "department": "Innovation, Science and Economic Development Canada",
-    "dept_code": "ISC",
-    "program_code": "BNP01",
-    "source_type": "news",
-    "level": "federal",
-    "sources": [
-      {
-        "label": "Quantum Zeitgeist",
-        "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxPQ1I2UUgydTRwMDJHZHlVVmhZVU9OVXozRVVjalRjZWxYZVJicjBsb19uSmw0NGhLaFdwUjRCTnNpbE5YeUJlTlIwZ2M1cHpWblBuQWNNSzY2NExOR05xSEVyUWVaNjVTTXNtQ2ZpelUxcnJzV1RwMHVDaTNYOVkxZA?oc=5"
-      }
-    ],
-    "image_url": null,
-    "petition": null
-  },
-  {
-    "id": "news-150144506925",
-    "title": "Alberta pulp mill receives $20 million in federal support",
-    "summary": "An Alberta pulp mill facing financial pressure from trade tariffs received $20 million in federal funding support.",
-    "amount": 20000000,
-    "date": "2026-08-28",
-    "fiscal_year": "2026-27",
-    "department": "Prairies Economic Development Canada",
-    "dept_code": "WDO",
-    "program_code": "BYM02",
-    "source_type": "news",
-    "level": "federal",
-    "sources": [
-      {
-        "label": "CBC",
-        "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxORlJ4dXM0d1NBS2ZaNW5icGpuMnRTXy1oOWJrTWFEZ2U3bENDNmpBRGM4RzNzLUlHdWRycFIzajV5bFFtMFZJTU9BRmdmVUZydGo1Y2Fjd0hwSXRjeDVMVGxHdlNzOTh3Tk9OV0E2aTZEcURYclhmc09FMnlabm0xaEtqZ045VU9oeURaZHBkc3Z3RGh4alJfNmZuTQ?oc=5"
       }
     ],
     "image_url": null,
@@ -1008,27 +753,6 @@
     "petition": null
   },
   {
-    "id": "news-cd42ed500a5c",
-    "title": "Xanadu announces photonics facility backed by $195 million federal funding",
-    "summary": "Xanadu unveiled plans for an advanced photonics facility supported by $195 million in Canadian federal funding.",
-    "amount": 195000000,
-    "date": "2026-08-28",
-    "fiscal_year": "2026-27",
-    "department": "Innovation, Science and Economic Development Canada",
-    "dept_code": "ISC",
-    "program_code": "BNP01",
-    "source_type": "news",
-    "level": "federal",
-    "sources": [
-      {
-        "label": "Moomoo",
-        "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxQYVBfYm9qZ3lyNVdyU1VqVzBJTnU4S1FXVENqVUlLTklEVURfcndKcXBLcTFaaVN3VmlOM3RzZmkxYjh3bnBIMkVVVlgwUWphUlVzblhJMkZlYjB3WjVEN2VYY2hLWnlxOF9XMGpVamJJbU9lYnU5Xzh3RHF2YVMxSGJYeHU4cGd2bGNKeGE3WjlnRldaWHV2UmFxRGJ3OFM2bHAxbDJfVnJnWTVzT0lMaFpiOG8yVFRL?oc=5"
-      }
-    ],
-    "image_url": null,
-    "petition": null
-  },
-  {
     "id": "news-9d510d4cbb31",
     "title": "Mercer Peace River Pulp receives $20 million from federal government",
     "summary": "Mercer Peace River Pulp received $20 million in financial support from the Government of Canada.",
@@ -1044,6 +768,10 @@
       {
         "label": "paperage.com",
         "url": "https://news.google.com/rss/articles/CBMi2AFBVV95cUxPMjM5ZHJnNFBGeUVCR3FGVm9pTWRpZWlMLVptZVJtc0NfWEhjRDRidXZnSldfZGVJTVRkNHlubjBSODFqUm1kWWF1UUlsem1DaEJhbTFJUHlwLTNib3Z4QklCalBPRFFTQ0h6cTZmSTExTmNSdTVKbEdvRWlNZ0dCLTB6SlRuTnVINVJWdEZBMDV6TFFId0xjZUVsVUlSOFZGRFRYMlN1QmZoczJRc0EtNWgyWGRtVHhEbGFXR0ZWWS1PQUx4bjBrRVRFamFQVkU0dExyTkctUnM?oc=5"
+      },
+      {
+        "label": "CBC",
+        "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxORlJ4dXM0d1NBS2ZaNW5icGpuMnRTXy1oOWJrTWFEZ2U3bENDNmpBRGM4RzNzLUlHdWRycFIzajV5bFFtMFZJTU9BRmdmVUZydGo1Y2Fjd0hwSXRjeDVMVGxHdlNzOTh3Tk9OV0E2aTZEcURYclhmc09FMnlabm0xaEtqZ045VU9oeURaZHBkc3Z3RGh4alJfNmZuTQ?oc=5"
       }
     ],
     "image_url": null,
