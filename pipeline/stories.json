@@ -1,0 +1,422 @@
+[
+  {
+    "id": "data-fin-buv11-2024",
+    "title": "Spending on interest on the federal debt rose 52% in two years",
+    "summary": "Department of Finance Canada spent $48.1 billion on interest on the federal debt in 2024-25, up from $31.7 billion in 2022-23. Official program name: Market Debt and Foreign Reserves Management.",
+    "amount": 48097919564,
+    "date": "2025-03-31",
+    "fiscal_year": "2024-25",
+    "department": "Department of Finance Canada",
+    "dept_code": "FIN",
+    "program_code": "BUV11",
+    "source_type": "data",
+    "level": "federal",
+    "sources": [
+      {
+        "label": "GC InfoBase: Federal Programs Spending",
+        "url": "https://open.canada.ca/data/en/dataset/a35cf382-690c-4221-a971-cf0fd189a46f"
+      }
+    ],
+    "image_url": null,
+    "petition": null
+  },
+  {
+    "id": "data-ccra-brb01-2024",
+    "title": "Spending on benefits paid out through the CRA more than doubled in two years",
+    "summary": "Canada Revenue Agency spent $16.2 billion on benefits paid out through the CRA in 2024-25, up from $7.7 billion in 2022-23. Official program name: Benefits.",
+    "amount": 16182472509,
+    "date": "2025-03-31",
+    "fiscal_year": "2024-25",
+    "department": "Canada Revenue Agency",
+    "dept_code": "CCRA",
+    "program_code": "BRB01",
+    "source_type": "data",
+    "level": "federal",
+    "sources": [
+      {
+        "label": "GC InfoBase: Federal Programs Spending",
+        "url": "https://open.canada.ca/data/en/dataset/a35cf382-690c-4221-a971-cf0fd189a46f"
+      }
+    ],
+    "image_url": null,
+    "petition": null
+  },
+  {
+    "id": "data-tbc-bxc04-2024",
+    "title": "Spending on employer payments for public servants more than doubled in two years",
+    "summary": "Treasury Board of Canada Secretariat spent $10.7 billion on employer payments for public servants in 2024-25, up from $3.8 billion in 2022-23. Official program name: Public Service Employer Payments.",
+    "amount": 10653709488,
+    "date": "2025-03-31",
+    "fiscal_year": "2024-25",
+    "department": "Treasury Board of Canada Secretariat",
+    "dept_code": "TBC",
+    "program_code": "BXC04",
+    "source_type": "data",
+    "level": "federal",
+    "sources": [
+      {
+        "label": "GC InfoBase: Federal Programs Spending",
+        "url": "https://open.canada.ca/data/en/dataset/a35cf382-690c-4221-a971-cf0fd189a46f"
+      }
+    ],
+    "image_url": null,
+    "petition": null
+  },
+  {
+    "id": "data-inac-bwm03-2024",
+    "title": "Spending on settling Indigenous land claims more than doubled in two years",
+    "summary": "Crown-Indigenous Relations and Northern Affairs Canada spent $8.4 billion on settling Indigenous land claims in 2024-25, up from $3.6 billion in 2022-23. Official program name: Specific Claims.",
+    "amount": 8353352288,
+    "date": "2025-03-31",
+    "fiscal_year": "2024-25",
+    "department": "Crown-Indigenous Relations and Northern Affairs Canada",
+    "dept_code": "INAC",
+    "program_code": "BWM03",
+    "source_type": "data",
+    "level": "federal",
+    "sources": [
+      {
+        "label": "GC InfoBase: Federal Programs Spending",
+        "url": "https://open.canada.ca/data/en/dataset/a35cf382-690c-4221-a971-cf0fd189a46f"
+      }
+    ],
+    "image_url": null,
+    "petition": null
+  },
+  {
+    "id": "data-nd-bur03-2024",
+    "title": "Spending on military aircraft more than tripled in two years",
+    "summary": "National Defence spent $3.3 billion on military aircraft in 2024-25, up from $945 million in 2022-23. Official program name: Aerospace Equipment Acquisition.",
+    "amount": 3263727280,
+    "date": "2025-03-31",
+    "fiscal_year": "2024-25",
+    "department": "National Defence",
+    "dept_code": "ND",
+    "program_code": "BUR03",
+    "source_type": "data",
+    "level": "federal",
+    "sources": [
+      {
+        "label": "GC InfoBase: Federal Programs Spending",
+        "url": "https://open.canada.ca/data/en/dataset/a35cf382-690c-4221-a971-cf0fd189a46f"
+      }
+    ],
+    "image_url": null,
+    "petition": null
+  },
+  {
+    "id": "data-phac-bvq03-2024",
+    "title": "Spending on vaccination programs fell 87% in two years",
+    "summary": "Public Health Agency of Canada spent $318 million on vaccination programs in 2024-25, down from $2.5 billion in 2022-23. Official program name: Vaccination.",
+    "amount": 318469096,
+    "date": "2025-03-31",
+    "fiscal_year": "2024-25",
+    "department": "Public Health Agency of Canada",
+    "dept_code": "PHAC",
+    "program_code": "BVQ03",
+    "source_type": "data",
+    "level": "federal",
+    "sources": [
+      {
+        "label": "GC InfoBase: Federal Programs Spending",
+        "url": "https://open.canada.ca/data/en/dataset/a35cf382-690c-4221-a971-cf0fd189a46f"
+      }
+    ],
+    "image_url": null,
+    "petition": null
+  },
+  {
+    "id": "data-psep-bvu03-2024",
+    "title": "Spending on emergency response and disaster recovery fell 83% in two years",
+    "summary": "Public Safety Canada spent $426 million on emergency response and disaster recovery in 2024-25, down from $2.5 billion in 2022-23. Official program name: Emergency Response/Recovery.",
+    "amount": 425693454,
+    "date": "2025-03-31",
+    "fiscal_year": "2024-25",
+    "department": "Public Safety Canada",
+    "dept_code": "PSEP",
+    "program_code": "BVU03",
+    "source_type": "data",
+    "level": "federal",
+    "sources": [
+      {
+        "label": "GC InfoBase: Federal Programs Spending",
+        "url": "https://open.canada.ca/data/en/dataset/a35cf382-690c-4221-a971-cf0fd189a46f"
+      }
+    ],
+    "image_url": null,
+    "petition": null
+  },
+  {
+    "id": "data-phac-bvq02-2024",
+    "title": "Spending on infectious disease control fell 92% in two years",
+    "summary": "Public Health Agency of Canada spent $129 million on infectious disease control in 2024-25, down from $1.6 billion in 2022-23. Official program name: Communicable Disease and Infection Control.",
+    "amount": 128969345,
+    "date": "2025-03-31",
+    "fiscal_year": "2024-25",
+    "department": "Public Health Agency of Canada",
+    "dept_code": "PHAC",
+    "program_code": "BVQ02",
+    "source_type": "data",
+    "level": "federal",
+    "sources": [
+      {
+        "label": "GC InfoBase: Federal Programs Spending",
+        "url": "https://open.canada.ca/data/en/dataset/a35cf382-690c-4221-a971-cf0fd189a46f"
+      }
+    ],
+    "image_url": null,
+    "petition": null
+  },
+  {
+    "id": "data-vac-bwi16-2024",
+    "title": "Spending on veterans' disability benefits rose 53% in two years",
+    "summary": "Veterans Affairs Canada spent $4.2 billion on veterans' disability benefits in 2024-25, up from $2.7 billion in 2022-23. Official program name: Disability Benefits.",
+    "amount": 4190554574,
+    "date": "2025-03-31",
+    "fiscal_year": "2024-25",
+    "department": "Veterans Affairs Canada",
+    "dept_code": "VAC",
+    "program_code": "BWI16",
+    "source_type": "data",
+    "level": "federal",
+    "sources": [
+      {
+        "label": "GC InfoBase: Federal Programs Spending",
+        "url": "https://open.canada.ca/data/en/dataset/a35cf382-690c-4221-a971-cf0fd189a46f"
+      }
+    ],
+    "image_url": null,
+    "petition": null
+  },
+  {
+    "id": "data-ci-bge06-2024",
+    "title": "Spending on asylum claims more than doubled in two years",
+    "summary": "Immigration, Refugees and Citizenship Canada spent $2.3 billion on asylum claims in 2024-25, up from $904 million in 2022-23. Official program name: Asylum.",
+    "amount": 2287028675,
+    "date": "2025-03-31",
+    "fiscal_year": "2024-25",
+    "department": "Immigration, Refugees and Citizenship Canada",
+    "dept_code": "CI",
+    "program_code": "BGE06",
+    "source_type": "data",
+    "level": "federal",
+    "sources": [
+      {
+        "label": "GC InfoBase: Federal Programs Spending",
+        "url": "https://open.canada.ca/data/en/dataset/a35cf382-690c-4221-a971-cf0fd189a46f"
+      }
+    ],
+    "image_url": null,
+    "petition": null
+  },
+  {
+    "id": "data-cmhc-bgl00-2024",
+    "title": "Spending on housing capacity funding grew more than 7-fold in two years",
+    "summary": "Canada Mortgage and Housing Corporation spent $1.3 billion on housing capacity funding in 2024-25, up from $169 million in 2022-23. Official program name: Housing expertise and capacity development.",
+    "amount": 1342006619,
+    "date": "2025-03-31",
+    "fiscal_year": "2024-25",
+    "department": "Canada Mortgage and Housing Corporation",
+    "dept_code": "CMHC",
+    "program_code": "BGL00",
+    "source_type": "data",
+    "level": "federal",
+    "sources": [
+      {
+        "label": "GC InfoBase: Federal Programs Spending",
+        "url": "https://open.canada.ca/data/en/dataset/a35cf382-690c-4221-a971-cf0fd189a46f"
+      }
+    ],
+    "image_url": null,
+    "petition": null
+  },
+  {
+    "id": "data-tc-btx01-2024",
+    "title": "Spending on clean transportation programs grew more than 4-fold in two years",
+    "summary": "Transport Canada spent $1.2 billion on clean transportation programs in 2024-25, up from $294 million in 2022-23. Official program name: Climate Change and Clean Air.",
+    "amount": 1215168784,
+    "date": "2025-03-31",
+    "fiscal_year": "2024-25",
+    "department": "Transport Canada",
+    "dept_code": "TC",
+    "program_code": "BTX01",
+    "source_type": "data",
+    "level": "federal",
+    "sources": [
+      {
+        "label": "GC InfoBase: Federal Programs Spending",
+        "url": "https://open.canada.ca/data/en/dataset/a35cf382-690c-4221-a971-cf0fd189a46f"
+      }
+    ],
+    "image_url": null,
+    "petition": null
+  },
+  {
+    "id": "data-nr-btm10-2024",
+    "title": "Spending on energy efficiency programs more than tripled in two years",
+    "summary": "Natural Resources Canada spent $1.2 billion on energy efficiency programs in 2024-25, up from $357 million in 2022-23. Official program name: Energy Efficiency.",
+    "amount": 1194107950,
+    "date": "2025-03-31",
+    "fiscal_year": "2024-25",
+    "department": "Natural Resources Canada",
+    "dept_code": "NR",
+    "program_code": "BTM10",
+    "source_type": "data",
+    "level": "federal",
+    "sources": [
+      {
+        "label": "GC InfoBase: Federal Programs Spending",
+        "url": "https://open.canada.ca/data/en/dataset/a35cf382-690c-4221-a971-cf0fd189a46f"
+      }
+    ],
+    "image_url": null,
+    "petition": null
+  },
+  {
+    "id": "data-fo-bti06-2024",
+    "title": "Spending on new Coast Guard ships more than tripled in two years",
+    "summary": "Fisheries and Oceans Canada spent $1.2 billion on new Coast Guard ships in 2024-25, up from $388 million in 2022-23. Official program name: Fleet Procurement.",
+    "amount": 1185647688,
+    "date": "2025-03-31",
+    "fiscal_year": "2024-25",
+    "department": "Fisheries and Oceans Canada",
+    "dept_code": "FO",
+    "program_code": "BTI06",
+    "source_type": "data",
+    "level": "federal",
+    "sources": [
+      {
+        "label": "GC InfoBase: Federal Programs Spending",
+        "url": "https://open.canada.ca/data/en/dataset/a35cf382-690c-4221-a971-cf0fd189a46f"
+      }
+    ],
+    "image_url": null,
+    "petition": null
+  },
+  {
+    "id": "data-nd-bun03-2024",
+    "title": "Spending on military operations abroad more than doubled in two years",
+    "summary": "National Defence spent $983 million on military operations abroad in 2024-25, up from $351 million in 2022-23. Official program name: International Operations.",
+    "amount": 982949993,
+    "date": "2025-03-31",
+    "fiscal_year": "2024-25",
+    "department": "National Defence",
+    "dept_code": "ND",
+    "program_code": "BUN03",
+    "source_type": "data",
+    "level": "federal",
+    "sources": [
+      {
+        "label": "GC InfoBase: Federal Programs Spending",
+        "url": "https://open.canada.ca/data/en/dataset/a35cf382-690c-4221-a971-cf0fd189a46f"
+      }
+    ],
+    "image_url": null,
+    "petition": null
+  },
+  {
+    "id": "data-ec-bgr03-2024",
+    "title": "Spending on climate adaptation grew more than 27-fold in two years",
+    "summary": "Environment and Climate Change Canada spent $570 million on climate adaptation in 2024-25, up from $21 million in 2022-23. Official program name: Climate Change Adaptation.",
+    "amount": 569672731,
+    "date": "2025-03-31",
+    "fiscal_year": "2024-25",
+    "department": "Environment and Climate Change Canada",
+    "dept_code": "EC",
+    "program_code": "BGR03",
+    "source_type": "data",
+    "level": "federal",
+    "sources": [
+      {
+        "label": "GC InfoBase: Federal Programs Spending",
+        "url": "https://open.canada.ca/data/en/dataset/a35cf382-690c-4221-a971-cf0fd189a46f"
+      }
+    ],
+    "image_url": null,
+    "petition": null
+  },
+  {
+    "id": "data-ci-bge05-2024",
+    "title": "Spending on refugee resettlement fell 40% in two years",
+    "summary": "Immigration, Refugees and Citizenship Canada spent $640 million on refugee resettlement in 2024-25, down from $1.1 billion in 2022-23. Official program name: Refugee Resettlement.",
+    "amount": 639826883,
+    "date": "2025-03-31",
+    "fiscal_year": "2024-25",
+    "department": "Immigration, Refugees and Citizenship Canada",
+    "dept_code": "CI",
+    "program_code": "BGE05",
+    "source_type": "data",
+    "level": "federal",
+    "sources": [
+      {
+        "label": "GC InfoBase: Federal Programs Spending",
+        "url": "https://open.canada.ca/data/en/dataset/a35cf382-690c-4221-a971-cf0fd189a46f"
+      }
+    ],
+    "image_url": null,
+    "petition": null
+  },
+  {
+    "id": "data-oicc-byb04-2024",
+    "title": "Spending on homelessness funding rose 54% in two years",
+    "summary": "Office of Infrastructure of Canada spent $752 million on homelessness funding in 2024-25, up from $489 million in 2022-23. Official program name: Homelessness Funding Oversight.",
+    "amount": 751991370,
+    "date": "2025-03-31",
+    "fiscal_year": "2024-25",
+    "department": "Office of Infrastructure of Canada",
+    "dept_code": "OICC",
+    "program_code": "BYB04",
+    "source_type": "data",
+    "level": "federal",
+    "sources": [
+      {
+        "label": "GC InfoBase: Federal Programs Spending",
+        "url": "https://open.canada.ca/data/en/dataset/a35cf382-690c-4221-a971-cf0fd189a46f"
+      }
+    ],
+    "image_url": null,
+    "petition": null
+  },
+  {
+    "id": "data-gsc-bvw01-2024",
+    "title": "Spending on federal payroll rose 51% in two years",
+    "summary": "Public Services and Procurement Canada spent $683 million on federal payroll in 2024-25, up from $453 million in 2022-23. Official program name: Federal Pay Administration.",
+    "amount": 683231534,
+    "date": "2025-03-31",
+    "fiscal_year": "2024-25",
+    "department": "Public Services and Procurement Canada",
+    "dept_code": "GSC",
+    "program_code": "BVW01",
+    "source_type": "data",
+    "level": "federal",
+    "sources": [
+      {
+        "label": "GC InfoBase: Federal Programs Spending",
+        "url": "https://open.canada.ca/data/en/dataset/a35cf382-690c-4221-a971-cf0fd189a46f"
+      }
+    ],
+    "image_url": null,
+    "petition": null
+  },
+  {
+    "id": "data-ci-bgf02-2024",
+    "title": "Spending on passport services was cut by more than half in two years",
+    "summary": "Immigration, Refugees and Citizenship Canada spent $121 million on passport services in 2024-25, down from $318 million in 2022-23. Official program name: Passport.",
+    "amount": 120626725,
+    "date": "2025-03-31",
+    "fiscal_year": "2024-25",
+    "department": "Immigration, Refugees and Citizenship Canada",
+    "dept_code": "CI",
+    "program_code": "BGF02",
+    "source_type": "data",
+    "level": "federal",
+    "sources": [
+      {
+        "label": "GC InfoBase: Federal Programs Spending",
+        "url": "https://open.canada.ca/data/en/dataset/a35cf382-690c-4221-a971-cf0fd189a46f"
+      }
+    ],
+    "image_url": null,
+    "petition": null
+  }
+]
