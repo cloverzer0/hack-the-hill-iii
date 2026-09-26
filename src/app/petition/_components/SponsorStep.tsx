@@ -12,19 +12,27 @@ import { MpCard } from "./MpCard";
 import { MpSearch } from "./MpSearch";
 import { SendOptions } from "./SendOptions";
 
-const LOOKUP_ERRORS: Record<string, string> = {
-  invalid_postal: "Enter a postal code like K1P 1A4.",
-  not_found: "We couldn't find that postal code.",
-};
+type LookupError = { message: string; canRetry: boolean };
+
+function lookupErrorFor(code: string): LookupError {
+  switch (code) {
+    case "invalid_postal":
+      return { message: "Enter a postal code like K1P 1A4.", canRetry: false };
+    case "not_found":
+      return { message: "We couldn't find that postal code.", canRetry: false };
+    default:
+      return { message: "Couldn't reach the MP directory.", canRetry: true };
+  }
+}
 
 export function SponsorStep({ draft }: { draft: Draft }) {
   const router = useRouter();
   const [mp, setMp] = useState<Mp | null>(draft.mp);
-  // Set only when the MP was found from the user's own postal code, so the letter can say "constituent".
-  const [postalCode, setPostalCode] = useState<string | null>(null);
+  // True only when the MP was found from the user's own postal code in this visit, so the letter can say "constituent".
+  const [isConstituent, setIsConstituent] = useState(false);
   const [postalInput, setPostalInput] = useState("");
   const [finding, setFinding] = useState(false);
-  const [lookupError, setLookupError] = useState<string | null>(null);
+  const [lookupError, setLookupError] = useState<LookupError | null>(null);
   const [searching, setSearching] = useState(false);
   const [letterOverride, setLetterOverride] = useState<string | null>(draft.sponsorEmail);
   const [saveError, setSaveError] = useState<string | null>(null);
@@ -32,13 +40,14 @@ export function SponsorStep({ draft }: { draft: Draft }) {
   const patch = (body: object) =>
     apiFetch<Draft>(`/api/me/drafts/${draft.id}`, { method: "PATCH", body });
 
-  async function chooseMp(next: Mp, fromPostal: string | null) {
+  async function chooseMp(next: Mp, fromPostal: boolean) {
     setMp(next);
-    setPostalCode(fromPostal);
+    setIsConstituent(fromPostal);
     setSearching(false);
+    setLetterOverride(null);
     setSaveError(null);
     try {
-      await patch({ mp: next });
+      await patch({ mp: next, sponsorEmail: null });
     } catch {
       setSaveError("We couldn't save your MP choice. Try again.");
     }
@@ -48,16 +57,16 @@ export function SponsorStep({ draft }: { draft: Draft }) {
     event.preventDefault();
     const code = normalizePostal(postalInput);
     if (!code) {
-      setLookupError(LOOKUP_ERRORS.invalid_postal);
+      setLookupError(lookupErrorFor("invalid_postal"));
       return;
     }
     setFinding(true);
     setLookupError(null);
     try {
-      await chooseMp(await apiFetch<Mp>(`/api/mp?postal=${code}`), code);
+      await chooseMp(await apiFetch<Mp>(`/api/mp?postal=${code}`), true);
     } catch (error) {
-      const code = error instanceof ApiError ? error.code : "";
-      setLookupError(LOOKUP_ERRORS[code] ?? "Couldn't reach the MP directory. Try again.");
+      const errorCode = error instanceof ApiError ? error.code : "";
+      setLookupError(lookupErrorFor(errorCode));
     } finally {
       setFinding(false);
     }
@@ -78,7 +87,7 @@ export function SponsorStep({ draft }: { draft: Draft }) {
       .finally(() => router.push(`/petition/${draft.id}/submit`));
   }
 
-  const letter = letterOverride ?? (mp ? buildLetter({ mp, title: draft.title, postalCode }) : "");
+  const letter = letterOverride ?? (mp ? buildLetter({ mp, title: draft.title, constituent: isConstituent }) : "");
   const email = buildEmail({ letter, petition: draft });
 
   return (
@@ -104,8 +113,8 @@ export function SponsorStep({ draft }: { draft: Draft }) {
         </form>
         {lookupError && (
           <p className="mt-2 text-sm text-danger">
-            {lookupError}{" "}
-            {lookupError.includes("Try again") && (
+            {lookupError.message}{" "}
+            {lookupError.canRetry && (
               <button type="button" onClick={find} className="underline">
                 Try again
               </button>
@@ -116,7 +125,7 @@ export function SponsorStep({ draft }: { draft: Draft }) {
         <div className="mt-6 space-y-3">
           {mp && <MpCard mp={mp} />}
           {searching ? (
-            <MpSearch onPick={(picked) => chooseMp(picked, null)} />
+            <MpSearch onPick={(picked) => chooseMp(picked, false)} />
           ) : (
             <button type="button" onClick={() => setSearching(true)} className="text-sm underline">
               Choose a different MP

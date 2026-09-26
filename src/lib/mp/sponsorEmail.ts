@@ -1,16 +1,15 @@
-import { formatPostal } from "@/lib/mp/postal";
 import type { Mp } from "@/lib/mp/types";
 import { fullRequest } from "@/lib/petition";
 
 type LetterInput = {
   mp: Pick<Mp, "name" | "riding">;
   title: string;
-  /** Normalised postal code ("K1P1A4"). Only set when the MP was found from the user's own postal code. */
-  postalCode?: string | null;
+  /** True only when the MP was found from the user's own postal code in this visit. */
+  constituent: boolean;
 };
 
-export function buildLetter({ mp, title, postalCode }: LetterInput): string {
-  const intro = postalCode
+export function buildLetter({ mp, title, constituent }: LetterInput): string {
+  const intro = constituent
     ? `I'm a constituent in ${mp.riding}. I've drafted an e-petition, "${title}," and I'm asking you to authorize it for publication on the House of Commons website.`
     : `I've drafted an e-petition, "${title}," and I'm asking you to authorize it for publication on the House of Commons website.`;
   return [
@@ -21,7 +20,7 @@ export function buildLetter({ mp, title, postalCode }: LetterInput): string {
     "Sponsoring does not mean you endorse it. It allows constituents to sign and, with 500 signatures, have it presented in the House.",
     "",
     "Thank you,",
-    `[Your name], ${postalCode ? formatPostal(postalCode) : "[Postal code]"}`,
+    "[Your name], [Postal code]",
   ].join("\n");
 }
 

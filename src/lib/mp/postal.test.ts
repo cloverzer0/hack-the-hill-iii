@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { formatPostal, normalizePostal } from "./postal";
+import { normalizePostal } from "./postal";
 
 describe("normalizePostal", () => {
   it("uppercases and removes spaces", () => {
@@ -10,11 +10,5 @@ describe("normalizePostal", () => {
     expect(normalizePostal("K1P1A")).toBeNull();
     expect(normalizePostal("11P1A4")).toBeNull();
     expect(normalizePostal("")).toBeNull();
-  });
-});
-
-describe("formatPostal", () => {
-  it("adds the middle space", () => {
-    expect(formatPostal("K1P1A4")).toBe("K1P 1A4");
   });
 });
