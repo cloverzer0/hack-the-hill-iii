@@ -142,5 +142,11 @@ vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 .vite/
 
+# Next.js (from create-next-app)
+.vercel
+next-env.d.ts
+*.pem
+.DS_Store
+
 # Personal Claude Code instructions
 CLAUDE.md
