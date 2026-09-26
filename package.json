@@ -1,19 +1,26 @@
 {
-  "name": "where-does-my-tax-go-ui",
-  "private": true,
+  "name": "hack-the-hill-iii",
   "version": "0.1.0",
-  "type": "module",
+  "private": true,
   "scripts": {
-    "dev": "vite",
-    "build": "tsc -b && vite build",
-    "preview": "vite preview"
+    "dev": "next dev",
+    "build": "next build --webpack",
+    "start": "next start",
+    "lint": "eslint"
   },
   "dependencies": {
-    "@vitejs/plugin-react": "^4.7.0",
-    "vite": "^6.4.3",
-    "typescript": "^5.7.3",
-    "react": "^19.3.0",
-    "react-dom": "^19.3.0"
+    "next": "16.3.6",
+    "react": "19.2.8",
+    "react-dom": "19.2.8"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.3.6",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  }
 }

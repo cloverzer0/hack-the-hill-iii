@@ -1,6 +1,5 @@
-import { useMemo, useState } from 'react'
 import { categoryById, receiptCategories, spendingById, spendingItems } from '../shared/fixtures'
-import type { Category, SpendingItem, UserInputs } from '../shared/types'
+import type { SpendingItem, UserInputs } from '../shared/types'
 
 const money = new Intl.NumberFormat('en-CA', { style: 'currency', currency: 'CAD', maximumFractionDigits: 0 })
 const cents = new Intl.NumberFormat('en-CA', { style: 'currency', currency: 'CAD', minimumFractionDigits: 2, maximumFractionDigits: 2 })
