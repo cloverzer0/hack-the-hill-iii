@@ -5,6 +5,7 @@ import { usePathname, useRouter } from 'next/navigation'
 import { CinematicTaxJourney } from '../../components/CinematicTaxJourney'
 import { CategoryScreen, DecisionScreen, ReceiptScreen } from '../../components/TrackerScreens'
 import { receiptCategories } from '../../shared/fixtures'
+import { estimateTax } from '../../shared/tax'
 import { getServerUserInputsSnapshot, getUserInputsSnapshot, saveUserInputs, subscribeToUserInputs } from '../../shared/userInputs'
 import type { UserInputs } from '../../shared/types'
 
@@ -15,7 +16,6 @@ const provinces: Province[] = [
   { code: 'AB', name: 'Alberta' }, { code: 'BC', name: 'British Columbia' }, { code: 'MB', name: 'Manitoba' }, { code: 'NB', name: 'New Brunswick' }, { code: 'NL', name: 'Newfoundland and Labrador' }, { code: 'NS', name: 'Nova Scotia' }, { code: 'NT', name: 'Northwest Territories' }, { code: 'NU', name: 'Nunavut' }, { code: 'ON', name: 'Ontario' }, { code: 'PE', name: 'Prince Edward Island' }, { code: 'QC', name: 'Quebec' }, { code: 'SK', name: 'Saskatchewan' }, { code: 'YT', name: 'Yukon' },
 ]
 const money = new Intl.NumberFormat('en-CA', { style: 'currency', currency: 'CAD', maximumFractionDigits: 0 })
-const federalTax = (income: number) => Math.round(9510 * (income / 75_000))
 
 function routeFromPath(pathname: string): Route {
   const parts = pathname.split('/').filter(Boolean)
@@ -77,7 +77,7 @@ function Landing({ inputs, updateInputs, navigate }: { inputs: UserInputs; updat
     updateInputs({ ...inputs, postalCode: postal })
     navigate('/receipt')
   }
-  return <CinematicTaxJourney data={{ incomeLabel: money.format(inputs.income), federalTaxLabel: money.format(federalTax(inputs.income)), provinceLabel: inputs.province }} onContinue={() => navigate('/receipt')}>
+  return <CinematicTaxJourney data={{ incomeLabel: money.format(inputs.income), federalTaxLabel: money.format(estimateTax(inputs.income, inputs.province).federal), provinceLabel: inputs.province }} onContinue={() => navigate('/receipt')}>
     <form className="journey-income-form" onSubmit={submit}>
       <label className="field-label" htmlFor="income">Annual income <span>(before tax)</span></label>
       <div className="money-input"><span>$</span><input id="income" inputMode="numeric" value={String(inputs.income)} onChange={(event) => updateIncome(event.target.value)} /></div>
@@ -88,7 +88,7 @@ function Landing({ inputs, updateInputs, navigate }: { inputs: UserInputs; updat
       <input className="postal-input" id="postal" inputMode="text" maxLength={7} placeholder="K1A 0B1" value={inputs.postalCode} onChange={(event) => updateInputs({ ...inputs, postalCode: event.target.value.toUpperCase() })} aria-describedby={postalError ? 'postal-error' : undefined} />
       {postalError && <p className="field-error" id="postal-error" role="alert">{postalError}</p>}
       <button className="primary-button" type="submit">See my receipt <span aria-hidden="true">→</span></button>
-      <p className="privacy-note">Your income never leaves this device. Estimates use mock fiscal-year 2024–25 data for now.</p>
+      <p className="privacy-note">Your income never leaves this device. Estimates use Canada Revenue Agency 2024 tax rates and actual federal spending for 2024–25.</p>
     </form>
   </CinematicTaxJourney>
 }
