@@ -1,5 +1,10 @@
-import type { NextConfig } from 'next'
+import type { NextConfig } from "next";
 
-const nextConfig: NextConfig = {}
+const nextConfig: NextConfig = {
+  images: {
+    // MP photos from the Represent API
+    remotePatterns: [{ protocol: "https", hostname: "www.ourcommons.ca" }],
+  },
+};
 
-export default nextConfig
+export default nextConfig;
