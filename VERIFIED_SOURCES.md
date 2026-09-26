@@ -17,10 +17,28 @@ Downloaded into `pipeline/data/` (gitignored, re-download with the links below):
 Notes:
 - `year = 2024` means fiscal year April 2024 – March 2025 ("2024–25").
 - Sum of `expenditure` for 2024 = **$472.5B** across 1,228 programs (built by `pipeline/build_breakdown.py`).
-- Not in this dataset: Employment Insurance benefits (~$23B; only EI's $0.13B running cost appears) and the Canada Child Benefit (~$26B). That's why the total is below the ~$520B headline figure.
 - "Fiscal Arrangements with Provinces and Territories" ($40.0B) = Equalization + Canada Social Transfer + Territorial Formula Financing, net of Quebec's tax-point recovery.
-- CRA "Benefits" ($16.2B): which benefits it contains is **not yet verified**. Check before the pitch.
+- CRA "Benefits" ($16.2B): which benefits it contains is **not yet verified**. It doesn't match any single CRA line (see below). Check before the pitch.
 - Program structure changed in 2018; don't compare program codes across that year.
+
+### Spending that is NOT in the GC InfoBase program data
+
+This is why the dataset total ($472.5B) is below the government's official total expenses ($547.3B). Official 2024-25 figures:
+
+| Item | 2024-25 | Source |
+|---|---|---|
+| Total federal expenses | $547.3B | Annual Financial Report 2024-25, Table 5 "Expenses" |
+| Children's benefits (Canada Child Benefit) | $28.6B ($28,574M) | Annual Financial Report 2024-25, Table 5; CRA administered activities: "Canada benefit programs for children" $28,575M |
+| Employment Insurance and support measures | $24.9B ($24,880M) | Annual Financial Report 2024-25, Table 5 |
+| of which EI benefit payments | $23.1B | EI Monitoring and Assessment Report 2024-25 |
+| Public debt charges (all interest) | $53.4B | Annual Financial Report 2024-25 (the dataset's "Market Debt" program shows $48.1B) |
+
+Links:
+- Annual Financial Report of the Government of Canada 2024-2025: https://www.canada.ca/en/department-finance/services/publications/annual-financial-report/2025.html
+- EI Monitoring and Assessment Report 2024-25: https://www.canada.ca/en/employment-social-development/programs/ei/ei-list/reports/monitoring2025.html
+- CRA Financial Statements, Administered Activities 2024-25: https://www.canada.ca/en/revenue-agency/corporate/about-canada-revenue-agency-cra/departmental-performance-reports/2024-25-departmental-results-report/2024-25-financial-statements/cra-fs-administered-activities.html
+
+CRA-paid benefits in 2024-25 (same CRA statement), for checking the "Benefits" program: Canada Carbon Rebate $12,719M, Canada workers' benefit $5,242M, children's special allowances $430M, Canada dental benefit $26M.
 
 ## Tax calculation (2024 tax year, Canada Revenue Agency)
 
