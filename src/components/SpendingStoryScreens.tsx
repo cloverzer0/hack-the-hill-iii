@@ -120,7 +120,7 @@ function ImageCredit({ story }: { story: Story }) {
 }
 
 function ActionSection({ story }: { story: StoryWithCampaigns }) {
-  const campaign = story.campaigns[0];
+  const campaign = story.campaigns.find((candidate) => candidate.petition) ?? story.campaigns[0];
   const petition = campaign?.petition;
   return (
     <section className="civic-action">
