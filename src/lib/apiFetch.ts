@@ -8,7 +8,7 @@ export class ApiError extends Error {
   }
 }
 
-type Options = { method?: "GET" | "POST" | "PATCH"; body?: unknown };
+type Options = { method?: "GET" | "POST" | "PATCH" | "DELETE"; body?: unknown };
 
 /**
  * fetch() for our own API routes. On 401 it sends the browser to login and comes back to

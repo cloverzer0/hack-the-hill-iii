@@ -192,7 +192,7 @@ function ActionSection({ story }: { story: Story }) {
 function CampaignRows({ campaigns }: { campaigns: import('@/lib/campaigns').Campaign[] }) {
   if (!campaigns.length) return <p className="action-copy">No campaigns yet. Start the first one.</p>
   const labels: Record<string, string> = { gathering: 'Gathering members', in_review: 'In review', mp_asked: 'MP asked', mp_agreed: 'MP agreed', live: 'Live', closed: 'Closed' }
-  return <div className="campaign-rows" aria-label="Campaigns for this story">{campaigns.slice(0, 4).map((campaign) => <a key={campaign.id} href={`/campaigns/${campaign.id}`} className="campaign-row"><span><b>{campaign.title}</b><small>{campaign.supporters} members · {labels[campaign.status] ?? campaign.status}{campaign.joined ? ' · Joined' : ''}</small></span><span aria-hidden="true">↗</span></a>)}</div>
+  return <div className="campaign-rows" aria-label="Campaigns for this story">{campaigns.slice(0, 4).map((campaign) => <a key={campaign.id} href={`/campaigns/${campaign.id}`} className="campaign-row"><span><b>{campaign.title}</b><small>{campaign.supporters} members · {labels[campaign.status] ?? campaign.status}{campaign.joined ? ' · Joined' : ''}{campaign.petition ? ` · ${campaign.petition.number} on ourcommons.ca` : ''}</small></span><span aria-hidden="true">↗</span></a>)}</div>
 }
 
 function categoryFor(item: SpendingItem) {

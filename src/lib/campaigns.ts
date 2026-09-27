@@ -1,6 +1,6 @@
 import { and, asc, desc, eq, sql } from "drizzle-orm";
 import { db } from "@/db";
-import { campaigns, campaignSupporters, users, type CampaignRow } from "@/db/schema";
+import { campaigns, campaignSupporters, petitions, users, type CampaignRow } from "@/db/schema";
 
 export const CAMPAIGN_STATUSES = ["gathering", "in_review", "mp_asked", "mp_agreed", "live", "closed"] as const;
 export type CampaignStatus = (typeof CAMPAIGN_STATUSES)[number];
@@ -15,6 +15,8 @@ export type Campaign = {
   deadline: string;
   status: CampaignStatus;
   note: string | null;
+  sponsorMp: CampaignRow["sponsorMp"];
+  petition: { number: string; title: string; sponsorName: string | null; sponsorRiding: string | null; signatures: number; closesAt: string | null; url: string } | null;
   starter: { id: string; name: string; email: string | null };
   supporters: number;
   ridingCount: number;
@@ -24,7 +26,7 @@ export type Campaign = {
   updatedAt: string;
 };
 
-function toCampaign(row: CampaignRow, starter: { id: string; name: string; email: string | null }, supporters: number, ridingCount: number, joinedAt: Date | null): Campaign {
+function toCampaign(row: CampaignRow, starter: { id: string; name: string; email: string | null }, supporters: number, ridingCount: number, joinedAt: Date | null, petition: Campaign["petition"]): Campaign {
   return {
     id: row.id,
     storyId: row.storyId,
@@ -35,6 +37,8 @@ function toCampaign(row: CampaignRow, starter: { id: string; name: string; email
     deadline: row.deadline,
     status: row.status as CampaignStatus,
     note: row.note,
+    sponsorMp: row.sponsorMp ?? null,
+    petition,
     starter,
     supporters,
     ridingCount,
@@ -49,7 +53,9 @@ async function hydrate(row: CampaignRow, viewerId: string | null): Promise<Campa
   const members = await db.select({ userId: campaignSupporters.userId, riding: campaignSupporters.riding, joinedAt: campaignSupporters.joinedAt }).from(campaignSupporters).where(eq(campaignSupporters.campaignId, row.id));
   const [starter] = await db.select({ id: users.id, name: users.name, email: users.email }).from(users).where(eq(users.id, row.startedBy));
   const joinedAt = members.find((member) => member.userId === viewerId)?.joinedAt ?? null;
-  return toCampaign(row, { id: starter.id, name: starter.name || "A Canadian", email: starter.email }, members.length, new Set(members.map((member) => member.riding)).size, joinedAt);
+  const [petitionRow] = await db.select().from(petitions).where(eq(petitions.campaignId, row.id));
+  const petition = petitionRow ? { number: petitionRow.number, title: petitionRow.title, sponsorName: petitionRow.sponsorName, sponsorRiding: petitionRow.sponsorRiding, signatures: petitionRow.signatures, closesAt: petitionRow.closesAt?.toISOString() ?? null, url: `https://www.ourcommons.ca/petitions/en/Petition/Details?Petition=${encodeURIComponent(petitionRow.number)}` } : null;
+  return toCampaign(row, { id: starter.id, name: starter.name || "A Canadian", email: starter.email }, members.length, new Set(members.map((member) => member.riding)).size, joinedAt, petition);
 }
 
 export async function getCampaign(id: string, viewerId: string | null): Promise<Campaign | null> {
@@ -74,5 +80,9 @@ export async function joinCampaign(input: { campaignId: string; userId: string; 
   const [campaign] = await db.select().from(campaigns).where(eq(campaigns.id, input.campaignId));
   if (!campaign || campaign.status === "live" || campaign.status === "closed") return null;
   await db.insert(campaignSupporters).values({ campaignId: input.campaignId, userId: input.userId, riding: input.riding }).onConflictDoNothing();
-  return hydrate(campaign, input.userId);
+  const [{ count }] = await db.select({ count: sql<number>`count(*)::int` }).from(campaignSupporters).where(eq(campaignSupporters.campaignId, input.campaignId));
+  if (campaign.status === "gathering" && count >= campaign.target) {
+    await db.update(campaigns).set({ status: "in_review", updatedAt: sql`now()` }).where(eq(campaigns.id, input.campaignId));
+  }
+  return getCampaign(input.campaignId, input.userId);
 }

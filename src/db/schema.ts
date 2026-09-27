@@ -50,6 +50,8 @@ export const campaigns = pgTable(
     deadline: date("deadline").notNull(),
     status: campaignStage("stage").notNull().default("gathering"),
     note: text("team_note"),
+    sponsorMp: jsonb("sponsor_mp").$type<Mp>(),
+    sponsorRequestedAt: timestamp("sponsor_requested_at", { withTimezone: true }),
     createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
     updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
   },
@@ -74,6 +76,23 @@ export const campaignSupporters = pgTable(
 
 export type CampaignRow = typeof campaigns.$inferSelect;
 export type CampaignSupporterRow = typeof campaignSupporters.$inferSelect;
+
+export const petitions = pgTable("petitions", {
+  number: text("number").primaryKey(),
+  campaignId: uuid("campaign_id").notNull().references(() => campaigns.id, { onDelete: "cascade" }),
+  title: text("title").notNull(),
+  sponsorName: text("sponsor_name"),
+  sponsorRiding: text("sponsor_riding"),
+  signatures: integer("signatures").notNull().default(0),
+  openedAt: timestamp("opened_at", { withTimezone: true }),
+  closesAt: timestamp("closes_at", { withTimezone: true }),
+  presentedAt: timestamp("presented_at", { withTimezone: true }),
+  responseTabledAt: timestamp("response_tabled_at", { withTimezone: true }),
+  syncedAt: timestamp("synced_at", { withTimezone: true }),
+  createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+}, (t) => [uniqueIndex("petitions_campaign_id_unique").on(t.campaignId)]);
+
+export type PetitionRow = typeof petitions.$inferSelect;
 
 // GC InfoBase federal spending (open.canada.ca), loaded by `npm run db:load` (pipeline/load_db.mts).
 // Sources are in VERIFIED_SOURCES.md. year 2024 = fiscal year April 2024 to March 2025.
