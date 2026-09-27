@@ -1,20 +1,108 @@
 [
   {
-    "id": "news-95682aaf5c9c",
-    "title": "Government of Canada launches $135.7 million Black Canadian Communities Program",
-    "summary": "The Government of Canada has launched a $135.7 million program to provide funding opportunities for Black Canadian community organizations.",
+    "id": "news-1ea76d425f6a",
+    "title": "Canada commits $82 million for global ocean monitoring",
+    "summary": "The Government of Canada has committed $82 million as the OceanEye Alliance secures $339 million for global ocean monitoring.",
+    "amount": 82000000,
+    "date": "2026-09-24",
+    "fiscal_year": "2026-27",
+    "department": "Fisheries and Oceans Canada",
+    "dept_code": "FO",
+    "program_code": "BTG06",
+    "source_type": "news",
+    "level": "federal",
+    "sources": [
+      {
+        "label": "NetNewsLedger",
+        "url": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxPMWJGQnFNM3NTcU9FV0dWOGZuNXhTSm9jakxvb1RlS0owNGRzUmJDc0twbVBWbGtjbG42ZVZ0bzQxYUpFZDdoT0NxTTRYeWl4cm84YVJjNU10a3lUNDB1Vm5vOE1mYVhuZzMxN0xIc3FtLWN5cmhnSnptQTEzRG12dnRFdVpEOVBGeE9iRTZ0WHMxeHlTNTFZQ180a0JtRVpFOHluR3RmTy1NTENyaHYwYlNreFowTmpJOXU0dlBQN3JwU2RVNjF1RzBuMXltT3BFdVE?oc=5"
+      }
+    ],
+    "image_url": null,
+    "petition": null
+  },
+  {
+    "id": "news-ea665235c5a4",
+    "title": "Federal government to spend $30 million on wild horse fertility control",
+    "summary": "The federal government will spend $30 million to implement fertility control for wild horse populations in western Canada.",
+    "amount": 30000000,
+    "date": "2026-09-23",
+    "fiscal_year": "2026-27",
+    "department": "Environment and Climate Change Canada",
+    "dept_code": "EC",
+    "program_code": "BGT02",
+    "source_type": "news",
+    "level": "federal",
+    "sources": [
+      {
+        "label": "Yahoo News UK",
+        "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxQczZralBsYTAwdmViZ0I0anJvWUtHVUVyWXBDRnF3V084d2VRZTVYMUR0aXZlZXRkTi12U0xNREl2Nkl2Q2toeDRCSFRoZHJEQjZUak1zMzlYcFFUZWFocS11bFBXOGtvdUlCemlqNWJ0azNHSFA0Y3hMcjgwNWFiSzl3?oc=5"
+      }
+    ],
+    "image_url": null,
+    "petition": null
+  },
+  {
+    "id": "news-c14e48224d51",
+    "title": "Canada pledges $100 million for Palestine at United Nations",
+    "summary": "Canada has pledged $100 million for Palestine during the United Nations General Assembly.",
+    "amount": 100000000,
+    "date": "2026-09-22",
+    "fiscal_year": "2026-27",
+    "department": "Global Affairs Canada",
+    "dept_code": "EA",
+    "program_code": "BVD02",
+    "source_type": "news",
+    "level": "federal",
+    "sources": [
+      {
+        "label": "CBC",
+        "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxPMmpJNE1NeVBUa2g4cXlsUlYySTcwS3huREszaFM3SHdSUHBHYy1LNTVCNklYZXpVT0l1RUtkektiSkRlXzZHcGRxejI0WkFoMU5XejNvSkNybmpDUlBGc3lyVkFBU2ZiWlZlRGcybEo1dmVINk9kM0pvNGt3ZmZhSQ?oc=5"
+      }
+    ],
+    "image_url": null,
+    "petition": null
+  },
+  {
+    "id": "news-700782369658",
+    "title": "Federal government launches $135.7 million program for Black communities",
+    "summary": "The federal government has launched a new $135.7 million program dedicated to supporting Black communities.",
     "amount": 135700000,
     "date": "2026-09-21",
     "fiscal_year": "2026-27",
-    "department": "Employment and Social Development Canada",
-    "dept_code": "HRSD",
-    "program_code": "BGM02",
+    "department": "Canadian Heritage",
+    "dept_code": "CH",
+    "program_code": "BSG01",
     "source_type": "news",
     "level": "federal",
     "sources": [
       {
         "label": "Global South Opportunities",
         "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTE9vNnpqWjhiX0xEbWV3cUJMd3drZEJwRlF3YXFGUmJQSHRlcHVBSEJRV21NeW9VenA0TFZJeHZidlluNGFLVmJnNzRlX3Mzbk5PMHVBc0F1MUlOaUp1RllQNkxwbDBNQUloc3ZjRG9KOVAxM1E?oc=5"
+      },
+      {
+        "label": "Juno News",
+        "url": "https://news.google.com/rss/articles/CBMiigFBVV95cUxQX3RtNFFWTTRlc25zM1VDdXA4Rkh2TU1PUE9GVDB3VUFpVUo0dVI4cWpGeTB4S2hjazhoeXdZdGlvczJLZVBMcFNsRTBtYUFXcEVtb1N4V3pYai1Jd3FZRi1IN0M1dmJaOENTWXZuWFB5OVpBYVRfal9UWW50MVZlMkhLeU9GVXF2UkE?oc=5"
+      }
+    ],
+    "image_url": null,
+    "petition": null
+  },
+  {
+    "id": "news-a29026e981c1",
+    "title": "Federal government puts $1 million toward promoting farm safety",
+    "summary": "The federal government is providing $1 million to promote farm safety across Canada.",
+    "amount": 1000000,
+    "date": "2026-09-20",
+    "fiscal_year": "2026-27",
+    "department": "Agriculture and Agri-Food Canada",
+    "dept_code": "AGR",
+    "program_code": "BWO05",
+    "source_type": "news",
+    "level": "federal",
+    "sources": [
+      {
+        "label": "CBC",
+        "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxNclNRRkxXZzJmS2tkOXlmdUMtQUVOMmF0RlBMNEVjX2V1dnVYd0lVTW9pMWlxZ3dNQV93Q1hnSFVCZFJiSGxwMVl0amx2R2JwVVlHZGFyTTV3QnlDUnJMZlo4RUpZcUZEclhJVHk4QVZGSTJpcjJkcHpUWmQtWVpwanpGN2s0MjZ5OVJTd2lfUjdNTTA?oc=5"
       }
     ],
     "image_url": null,
@@ -78,6 +166,48 @@
       {
         "label": "National Hog Farmer",
         "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxQazhhV242SmNBYjRrR1FUeS1jdlpsbFAtQmhJZjJ4Ym9PczFKdUlKSW5Rc3NDaWNQUXpLbkJMck5EdEhBVEg2VnBLNEpPLUl4X3NDR1hFRkZ1NC1NWGdSYlpTdElEeUtEdnowaVRfWmZMS3NfTU5YbmtvOXR5SVZJTDN2N3Y5ZnA0Z01NQWJGMjBtYmFhT0RTTFJPT3BBUldwOGRXMmJNQVRLdDhoemluZw?oc=5"
+      }
+    ],
+    "image_url": null,
+    "petition": null
+  },
+  {
+    "id": "news-bdfd47b776c5",
+    "title": "Ottawa to fund paid placements in skilled trades for $880 million",
+    "summary": "The federal government will fund paid placements in skilled trades at a cost of $880 million.",
+    "amount": 880000000,
+    "date": "2026-09-18",
+    "fiscal_year": "2026-27",
+    "department": "Employment and Social Development Canada",
+    "dept_code": "HRSD",
+    "program_code": "BGO29",
+    "source_type": "news",
+    "level": "federal",
+    "sources": [
+      {
+        "label": "The Globe and Mail",
+        "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxNQmF1MlZYcjB2U0ZFeFNRVVV3YmlCYWNpMi1WbEFqNFRmWjdkdkxfNnB1OEZieXZyLWJiY1Fpd05Ibkp3NmZhbmN5UXJCYklleV92Zk5tSnhhWEtWWEJwT1VKZ21KMHROMndaZXlHLTRMRjVqVmZZWTBRa2lXMHI0X0U0ZVJrdzRnR0ZnYVN6TXQxdVJfUFJXOVNWQXVnYWNUczhnNmt1eWh5Sjc5VUE?oc=5"
+      }
+    ],
+    "image_url": null,
+    "petition": null
+  },
+  {
+    "id": "news-b5ea83557e46",
+    "title": "Red Deer to spend $2.9 million of federal housing funds on supportive housing",
+    "summary": "The city of Red Deer will spend $2.9 million of federal housing funding to build permanent supportive housing.",
+    "amount": 2900000,
+    "date": "2026-09-18",
+    "fiscal_year": "2026-27",
+    "department": "Canada Mortgage and Housing Corporation",
+    "dept_code": "CMHC",
+    "program_code": "BGJ00",
+    "source_type": "news",
+    "level": "federal",
+    "sources": [
+      {
+        "label": "CBC",
+        "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxPSVBBUVlfaGRZTzVGeWFUS2xUVFh2ZC03MUtRZWpTcDRDM1N6bGM0M0EyUHJWNzFSaGJ2WVk0WndIWjNOeHJCYlAxcTVJYi1NOUFsZVRsSklpQm5IRG15TWp4cVFqY3VRWlZjYXA4a09GQXBrZDNzOGV6NHNrWFEtRUxrMXVPYkItVXVPOVRKZHhiUGlYdmxlM1BWbUxrbXFwRVdmT3llV0pyYWst?oc=5"
       }
     ],
     "image_url": null,
@@ -251,6 +381,48 @@
     "petition": null
   },
   {
+    "id": "news-c63a206fc7f1",
+    "title": "Taxpayers federation reports $1.4 billion in federal research grants",
+    "summary": "The Canadian Taxpayers Federation reports that $1.4 billion of federal grants have been spent on various research topics.",
+    "amount": 1400000000,
+    "date": "2026-09-16",
+    "fiscal_year": "2026-27",
+    "department": "Social Sciences and Humanities Research Council of Canada",
+    "dept_code": "SSHRC",
+    "program_code": "BNT01",
+    "source_type": "news",
+    "level": "federal",
+    "sources": [
+      {
+        "label": "National Post",
+        "url": "https://news.google.com/rss/articles/CBMi8AFBVV95cUxPeE1GMjRZczVsaHMtOUtMV0pBZkFuOWMxbTlSOXUtQnZaeFR6dzZvaHAyaGlueDFxblZpLVJ3RUhqd056UlN6S1Jxcnp6Y0lqUlBoVFFiS0hHbzZjTVpQS1I4SGowTU1PcEkyaVk0YnZBdHFIRkNqUkNMdjBnQ0tHUWstaUc0cmlOOElvTE9RTG1TT2JzVmFwaDRBRFhURTJKZ3JkRTA1bGpmTGVQaXZOVlFFZDNPb0UxcFVHM3M2ZnpWYTJJd1VPdFZQV2NSX2dvdHVYZkU1Wm1iWDdYSEdqeDVCd09kVFB2c3hpcFo4UFQ?oc=5"
+      }
+    ],
+    "image_url": null,
+    "petition": null
+  },
+  {
+    "id": "news-fc05078c77b4",
+    "title": "Canada adds Zentek to drone marketplace under $81.1 billion defence plan",
+    "summary": "Zentek has been added to the drone marketplace under Canada's $81.1 billion defence plan.",
+    "amount": 81100000000,
+    "date": "2026-09-16",
+    "fiscal_year": "2026-27",
+    "department": "National Defence",
+    "dept_code": "ND",
+    "program_code": "BUR03",
+    "source_type": "news",
+    "level": "federal",
+    "sources": [
+      {
+        "label": "Stock Titan",
+        "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxQSzNiMTl2UlJyNFZ2SGRJSDhQX25ZZU1OV1ZSU3llS0ZWb3JKV25xanpOaEphenR0QzhkdXJ3cUJwWFB4VENVVDVvS0RhYnhQSmc4MjdTa1htSExDbXJNZmwxbTc5NlZjaDdZWnZSMUtJTEJVR0Y5VU5nMzZvdU40TF9YLTZaUFYzdmx1TEt1U1hMNm9ZcGQ4YjFLb01lWWkzNmdrbndXSHpWUzA?oc=5"
+      }
+    ],
+    "image_url": null,
+    "petition": null
+  },
+  {
     "id": "news-631c30f4a1ce",
     "title": "Government of Canada invests over $1.9M for Yukon businesses and workers",
     "summary": "The Government of Canada is investing over $1.9 million to assist Yukon workers and strengthen local businesses.",
@@ -293,6 +465,27 @@
     "petition": null
   },
   {
+    "id": "news-a8eec1d5754f",
+    "title": "Bay of Quinte Mohawks awarded $66.4 million to end boil-water advisories",
+    "summary": "The Mohawks of the Bay of Quinte have been awarded $66.4 million to help end long-term boil-water advisories.",
+    "amount": 66400000,
+    "date": "2026-09-15",
+    "fiscal_year": "2026-27",
+    "department": "Department of Indigenous Services",
+    "dept_code": "INDSC",
+    "program_code": "BYP13",
+    "source_type": "news",
+    "level": "federal",
+    "sources": [
+      {
+        "label": "Belleville Intelligencer",
+        "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxOaXZvWjIzdWgxSFRuMjVTbE01bzFBZ0hoU3BNSllmeXdXYkE4eVpXbklQUW56QVJkbmJSdWRxMUV5MlczV0MwSGt1MVJ3YkYzX2dEc1FxZlUyN1lDSUlva1F0eDFVV0J5LUNPbzRva04xSHFwMUk3U3dMVnFHazdjRWZ6d1NqRVhmWXBpZ2F3MEM0YlNxRWp2UXFTejJpdGE5?oc=5"
+      }
+    ],
+    "image_url": null,
+    "petition": null
+  },
+  {
     "id": "news-a49f84fd54b2",
     "title": "Qubic wins $1.5M Canadian government contract for cryogenic amplifiers",
     "summary": "Qubic has secured a $1.5 million contract from the Canadian government to deliver cryogenic amplifiers.",
@@ -308,27 +501,6 @@
       {
         "label": "HPCwire",
         "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxPT2RxRXdyOVF0ejQtalpkTjB6Qk9Nblh2cHlBdUZEV3JyZFhMRk0ya2RSWThmU2NrUnd5VzA1NW04c0VnWXVTSktINGxleldDdnV4aTZmeEZVb0JBakNtbHItVHZmSnVoR1hUYVJEOXBrX1Z5MXlrUEtGZDBrczZOZjZLWHRKYldYTjByc0VYWkdkVDNQdnQxRkR0Zm1Ba0NTeGRzdGdwSk91VjM4cmc?oc=5"
-      }
-    ],
-    "image_url": null,
-    "petition": null
-  },
-  {
-    "id": "news-487c004c998a",
-    "title": "Government of Canada invests up to $25M for new Royal George Theatre",
-    "summary": "The federal government is investing up to $25 million toward the construction of the new Royal George Theatre.",
-    "amount": 25000000,
-    "date": "2026-09-14",
-    "fiscal_year": "2026-27",
-    "department": "Canadian Heritage",
-    "dept_code": "CH",
-    "program_code": "BSD01",
-    "source_type": "news",
-    "level": "federal",
-    "sources": [
-      {
-        "label": "niagaraatlarge.com",
-        "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxPVmg4WGdMZTNKdHlOMFVEVVMyWFNMQlptd05razc5YVZob0V1U3FWNnd2MXN2dzRpNzN2Rml2SmRUTFpYRkhSV2JjS2I0Vi0zTU54SEIxWWhrbHk0Rk42Vl9QRlcyU2tVcnpnenRnN29oQ3VaNjdpdG5TZ0lENnQtMzloZEhTOFlQVlE5NE9qRm9nWlRqRGxhRjdjcnBuZzJPbXNqcmhkeTh0ZG1McjBnSk5icW9uMFc3RGc?oc=5"
       }
     ],
     "image_url": null,
@@ -356,6 +528,27 @@
     "petition": null
   },
   {
+    "id": "news-5b68a7193d7b",
+    "title": "Federal government spends $1.5 million on gang violence prevention",
+    "summary": "The federal government is spending $1.5 million on gang violence prevention initiatives in Cape Breton.",
+    "amount": 1500000,
+    "date": "2026-09-14",
+    "fiscal_year": "2026-27",
+    "department": "Public Safety Canada",
+    "dept_code": "PSEP",
+    "program_code": "BVT01",
+    "source_type": "news",
+    "level": "federal",
+    "sources": [
+      {
+        "label": "CTV News",
+        "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxOQjhKTGdoeTlLZG4tckxiMkZMZ2Q5Z1NBSUZ0OUliQTBfcEZJbHp6ekpIT2RTYi15YjlCVnFzTWhRWXFyZlhGaVZkT01wWElZUTd2WnBUMXpncE9EZEZGSHA4VXhpcGwtOVlzRHpoUkNsYXR5OVZyRGNfcTczWE52NVRFVDdpalYyWmZKMGIxanVXWVhLdFRxM1R3TGwxY3FUVzJ4S3pEalpYYzNkMXYzTVBIcFRvNGxBZ1RnSWxqMkxRNmNWMWc?oc=5"
+      }
+    ],
+    "image_url": null,
+    "petition": null
+  },
+  {
     "id": "news-1ef08cae15ae",
     "title": "Canada completes $34.6M Parks Canada fire equipment facility",
     "summary": "The federal government announced the substantial completion of a new $34.6 million Parks Canada National Fire Equipment Cache.",
@@ -371,6 +564,31 @@
       {
         "label": "PR Newswire Canada",
         "url": "https://news.google.com/rss/articles/CBMi9wFBVV95cUxNNzAwMVhFMFpQOF9NR1VwTkJHOWlaVC1jOU52bzV6S21ONHRzeHZQM3d5S0JSSWJtNTBrc1kyYVNrbTB6WUYxS3RlejNOZVFJcTlyM1pfZTZrU253ZVk1ZjNiRlJ1YjVkYzBOWHhQQm9lZXZ6UFhmcnFxcG95b0lucWN3REcxUXd2emdPRXY5MURxY19KRjhnQTZQWFhLYmdyNlIxOXlJeVQwVnB5RGVOSHVaSzYtQWRtSkM2alJYZVNhTm5rSzVoQS1PUmc4ODBodDIyX3hHb3ZFWERVd2wyV3pCYW5vaENHQi1yWUt3b1drMGctaVJn?oc=5"
+      }
+    ],
+    "image_url": null,
+    "petition": null
+  },
+  {
+    "id": "news-fd6afce623fb",
+    "title": "Government of Canada invests up to $25 million for Royal George Theatre",
+    "summary": "The Government of Canada is investing up to $25 million to build the new Royal George Theatre in Niagara-on-the-Lake.",
+    "amount": 25000000,
+    "date": "2026-09-10",
+    "fiscal_year": "2026-27",
+    "department": "Canadian Heritage",
+    "dept_code": "CH",
+    "program_code": "BSD01",
+    "source_type": "news",
+    "level": "federal",
+    "sources": [
+      {
+        "label": "stage-door.com",
+        "url": "https://news.google.com/rss/articles/CBMi-AFBVV95cUxQTEowVi03R044VFczRHhJNlJtdmNZbUpfLXlmRl9xZmFZU3BmX0s5bFRPaWlfUXpUWmJtUWpLQlRpclpJU3kwVm1udzhGQjIyR3lZZHFtXzlqQUhvZW9QUFVCQ0ppZHU3VWx0eElydVdvV2dPY1pyazRhSzh4TXhWRFR5elpfcGY5MEtaekYwWnh3MnNWOUsxN0g1TFF6ZG5YWGZjVExSX0NMS3ZCQU50WFRtbVZ0cEZGMXVtTGNaY0w4NW9mRzM0RUJBVmpDSWh6dnpNSk1mUVpTb21tbFhmVVplcEpESHlaZDdNTmNMbHE4VEhjUTliZQ?oc=5"
+      },
+      {
+        "label": "niagaraatlarge.com",
+        "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxPVmg4WGdMZTNKdHlOMFVEVVMyWFNMQlptd05razc5YVZob0V1U3FWNnd2MXN2dzRpNzN2Rml2SmRUTFpYRkhSV2JjS2I0Vi0zTU54SEIxWWhrbHk0Rk42Vl9QRlcyU2tVcnpnenRnN29oQ3VaNjdpdG5TZ0lENnQtMzloZEhTOFlQVlE5NE9qRm9nWlRqRGxhRjdjcnBuZzJPbXNqcmhkeTh0ZG1McjBnSk5icW9uMFc3RGc?oc=5"
       }
     ],
     "image_url": null,
@@ -597,6 +815,10 @@
       {
         "label": "PR Newswire Canada",
         "url": "https://news.google.com/rss/articles/CBMixgJBVV95cUxOOE5KWjJjSmJkRkVjRGNMTlBsd3ZpWm9wVG1FelE2Uk10R01hOFRFcUxhcmtZSXBWN2dDX3A2a1VhTjNIdVdTWUxJcGI4ZTBSbUlJMXFqM05UQnYtdVV6WXRlRzVibGlxNi1sc3kyVFZXMllfSkF0dVhRbjZBQ3d0SU1fU0RITmd2NEtqQzhsaVZLa1hBRU5GUjNSYkVQWFhzRGVUNDdZV3pSOTM4dlE2UGpJeHJpSWtOYkZZSUUtZmVhbEVwLTByQmVDcmxLLWh4ZjBYQUd1dWhqTnF1TVFXVnZKQXhtTEptcS05SnBBdmVNLUNpWU1WNGt1TERob2FQRzlLWGt2NmNqMUdqUGVRWW5jTHhFQm1IM3BtUXVET2RKTUFCZ1NUQmJKT3MwVFhHbFJudTdSZlNmTkpHSm92ZzRlaGlNUQ?oc=5"
+      },
+      {
+        "label": "CTV News",
+        "url": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxNTzZ2MnVRMng5TFk4d01GRTJjdUR3alhDQkhIODQwNzlEdE1WUGxBSzBYc2tiQXZiRTFPODlqamo5TFRUYWI3YmJLZ3hwcm1MN09Wa0w0RWVNbC1pTFkzSnRITTlrSUh4T2hWWW5VN09FOVZUQXE2U25KbTVqYUFyTG5icF9BbmF0Unhnem5xSjFvYTNXT3pWU09vMGNzVEhZUjEtdkYzMFZoLWUxMzAzemZJRTNBWDZiVXA2WHJ3UzNGbkhXRkJvT2JlX1ZzNGdKRkFYQUNn?oc=5"
       }
     ],
     "image_url": null,
@@ -639,6 +861,27 @@
       {
         "label": "saltwire.com",
         "url": "https://news.google.com/rss/articles/CBMizwFBVV95cUxQd3o2S01PeldUQlRQS2ZmcHdCbVotQnZad3QtTU9rUmJOeUhlSEV2X09lUWRwSTd4a0VwUmpGcDlJMElPY1AtNFBzZG13RnR3d0VQOFRoYzdZWVdsOWtPOXpSMEc2bzNlUGFmOU1NU0Q1ZWw0cDE1SlN5RmhHSXE0dkQ2eHhKakhmQjd5SDR6MnVXQm4zZFVmdlRsMFNseE1OSENSVzFaMkVOR3JKbFVibWE1blUzY0xHVDFTVk9HcDZuV1FuNlU2NHgzTnh6Rkk?oc=5"
+      }
+    ],
+    "image_url": null,
+    "petition": null
+  },
+  {
+    "id": "news-7b0f1d5d4b0e",
+    "title": "Federal government invests $11.6M in northern Saskatchewan airports",
+    "summary": "The federal government is investing $11.6 million into airport infrastructure across northern Saskatchewan.",
+    "amount": 11600000,
+    "date": "2026-09-01",
+    "fiscal_year": "2026-27",
+    "department": "Transport Canada",
+    "dept_code": "TC",
+    "program_code": "BTY03",
+    "source_type": "news",
+    "level": "federal",
+    "sources": [
+      {
+        "label": "CTV News",
+        "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxNcmZwUmxsNXB6TzhIdzJDOUFURlFpZFZKY2ZtN1U5V2VXVXVfYTl6b0U2aE9TaEZNRXlQSFlNSE0wTThCVVlfZkJmcWtfMU55anhEVkEwVDA2TlVXMk5TWldQYl9qZGdvZGxBajdSTjMxUHJDRmhjLTFmZDNybDBDeG9nRnJQQVlmUnp3d04zQzd3ZV80bDA2Ym5rTnJrRDcxQ0lvZ2xLc3RFQzBoYUE?oc=5"
       }
     ],
     "image_url": null,
@@ -693,6 +936,10 @@
       {
         "label": "Moomoo",
         "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxQYVBfYm9qZ3lyNVdyU1VqVzBJTnU4S1FXVENqVUlLTklEVURfcndKcXBLcTFaaVN3VmlOM3RzZmkxYjh3bnBIMkVVVlgwUWphUlVzblhJMkZlYjB3WjVEN2VYY2hLWnlxOF9XMGpVamJJbU9lYnU5Xzh3RHF2YVMxSGJYeHU4cGd2bGNKeGE3WjlnRldaWHV2UmFxRGJ3OFM2bHAxbDJfVnJnWTVzT0lMaFpiOG8yVFRL?oc=5"
+      },
+      {
+        "label": "The Logic",
+        "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTE1lQlVkV040bnQ0cWgxcW1uMHFMb3piOFpsTzJSU09VN3JJbzROT3dFakt4YWVTcTdtLVV4Rk1QLVZmc05zdjh4bGo2UTh3dF92ajVaRl9venZPd0dBdzk2TFkyVVI2cFNnaTdjdG9hUU5RT3c?oc=5"
       },
       {
         "label": "CBC",

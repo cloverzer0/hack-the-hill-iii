@@ -1,6 +1,9 @@
-"""Build the screen 02 breakdown: total federal spending and the 7 biggest programs (TASKS.md Raphael Task 1, Phase 2).
+"""STANDALONE, not used by the app. Offline version of the screen 02 breakdown (total federal spending and the 7 biggest programs).
 
-Reads the GC InfoBase CSVs in pipeline/data/ (see VERIFIED_SOURCES.md) and writes src/shared/breakdown.json.
+The app now reads the breakdown from Neon (GET /api/breakdown, src/db/breakdown.ts). This script and its output,
+pipeline/breakdown.json, are kept for other uses and as an offline cross-check of the database numbers. Nothing imports them.
+
+Reads the GC InfoBase CSVs in pipeline/data/ (see VERIFIED_SOURCES.md) and writes pipeline/breakdown.json.
 Uses only the standard library, so no install is needed.
 
 Usage:
@@ -15,7 +18,7 @@ from pathlib import Path
 
 HERE = Path(__file__).parent
 DATA = HERE / "data"
-OUT = HERE.parent / "src" / "shared" / "breakdown.json"
+OUT = HERE / "breakdown.json"
 
 TOP_N = 7
 SOURCE = {
@@ -91,7 +94,7 @@ def build(year):
     	- year: the data's year, e.g. 2024
 
     Returns:
-    	dict: the breakdown in the shape written to src/shared/breakdown.json
+    	dict: the breakdown in the shape written to pipeline/breakdown.json
     """
     program_names = {
         (r["dept_code"], r["program_code"]): r["name_en"]
@@ -148,7 +151,7 @@ def build(year):
 def main():
     """
     Purpose:
-    	Command-line entry point: build the breakdown and write it to src/shared/breakdown.json.
+    	Command-line entry point: build the breakdown and write it to pipeline/breakdown.json.
 
     Args:
     	(none; reads --year from the command line)
