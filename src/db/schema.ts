@@ -1,4 +1,4 @@
-import { index, integer, jsonb, numeric, pgTable, primaryKey, text, timestamp, uuid } from "drizzle-orm/pg-core";
+import { index, integer, jsonb, numeric, pgEnum, pgTable, primaryKey, text, timestamp, uniqueIndex, uuid, date } from "drizzle-orm/pg-core";
 import type { Mp } from "@/lib/mp/types";
 
 export const users = pgTable("users", {
@@ -31,6 +31,49 @@ export const drafts = pgTable(
 );
 
 export type DraftRow = typeof drafts.$inferSelect;
+
+export const campaignStage = pgEnum("campaign_stage", ["gathering", "in_review", "mp_asked", "mp_agreed", "live", "closed"]);
+
+export const campaigns = pgTable(
+  "campaigns",
+  {
+    id: uuid("id").primaryKey().defaultRandom(),
+    storyId: text("story_id").notNull(),
+    storyTitle: text("story_title").notNull(),
+    startedBy: text("starter_id")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    title: text("title").notNull(),
+    issue: text("issue").notNull(),
+    request: text("request").notNull(),
+    target: integer("target").notNull().default(1000),
+    deadline: date("deadline").notNull(),
+    status: campaignStage("stage").notNull().default("gathering"),
+    note: text("team_note"),
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+    updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (t) => [uniqueIndex("campaigns_story_started_by_idx").on(t.storyId, t.startedBy), index("campaigns_story_idx").on(t.storyId)],
+);
+
+export const campaignSupporters = pgTable(
+  "campaign_members",
+  {
+    campaignId: uuid("campaign_id")
+      .notNull()
+      .references(() => campaigns.id, { onDelete: "cascade" }),
+    userId: text("user_id")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    riding: text("riding").notNull(),
+    consentedAt: timestamp("consented_at", { withTimezone: true }).notNull().defaultNow(),
+    joinedAt: timestamp("joined_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (t) => [primaryKey({ columns: [t.campaignId, t.userId] }), index("campaign_members_campaign_idx").on(t.campaignId)],
+);
+
+export type CampaignRow = typeof campaigns.$inferSelect;
+export type CampaignSupporterRow = typeof campaignSupporters.$inferSelect;
 
 // GC InfoBase federal spending (open.canada.ca), loaded by `npm run db:load` (pipeline/load_db.mts).
 // Sources are in VERIFIED_SOURCES.md. year 2024 = fiscal year April 2024 to March 2025.

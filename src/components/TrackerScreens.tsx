@@ -7,6 +7,8 @@ import { useBreakdown } from './useBreakdown'
 import { useSpending, useSpendingDetail } from './useSpending'
 import type { Story } from '@/lib/stories'
 import { useState } from 'react'
+import Link from 'next/link'
+import { useCampaigns } from './useCampaigns'
 
 const money = new Intl.NumberFormat('en-CA', { style: 'currency', currency: 'CAD', maximumFractionDigits: 0 })
 const cents = new Intl.NumberFormat('en-CA', { style: 'currency', currency: 'CAD', minimumFractionDigits: 2, maximumFractionDigits: 2 })
@@ -180,10 +182,17 @@ export function ApiDecisionScreen({ itemId, inputs, navigate }: { itemId: string
 }
 
 function ActionSection({ story }: { story: Story }) {
+  const campaignsState = useCampaigns(story.id)
   if (story.petition) {
-    return <section className="civic-action"><p className="section-label">Civic action</p><h2>This story already has an official petition.</h2><div className="petition-progress"><strong>{story.petition.signatures.toLocaleString('en-CA')}</strong><span>signatures so far</span></div><p className="action-copy">{story.petition.title}. Signatures count on the official House of Commons petition.</p><div className="action-links"><a className="primary-action" href={story.petition.url} target="_blank" rel="noreferrer">Sign on ourcommons.ca ↗</a><a className="text-action" href={`/petition/new?story=${encodeURIComponent(story.id)}`}>Start a different petition ↗</a></div><small>Closes {dateLabel(story.petition.closes)}</small></section>
+    return <section className="civic-action"><p className="section-label">Civic action</p><h2>This story already has an official petition.</h2><div className="petition-progress"><strong>{story.petition.signatures.toLocaleString('en-CA')}</strong><span>signatures so far</span></div><p className="action-copy">{story.petition.title}. Signatures count on the official House of Commons petition.</p><div className="action-links"><a className="primary-action" href={story.petition.url} target="_blank" rel="noreferrer">Sign on ourcommons.ca ↗</a><a className="text-action" href={`/campaigns/new?story=${encodeURIComponent(story.id)}`}>Start a different campaign ↗</a></div><small>Closes {dateLabel(story.petition.closes)}</small>{campaignsState.status === 'ready' && <CampaignRows campaigns={campaignsState.campaigns} />}</section>
   }
-  return <section className="civic-action"><p className="section-label">Civic action</p><h2>What happens next?</h2><p className="action-copy">Turn a question about this spending story into a draft petition for your MP to review.</p><a className="primary-action" href={`/petition/new?story=${encodeURIComponent(story.id)}`}>Start a petition ↗</a><small>Only federal spending stories can lead to a House of Commons e-petition.</small></section>
+  return <section className="civic-action"><p className="section-label">Civic action</p><h2>What happens next?</h2><p className="action-copy">Turn a question about this spending story into a campaign people can join, then move it toward an official petition.</p><a className="primary-action" href={`/campaigns/new?story=${encodeURIComponent(story.id)}`}>Start a campaign ↗</a><Link className="text-action" href="/campaigns">Browse all campaigns ↗</Link><small>Only federal spending stories can lead to a House of Commons e-petition.</small>{campaignsState.status === 'ready' && <CampaignRows campaigns={campaignsState.campaigns} />}</section>
+}
+
+function CampaignRows({ campaigns }: { campaigns: import('@/lib/campaigns').Campaign[] }) {
+  if (!campaigns.length) return <p className="action-copy">No campaigns yet. Start the first one.</p>
+  const labels: Record<string, string> = { gathering: 'Gathering members', in_review: 'In review', mp_asked: 'MP asked', mp_agreed: 'MP agreed', live: 'Live', closed: 'Closed' }
+  return <div className="campaign-rows" aria-label="Campaigns for this story">{campaigns.slice(0, 4).map((campaign) => <a key={campaign.id} href={`/campaigns/${campaign.id}`} className="campaign-row"><span><b>{campaign.title}</b><small>{campaign.supporters} members · {labels[campaign.status] ?? campaign.status}{campaign.joined ? ' · Joined' : ''}</small></span><span aria-hidden="true">↗</span></a>)}</div>
 }
 
 function categoryFor(item: SpendingItem) {
