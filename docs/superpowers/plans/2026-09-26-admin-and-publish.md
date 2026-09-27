@@ -1,5 +1,7 @@
 # Publish Step and Admin Page Implementation Plan
 
+> **Update (2026-09-26):** the publish step (spec §1, plan Tasks 1–4) was replaced by Great's PR #14 (campaigns flow: write → publish → live, drafts removed). This branch keeps that flow; only the admin part (Tasks 5–8) remains from this plan.
+
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
 **Goal:** Let a user publish their petition draft as an in-app campaign, and give our team an admin page to review campaigns, ask an MP, attach the ourcommons.ca petition and tell members to sign.

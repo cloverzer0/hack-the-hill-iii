@@ -1,5 +1,7 @@
 # Muktar's campaign work: publish step and admin page
 
+> **Update (2026-09-26):** the publish step (spec §1, plan Tasks 1–4) was replaced by Great's PR #14 (campaigns flow: write → publish → live, drafts removed). This branch keeps that flow; only the admin part (Tasks 5–8) remains from this plan.
+
 **Date:** 2026-09-26
 **Owner:** Muktar
 **Covers:** TASKS.md, Muktar Task 3 Phase 2 (publish a draft as a campaign) and Task 4 (admin page).
