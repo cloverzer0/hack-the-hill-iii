@@ -74,6 +74,7 @@ export function SponsorStep({ draft }: { draft: Draft }) {
 
   async function saveLetter(text: string | null) {
     setLetterOverride(text);
+    setSaveError(null);
     try {
       await patch({ sponsorEmail: text });
     } catch {
@@ -112,7 +113,7 @@ export function SponsorStep({ draft }: { draft: Draft }) {
           </button>
         </form>
         {lookupError && (
-          <p className="mt-2 text-sm text-danger">
+          <p role="alert" className="mt-2 text-sm text-danger">
             {lookupError.message}{" "}
             {lookupError.canRetry && (
               <button type="button" onClick={find} className="underline">
@@ -157,7 +158,11 @@ export function SponsorStep({ draft }: { draft: Draft }) {
             Find your MP to see the sponsorship request.
           </p>
         )}
-        {saveError && <p className="text-sm text-danger">{saveError}</p>}
+        {saveError && (
+          <p role="alert" className="text-sm text-danger">
+            {saveError}
+          </p>
+        )}
       </section>
     </div>
   );
