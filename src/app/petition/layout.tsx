@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { AccountMenu } from "@/components/AccountMenu";
 
-export const metadata: Metadata = { title: "Start a petition · wheredoesmytaxgo" };
+export const metadata: Metadata = { title: "Start a campaign · wheredoesmytaxgo" };
 
 export default function PetitionLayout({ children }: { children: React.ReactNode }) {
   return (
