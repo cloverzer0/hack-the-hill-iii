@@ -17,7 +17,9 @@
         "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxOd04wWVZhUkJqMk5Tb2lPV2RXdlBldmZVdlNYTENUT1ZwUU80aTNJSjBQYnh3dWFEcjg2UWJ6cFptV3MwRmc2TVJRVVUwM0tROEM4dmI2RjJnQjFBM3dsTXQ0MzdfV2J4aFQ1T25mMU1zOHhyRXhCNGdGaVBXWndpMFdxbDF3SU0zZ2R6Q0txdkJyLXVLdkN4b3pTQW1qSmtYaXNQUFFRWjQxZjA?oc=5"
       }
     ],
-    "image_url": null
+    "image_url": "/story-images/news/news-3de807b167c0.webp",
+    "image_source_url": "https://betakit.com/feds-give-mitacs-162-million-for-ai-internship-program-for-smaller-canadian-businesses/",
+    "image_credit": "betakit.com"
   },
   {
     "id": "news-1ea76d425f6a",
@@ -283,9 +285,9 @@
         "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxQMm9KVGdGLXVvYklqalpDbWJkZXlHRlY3ZDNvNzJ4eC1ib2FRcHhONVcxTnhfVWZoWE9DYkRad1J4ZEo4RTFCdF8zaUxESWVRLWZQRlhIbUVua1BlaEZlSHV6ck8wMlU1THJTdXVXZTZBWTdqblhLN05EVUl3NTRibnRYQk9CUzlHT0pRY1A1cUtaMnROMnNYWnRyRHFyNjNvaG92a1ZsVTJScUZNUEF0VDZFWHU3X3JvdWc?oc=5"
       }
     ],
-    "image_url": "/story-images/news/news-50aaa4b779a5.webp",
-    "image_source_url": "https://farmtario.com/news/kinghaven-farms-greenhouse-receives-5-million-for-automation-climate-control-food-security/",
-    "image_credit": "Farmtario"
+    "image_url": null,
+    "image_source_url": null,
+    "image_credit": null
   },
   {
     "id": "news-15beea9f0e27",
@@ -635,6 +637,10 @@
       {
         "label": "niagaraatlarge.com",
         "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxPVmg4WGdMZTNKdHlOMFVEVVMyWFNMQlptd05razc5YVZob0V1U3FWNnd2MXN2dzRpNzN2Rml2SmRUTFpYRkhSV2JjS2I0Vi0zTU54SEIxWWhrbHk0Rk42Vl9QRlcyU2tVcnpnenRnN29oQ3VaNjdpdG5TZ0lENnQtMzloZEhTOFlQVlE5NE9qRm9nWlRqRGxhRjdjcnBuZzJPbXNqcmhkeTh0ZG1McjBnSk5icW9uMFc3RGc?oc=5"
+      },
+      {
+        "label": "cbc.ca",
+        "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxOMmdpOUxOUm9CX3FxOTQ5ZFBLc2VfbXN1Tk1DTUhRVDhoV1Q1UDBUM0NKOVU4SEZ0VXBHRktZWE5uS0FiMEpJaDUtS3NaMkZvTWRzS1FJQnFCem5DejBTdUxBN3lxa1o4OXlSRVdvWTJOazFsaGtKWVBwVWMwQlMwSFhrb3FGZHBxb1FGS3c0YldlQWQwY3lUNHdWYnFDUTJlOTRSMjVvbw?oc=5"
       }
     ],
     "image_url": null,
@@ -642,7 +648,7 @@
     "image_credit": null
   },
   {
-    "id": "news-d5802130b42a",
+    "id": "news-ab54611a1d38",
     "title": "Feds announce $5M for HIV self-testing and support staff",
     "summary": "The federal government announced $5 million for HIV self-test kits and additional peer support staff.",
     "amount": 5000000,
@@ -657,11 +663,23 @@
       {
         "label": "CBC",
         "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxObkQ4UXhJekZlaFZVRU9PWFNjR3JyR0hDSFEwZUh0QWREMUpGdEdMV2lxYVR5eTdseTcyMS1qT05oVW12OGJOZHI3cEVKc1JMWFpJNWhmRHozcTJ2N2NqVUljN2lEM0d0d2lGdndjUEc2R3dMX1ZFcDlzRTY4SHp3TnJlZWJ2alBFOWpfZk5xMXpjZG8?oc=5"
+      },
+      {
+        "label": "CTV News",
+        "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxNNGhGdXotek01QmQ5S0tyYk44SWh5cHV4c29vNUpPWkFnRndJRWxJbjJTUFdkdThsUERzb3AzcmpHenpKNzFCZFFKd0NkbHRadzVqRXc4ZFY2WHc2ZzFEWXlNMldBM1lTdzVOd1BxU1BzVDlrVmkzc1RZM3RkNmVuRlB3X1NzWGJ1UGl0aExOdFFRaFdfcXJ6bmZKODJIVTkwWVdzeU1qQ2lkcWJMa2c?oc=5"
+      },
+      {
+        "label": "castanet.net",
+        "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxQeEZEQU9Fem5DV0xIY0ROd19BcVRMTVp3VjhGck8xaFBZc1RTR1NHbFpZMEloRlNlZ0dHelhpQUtPX25jakpmSG1kSkx0VFBXSTlYUmlNR2pnN0ZnN3Q1cG9UMThoRHFTalpQNm5ReVA5eVZCbHhZVlpSdmZUQ3R3Q2x2cWMySTlwQ2ZVWjl1RENRdDlSUWxxS3JVcFFobWJTREE?oc=5"
+      },
+      {
+        "label": "新住民全球新聞網",
+        "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxQSXdDWXRJWUxQdTRkVTMyOVE2WExMa1daNmpWWE4waTVFWnZrT19TTERGVnNxMVNaakFDaHpWMEdvTlJlSzdvcWYtX2JBeWhZTzBXNm0xcXVWMllQd0FXNmhUTE9uVnBFOVVJZmlLOVZuVW1ucDBLeTh3TWpqLV94UTVRNUJha0RyY2ZIWVNIS0NoZUx6SzNyUTNpSQ?oc=5"
       }
     ],
-    "image_url": null,
-    "image_source_url": null,
-    "image_credit": null
+    "image_url": "/story-images/news/news-ab54611a1d38.webp",
+    "image_source_url": "https://www.ctvnews.ca/winnipeg/article/ottawa-announces-5m-for-hiv-self-test-kits-support-staff/",
+    "image_credit": "CTV News"
   },
   {
     "id": "news-8a3fbe1df937",
@@ -903,9 +921,9 @@
         "url": "https://news.google.com/rss/articles/CBMiigFBVV95cUxNV0FMZ2ZWVl9HTmpyQ1h0RXJsNWo0NEFrZkJxRW95TkNhekp5QjlKRzFHRFJpNGs4ZnNjdFVzSHBEcUNhc2VocDgtQ1RDWXItZ3hvajJkNlZmbTB3dTc2NUdrd2VxOXh0T2xOaTM4cGRVb3FPSGI0SGJTZ0NralJYNUNSX1VlQl9KTXc?oc=5"
       }
     ],
-    "image_url": null,
-    "image_source_url": null,
-    "image_credit": null
+    "image_url": "/story-images/news/news-bbcbea65de3f.webp",
+    "image_source_url": "https://money.ca/news/economy/bc-salmon-hatcheries-ottawa-50-million-local-economy",
+    "image_credit": "Money.ca"
   },
   {
     "id": "news-b6e6ec730cb2",
@@ -967,6 +985,28 @@
       {
         "label": "McGill University",
         "url": "https://news.google.com/rss/articles/CBMi3wFBVV95cUxOX3RpcWZhWm5RTUZCVTFWMV9rcnpmTnZvb1hUYnJEZVVrb1FzTllpQWtUaUpPNGswOXVHN2xQcTZFd25ycXVoWkVIZTczU2pqVmdhcFRkbUtxcFR4T3dRbDVkXzN2Zi1NVVFQbzFqdW1rTXRaaVdXdVZKSEhVbmpmU0tuZWs1S3dhcURzdmd4cVh1dWo3LUVFZWZweTdjWVRqN2VXajhQZXI0RWJrWVo0andvTWRzYWFSM1hidzVQWlI0bDJ6XzlHRmQtelB1STNReGVoNk91Q3FYZ1BEM25N?oc=5"
+      }
+    ],
+    "image_url": null,
+    "image_source_url": null,
+    "image_credit": null
+  },
+  {
+    "id": "news-4617880007ba",
+    "title": "Nine Hamilton businesses to receive $12.5M in federal tariff relief",
+    "summary": "The federal government is providing $12.5 million in funding to assist nine Hamilton businesses impacted by tariffs.",
+    "amount": 12500000,
+    "date": "2026-08-31",
+    "fiscal_year": "2026-27",
+    "department": "Federal Economic Development Agency for Southern Ontario",
+    "dept_code": "FEDSO",
+    "program_code": "BNM10",
+    "source_type": "news",
+    "level": "federal",
+    "sources": [
+      {
+        "label": "cbc.ca",
+        "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxNNlNhaFltSS1ZeHduWGtQRHRWRTJsVDAzQkdHRlFrX3E3OWcyXy1ualpOdjI2SFpsMktzLVh1ZkQ0dWg1b3F0ckhHQU8wTi1wUldkLXlNYkNJWTQydWxhWlZyUDZTaU8tWmJneVg4T3p6Z21pTHBGOE5QbFFxVHpfSXkyZXZpSG5nZXAyMzA1QUVnamVFTmZKb08zbFhETF9STDVLRFlR?oc=5"
       }
     ],
     "image_url": null,
