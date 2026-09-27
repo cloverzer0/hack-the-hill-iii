@@ -46,4 +46,16 @@ describe("apiFetch", () => {
       expect(assign).toHaveBeenCalledWith("/auth/login?returnTo=%2Fpetition%2Fabc%2Fsponsor%3Fx%3D1"),
     );
   });
+
+  it("keeps the rest of the error body on the ApiError", async () => {
+    stubFetch(Response.json({ error: "already_started", campaignId: "c1" }, { status: 409 }));
+    const error = await apiFetch("/api/campaigns", { method: "POST", body: {} }).catch((e: unknown) => e);
+    expect(error).toBeInstanceOf(ApiError);
+    expect(error).toMatchObject({ status: 409, code: "already_started", details: { campaignId: "c1" } });
+  });
+
+  it("resolves to null for an empty 204 response", async () => {
+    stubFetch(new Response(null, { status: 204 }));
+    await expect(apiFetch("/api/me/drafts/d1", { method: "DELETE" })).resolves.toBeNull();
+  });
 });

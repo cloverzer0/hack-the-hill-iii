@@ -66,3 +66,12 @@ export async function updateDraft(
     .returning();
   return row ? toDraft(row) : null;
 }
+
+export async function deleteDraft(userId: string, id: string): Promise<boolean> {
+  if (!UUID.test(id)) return false;
+  const rows = await db
+    .delete(drafts)
+    .where(and(eq(drafts.id, id), eq(drafts.userId, userId)))
+    .returning({ id: drafts.id });
+  return rows.length > 0;
+}

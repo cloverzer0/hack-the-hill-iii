@@ -175,3 +175,36 @@ describe("PATCH /api/me/drafts/:id", () => {
     expect(res.status).toBe(404);
   });
 });
+
+describe("DELETE /api/me/drafts/:id", () => {
+  const del = (id: string) =>
+    draftRoute.DELETE(new Request(`http://localhost/api/me/drafts/${id}`, { method: "DELETE" }), ctx(id));
+  const get = (id: string) => draftRoute.GET(new Request(`http://localhost/api/me/drafts/${id}`), ctx(id));
+
+  it("deletes my draft", async () => {
+    signInAs(ALICE);
+    const draft = await create();
+    const res = await del(draft.id);
+    expect(res.status).toBe(204);
+    expect((await get(draft.id)).status).toBe(404);
+  });
+
+  it("returns 404 for someone else's draft and keeps it", async () => {
+    signInAs(ALICE);
+    const draft = await create();
+    signInAs(BOB);
+    expect((await del(draft.id)).status).toBe(404);
+    signInAs(ALICE);
+    expect((await get(draft.id)).status).toBe(200);
+  });
+
+  it("returns 404 for a malformed id", async () => {
+    signInAs(ALICE);
+    expect((await del("not-a-uuid")).status).toBe(404);
+  });
+
+  it("returns 401 when logged out", async () => {
+    vi.mocked(requireUser).mockRejectedValue(new UnauthorizedError());
+    expect((await del("00000000-0000-4000-8000-000000000000")).status).toBe(401);
+  });
+});

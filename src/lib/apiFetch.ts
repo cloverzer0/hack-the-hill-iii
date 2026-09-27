@@ -2,13 +2,15 @@ export class ApiError extends Error {
   constructor(
     readonly status: number,
     readonly code: string,
+    /** The whole error body, e.g. { error, campaignId } for 409 already_started. */
+    readonly details: Record<string, unknown> = {},
   ) {
     super(code);
     this.name = "ApiError";
   }
 }
 
-type Options = { method?: "GET" | "POST" | "PATCH"; body?: unknown };
+type Options = { method?: "GET" | "POST" | "PATCH" | "PUT" | "DELETE"; body?: unknown };
 
 /**
  * fetch() for our own API routes. On 401 it sends the browser to login and comes back to
@@ -32,8 +34,10 @@ export async function apiFetch<T>(path: string, { method = "GET", body }: Option
 
   const data: unknown = await response.json().catch(() => null);
   if (!response.ok) {
-    const code = (data as { error?: unknown } | null)?.error;
-    throw new ApiError(response.status, typeof code === "string" ? code : "server_error");
+    const details = data !== null && typeof data === "object" ? (data as Record<string, unknown>) : {};
+    const code = details.error;
+    throw new ApiError(response.status, typeof code === "string" ? code : "server_error", details);
   }
+  if (response.status === 204) return null as T;
   return data as T;
 }
