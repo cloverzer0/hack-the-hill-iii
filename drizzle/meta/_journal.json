@@ -15,6 +15,20 @@
       "when": 1790457258958,
       "tag": "0001_spending_data",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1790465416150,
+      "tag": "0002_campaigns",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1790470818599,
+      "tag": "0003_drop_drafts_add_target",
+      "breakpoints": true
     }
   ]
 }

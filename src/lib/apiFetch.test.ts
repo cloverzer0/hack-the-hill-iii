@@ -14,9 +14,9 @@ function stubFetch(response: Response) {
 describe("apiFetch", () => {
   it("sends JSON and returns the parsed response", async () => {
     const fetchMock = stubFetch(Response.json({ id: "d1" }, { status: 201 }));
-    const result = await apiFetch<{ id: string }>("/api/me/drafts", { method: "POST", body: { a: 1 } });
+    const result = await apiFetch<{ id: string }>("/api/campaigns", { method: "POST", body: { a: 1 } });
     expect(result).toEqual({ id: "d1" });
-    expect(fetchMock).toHaveBeenCalledWith("/api/me/drafts", {
+    expect(fetchMock).toHaveBeenCalledWith("/api/campaigns", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: '{"a":1}',
@@ -38,12 +38,24 @@ describe("apiFetch", () => {
   it("sends the browser to login on 401, returning to the current page", async () => {
     const assign = vi.fn();
     vi.stubGlobal("window", {
-      location: { pathname: "/petition/abc/sponsor", search: "?x=1", assign },
+      location: { pathname: "/petition/abc/publish", search: "?x=1", assign },
     });
     stubFetch(Response.json({ error: "unauthorized" }, { status: 401 }));
-    void apiFetch("/api/me/drafts");
+    void apiFetch("/api/campaigns");
     await vi.waitFor(() =>
-      expect(assign).toHaveBeenCalledWith("/auth/login?returnTo=%2Fpetition%2Fabc%2Fsponsor%3Fx%3D1"),
+      expect(assign).toHaveBeenCalledWith("/auth/login?returnTo=%2Fpetition%2Fabc%2Fpublish%3Fx%3D1"),
     );
+  });
+
+  it("keeps the rest of the error body on the ApiError", async () => {
+    stubFetch(Response.json({ error: "already_started", campaignId: "c1" }, { status: 409 }));
+    const error = await apiFetch("/api/campaigns", { method: "POST", body: {} }).catch((e: unknown) => e);
+    expect(error).toBeInstanceOf(ApiError);
+    expect(error).toMatchObject({ status: 409, code: "already_started", details: { campaignId: "c1" } });
+  });
+
+  it("resolves to null for an empty 204 response", async () => {
+    stubFetch(new Response(null, { status: 204 }));
+    await expect(apiFetch("/api/me/drafts/d1", { method: "DELETE" })).resolves.toBeNull();
   });
 });

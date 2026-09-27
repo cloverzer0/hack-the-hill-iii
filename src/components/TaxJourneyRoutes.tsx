@@ -3,7 +3,7 @@
 import { useState, type FormEvent } from "react";
 import { useRouter } from "next/navigation";
 import { CinematicTaxJourney } from "@/components/CinematicTaxJourney";
-import { ApiDecisionScreen, CategoryScreen, ReceiptScreen, SpendingScreen } from "@/components/TrackerScreens";
+import { CategoryScreen, DecisionScreen, ReceiptScreen } from "@/components/TrackerScreens";
 import { useTaxInputs } from "@/components/TaxTrackerShell";
 import { estimateTax } from "@/shared/tax";
 
@@ -71,12 +71,6 @@ export function TaxReceiptRoute() {
   return <ReceiptScreen inputs={inputs} navigate={(path) => router.push(path)} />;
 }
 
-export function TaxSpendingRoute() {
-  const { inputs } = useTaxInputs();
-  const router = useRouter();
-  return <SpendingScreen inputs={inputs} navigate={(path) => router.push(path)} />;
-}
-
 export function TaxCategoryRoute({ categoryId }: { categoryId: string }) {
   const { inputs } = useTaxInputs();
   const router = useRouter();
@@ -86,5 +80,5 @@ export function TaxCategoryRoute({ categoryId }: { categoryId: string }) {
 export function TaxDecisionRoute({ itemId }: { itemId: string }) {
   const { inputs } = useTaxInputs();
   const router = useRouter();
-  return <ApiDecisionScreen itemId={itemId} inputs={inputs} navigate={(path) => router.push(path)} />;
+  return <DecisionScreen itemId={itemId} inputs={inputs} navigate={(path) => router.push(path)} />;
 }

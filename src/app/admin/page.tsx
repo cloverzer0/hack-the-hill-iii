@@ -1,14 +1,62 @@
 import Link from "next/link";
-import { notFound } from "next/navigation";
-import { getCurrentUser } from "@/lib/auth";
-import { isAdmin } from "@/lib/admin";
-import { listAdminCampaigns } from "@/lib/adminCampaigns";
+import { listAdminCampaigns } from "@/lib/campaigns/admin";
+import { STAGE_LABELS } from "@/lib/campaigns/stages";
+import { AdminListFilters } from "./_components/AdminListFilters";
+import { formatDate } from "./format";
+import { adminListOptions } from "./listOptions";
+import { requireAdminPage } from "./requireAdminPage";
 
-export const dynamic = "force-dynamic";
+type Props = { searchParams: Promise<{ stage?: string | string[]; sort?: string | string[] }> };
 
-const labels: Record<string, string> = { gathering: "Gathering members", in_review: "In review", mp_asked: "MP asked", mp_agreed: "MP agreed", live: "Live", closed: "Closed" };
-export default async function AdminPage({ searchParams }: { searchParams: Promise<{ stage?: string; sort?: string }> }) {
-  const user = await getCurrentUser(); if (!isAdmin(user)) notFound();
-  const params = await searchParams; const rows = await listAdminCampaigns(params.stage as never, params.sort ?? "members");
-  return <main><header className="flex flex-wrap items-end justify-between gap-4 border-b border-[#716d64]/40 pb-7"><div><p className="text-xs uppercase tracking-[.12em] text-[#716d64]">Team workspace</p><h1 className="mt-2 text-5xl">Campaigns.</h1><p className="mt-3 text-[#716d64]">Review public questions, ask an MP, and attach the official petition.</p></div><Link href="/campaigns" className="underline">Public campaigns ↗</Link></header><form className="mt-6 flex flex-wrap gap-3" method="get"><select name="stage" defaultValue={params.stage ?? ""}><option value="">All stages</option>{Object.entries(labels).map(([value,label]) => <option key={value} value={value}>{label}</option>)}</select><select name="sort" defaultValue={params.sort ?? "members"}><option value="members">Most members</option><option value="updated">Recently updated</option></select><button className="admin-primary" type="submit">Apply</button></form><div className="mt-6 space-y-3">{rows.map(({ campaign, starter, supporterCount }) => <Link key={campaign.id} href={`/admin/campaigns/${campaign.id}`} className="admin-card block p-5"><div className="flex flex-wrap items-center justify-between gap-3"><span className="admin-stage">{labels[campaign.status] ?? campaign.status}</span><span className="text-sm text-[#716d64]">{supporterCount} members · {starter.name ?? starter.email}</span></div><h2 className="mt-3 text-2xl">{campaign.title}</h2><p className="mt-1 text-sm text-[#716d64]">{campaign.storyTitle} · updated {new Intl.DateTimeFormat("en-CA", { dateStyle: "medium" }).format(new Date(campaign.updatedAt))}</p></Link>)}{rows.length === 0 && <div className="admin-card p-8"><h2 className="text-2xl">No campaigns match.</h2></div>}</div></main>;
+const cell = "p-3";
+
+export default async function AdminPage({ searchParams }: Props) {
+  await requireAdminPage();
+  const options = adminListOptions(await searchParams);
+  const rows = await listAdminCampaigns(options);
+
+  return (
+    <main>
+      <h1 className="text-2xl font-semibold">Campaigns</h1>
+      <AdminListFilters current={options} />
+      {rows.length === 0 ? (
+        <p className="mt-6 text-sm text-muted">{options.stage ? "No campaigns at this stage." : "No campaigns yet."}</p>
+      ) : (
+        <div className="mt-6 overflow-x-auto rounded-xl border border-line bg-paper">
+          <table className="w-full text-left text-sm">
+            <thead className="border-b border-line text-xs text-muted">
+              <tr>
+                <th className={cell}>Campaign</th>
+                <th className={cell}>Story</th>
+                <th className={cell}>Starter</th>
+                <th className={`${cell} text-right`}>Members</th>
+                <th className={`${cell} text-right`}>Ridings</th>
+                <th className={cell}>Stage</th>
+                <th className={cell}>Petition</th>
+                <th className={cell}>Updated</th>
+              </tr>
+            </thead>
+            <tbody>
+              {rows.map((row) => (
+                <tr key={row.id} className="border-b border-line last:border-0">
+                  <td className={cell}>
+                    <Link href={`/admin/campaigns/${row.id}`} className="font-medium underline">
+                      {row.title}
+                    </Link>
+                  </td>
+                  <td className={`${cell} text-muted`}>{row.storyTitle}</td>
+                  <td className={cell}>{row.starterName ?? "—"}</td>
+                  <td className={`${cell} text-right tabular-nums`}>{row.memberCount.toLocaleString("en-CA")}</td>
+                  <td className={`${cell} text-right tabular-nums`}>{row.ridingCount}</td>
+                  <td className={cell}>{STAGE_LABELS[row.stage]}</td>
+                  <td className={cell}>{row.petitionNumber ?? "—"}</td>
+                  <td className={`${cell} text-muted`}>{formatDate(row.updatedAt)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
+    </main>
+  );
 }

@@ -1,17 +1,67 @@
 import Link from "next/link";
-import { requireUser } from "@/lib/auth";
-import { getCampaign } from "@/lib/campaigns";
-import { getStory } from "@/lib/stories";
-import { CampaignJoin } from "../CampaignJoin";
+import { notFound } from "next/navigation";
+import { getCurrentUser } from "@/lib/auth";
+import { getCampaign } from "@/lib/campaigns/campaigns";
+import { STAGE_LABELS } from "@/lib/campaigns/stages";
+import { fullRequest } from "@/lib/petition";
+import { JoinCampaign } from "./JoinCampaign";
 
-export const dynamic = "force-dynamic";
+type Props = { params: Promise<{ id: string }> };
+const count = new Intl.NumberFormat("en-CA");
 
-const labels: Record<string, string> = { gathering: "Gathering members", in_review: "In review", mp_asked: "MP asked", mp_agreed: "MP agreed", live: "Live", closed: "Closed" };
+export default async function CampaignPage({ params }: Props) {
+  const [{ id }, user] = await Promise.all([params, getCurrentUser()]);
+  const campaign = await getCampaign(id, user?.id ?? null);
+  if (!campaign) notFound();
 
-export default async function CampaignPage({ params }: { params: Promise<{ id: string }> }) {
-  const user = await requireUser();
-  const campaign = await getCampaign((await params).id, user.id);
-  if (!campaign) return <main><h1 className="text-4xl">We couldn&apos;t find that campaign.</h1><Link className="mt-4 inline-block underline" href="/campaigns">Browse campaigns</Link></main>;
-  const story = await getStory(campaign.storyId);
-  return <main><Link href="/campaigns" className="text-sm underline">← All campaigns</Link><header className="mt-8 border-b border-[#716d64]/40 pb-7"><span className="campaign-stage">{labels[campaign.status] ?? campaign.status}</span><h1 className="mt-3 max-w-3xl text-5xl">{campaign.title}</h1><p className="mt-3 text-sm text-[#716d64]">On <Link href={`/decision/${campaign.storyId}`} className="underline">{story?.title ?? campaign.storyId}</Link> · started by {campaign.starter.name}</p></header><div className="mt-8 grid gap-10 lg:grid-cols-[minmax(0,1fr)_320px]"><article><section><p className="text-xs uppercase tracking-[.12em] text-[#716d64]">The issue</p><p className="mt-3 whitespace-pre-wrap text-lg leading-relaxed">{campaign.issue}</p></section><section className="mt-8"><p className="text-xs uppercase tracking-[.12em] text-[#716d64]">Requested action</p><p className="mt-3 text-lg leading-relaxed">We, the undersigned, call upon the Government of Canada to {campaign.request}</p></section>{campaign.note && <section className="campaign-card mt-8 p-5"><p className="text-xs uppercase tracking-[.12em] text-[#716d64]">Team note</p><p className="mt-2">{campaign.note}</p></section>}{campaign.petition && <section className="campaign-card mt-8 border-t-4 border-[#5d7661] p-5"><p className="text-xs uppercase tracking-[.12em] text-[#716d64]">Official petition</p><h2 className="mt-2 text-2xl">{campaign.petition.number}: {campaign.petition.title}</h2><p className="mt-2 text-sm">{campaign.petition.sponsorName ? `Sponsor: ${campaign.petition.sponsorName}` : "Official House of Commons petition"}</p><strong className="mt-4 block text-3xl">{campaign.petition.signatures.toLocaleString("en-CA")} <span className="text-sm font-normal">of 500 signatures needed</span></strong><a className="campaign-primary mt-4" href={campaign.petition.url} target="_blank" rel="noreferrer">Sign on ourcommons.ca ↗</a><p className="mt-3 text-xs text-[#716d64]">Your signature only counts after you confirm the email from the House of Commons.</p></section>}<CampaignJoin campaignId={campaign.id} joined={campaign.joined} live={campaign.status === "live"} closed={campaign.status === "closed"} petition={campaign.petition} /></article><aside className="campaign-card h-fit p-5"><p className="text-xs uppercase tracking-[.12em] text-[#716d64]">Support</p><strong className="mt-2 block text-4xl">{campaign.supporters.toLocaleString("en-CA")}</strong><p className="text-sm text-[#716d64]">of {campaign.target.toLocaleString("en-CA")} members</p><div className="mt-4 h-2 bg-[#d0c6b8]"><div className="h-full bg-[#5d7661]" style={{ width: `${Math.min(100, (campaign.supporters / campaign.target) * 100)}%` }} /></div><p className="mt-5 text-sm"><strong>{campaign.ridingCount}</strong> ridings represented</p><p className="mt-2 text-sm text-[#716d64]">Gathering members until {new Intl.DateTimeFormat("en-CA", { dateStyle: "medium" }).format(new Date(campaign.deadline))}.</p></aside></div></main>;
+  return (
+    <main className="mx-auto max-w-2xl">
+      <Link href="/campaigns" className="text-sm text-muted underline">← All campaigns</Link>
+      <p className="mt-5 text-sm text-muted">On: {campaign.storyTitle}</p>
+      <div className="mt-2 flex flex-wrap items-start justify-between gap-3">
+        <h1 className="text-2xl font-semibold">{campaign.title}</h1>
+        <span className="rounded-full bg-paper px-3 py-1 text-xs text-muted">{STAGE_LABELS[campaign.stage]}</span>
+      </div>
+
+      <section className="mt-6 rounded-xl border border-line bg-paper p-5">
+        <p className="text-sm font-medium">{campaign.issue}</p>
+        <p className="mt-4 text-sm">{fullRequest(campaign.request)}</p>
+        <div className="mt-5 border-t border-line pt-4 text-sm text-muted">
+          {count.format(campaign.memberCount)} of {count.format(campaign.target)} members · {campaign.ridingCount} ridings · gathering until {campaign.deadline}
+        </div>
+      </section>
+
+      {campaign.teamNote && (
+        <p className="mt-4 rounded-lg border border-line bg-paper p-4 text-sm">Update from the campaign team: {campaign.teamNote}</p>
+      )}
+
+      {campaign.isStarter && campaign.canEdit && (
+        <Link href={`/campaigns/${campaign.id}/edit`} className="mt-5 inline-block text-sm text-accent underline">
+          Edit campaign text
+        </Link>
+      )}
+      {campaign.isStarter && <p className="mt-4 text-sm text-muted">You started this campaign.</p>}
+      {campaign.joined && !campaign.isStarter && <p className="mt-5 text-sm font-medium">You&rsquo;re a member of this campaign.</p>}
+      {campaign.canJoin && <JoinCampaign id={campaign.id} />}
+      {!user && campaign.stage !== "live" && campaign.stage !== "closed" && (
+        <p className="mt-5 text-sm text-muted">
+          <Link className="text-accent underline" href={`/auth/login?returnTo=${encodeURIComponent(`/campaigns/${campaign.id}`)}`}>
+            Sign in
+          </Link>{" "}to join this campaign.
+        </p>
+      )}
+
+      {campaign.petition && (
+        <section className="mt-6 rounded-xl border border-line bg-paper p-5">
+          <h2 className="font-semibold">Official Parliament petition</h2>
+          <p className="mt-1 text-sm text-muted">{campaign.petition.number} · {campaign.petition.signatures} of {campaign.petition.signaturesNeeded} signatures · {campaign.petition.status}</p>
+          {campaign.petition.status === "open" && (
+            <a href={campaign.petition.url} target="_blank" rel="noreferrer" className="mt-3 inline-block text-sm text-accent underline">
+              Sign on the Parliament website
+            </a>
+          )}
+        </section>
+      )}
+    </main>
+  );
 }

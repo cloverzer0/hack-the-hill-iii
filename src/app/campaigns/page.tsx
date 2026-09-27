@@ -1,18 +1,55 @@
 import Link from "next/link";
-import { requireUser } from "@/lib/auth";
-import { listCampaigns } from "@/lib/campaigns";
-import { getStory } from "@/lib/stories";
+import { connection } from "next/server";
+import { getCurrentUser } from "@/lib/auth";
+import { listCampaigns } from "@/lib/campaigns/campaigns";
+import { STAGE_LABELS } from "@/lib/campaigns/stages";
 
-export const dynamic = "force-dynamic";
-
-const labels: Record<string, string> = { gathering: "Gathering members", in_review: "In review", mp_asked: "MP asked", mp_agreed: "MP agreed", live: "Live", closed: "Closed" };
+const count = new Intl.NumberFormat("en-CA");
 
 export default async function CampaignsPage() {
-  const user = await requireUser();
-  const campaigns = await listCampaigns(user.id);
-  const cards = await Promise.all(campaigns.map(async (campaign) => {
-    const story = await getStory(campaign.storyId);
-    return <Link key={campaign.id} href={`/campaigns/${campaign.id}`} className="campaign-card block p-5 hover:-translate-y-0.5"><div className="flex flex-wrap items-center justify-between gap-3"><span className="campaign-stage">{labels[campaign.status] ?? campaign.status}</span><span className="text-sm text-[#716d64]">{campaign.supporters} members</span></div><h2 className="mt-3 text-2xl">{campaign.title}</h2><p className="mt-1 text-sm text-[#716d64]">{story?.title ?? campaign.storyId} · started by {campaign.starter.name}{campaign.joined ? " · You joined" : ""}</p></Link>;
-  }));
-  return <main><header className="flex flex-wrap items-end justify-between gap-4 border-b border-[#716d64]/40 pb-7"><div><p className="text-xs uppercase tracking-[.12em] text-[#716d64]">Civic action</p><h1 className="mt-2 text-5xl">Campaigns.</h1><p className="mt-3 max-w-xl text-[#716d64]">Questions about public spending become stronger when they bring people and ridings together.</p></div><Link href="/spending" className="underline">Back to spending</Link></header><div className="mt-8 space-y-3">{cards}</div>{campaigns.length === 0 && <div className="campaign-card mt-8 p-8"><h2 className="text-2xl">No campaigns yet.</h2><p className="mt-2 text-[#716d64]">Start the first one from a spending story.</p></div>}</main>;
+  // The campaign list is backed by Postgres and must be loaded for a real request, not during the build.
+  await connection();
+  const user = await getCurrentUser();
+  const campaigns = await listCampaigns({ viewerId: user?.id ?? null });
+
+  return (
+    <main>
+      <div className="flex flex-wrap items-end justify-between gap-4">
+        <div>
+          <h1 className="text-2xl font-semibold">Campaigns</h1>
+          <p className="mt-1 text-sm text-muted">Join a campaign connected to a spending story, or start one of your own.</p>
+        </div>
+        <Link href="/campaigns/new" className="rounded-lg bg-ink px-4 py-2 text-sm font-medium text-paper">
+          Start a campaign
+        </Link>
+      </div>
+
+      {campaigns.length === 0 ? (
+        <section className="mt-8 rounded-xl border border-line bg-paper p-6">
+          <h2 className="font-semibold">No campaigns yet</h2>
+          <p className="mt-1 text-sm text-muted">Choose a spending story and start the first campaign.</p>
+          <Link href="/campaigns/new" className="mt-4 inline-block text-sm text-accent underline">
+            Choose a story
+          </Link>
+        </section>
+      ) : (
+        <div className="mt-6 grid gap-3 sm:grid-cols-2">
+          {campaigns.map((campaign) => (
+            <Link
+              key={campaign.id}
+              href={`/campaigns/${campaign.id}`}
+              className="rounded-xl border border-line bg-paper p-5 transition-colors hover:border-accent"
+            >
+              <p className="text-xs text-muted">{campaign.storyTitle}</p>
+              <h2 className="mt-2 font-semibold">{campaign.title}</h2>
+              <p className="mt-3 text-sm text-muted">
+                {count.format(campaign.memberCount)} of {count.format(campaign.target)} members · {STAGE_LABELS[campaign.stage]}
+                {campaign.joined ? " · Joined" : ""}
+              </p>
+            </Link>
+          ))}
+        </div>
+      )}
+    </main>
+  );
 }

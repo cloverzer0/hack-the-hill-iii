@@ -1,10 +1,69 @@
 import Link from "next/link";
-import { getStory } from "@/lib/stories";
-import { CampaignForm } from "./CampaignForm";
+import { redirect } from "next/navigation";
+import { getCurrentUser } from "@/lib/auth";
+import { listCampaigns } from "@/lib/campaigns/campaigns";
+import { getStory, listStories } from "@/lib/stories";
+import { StartCampaign } from "../_components/StartCampaign";
 
-export default async function NewCampaignPage({ searchParams }: { searchParams: Promise<{ story?: string }> }) {
-  const storyId = (await searchParams).story;
-  const story = storyId ? await getStory(storyId) : null;
-  if (!story) return <main><h1 className="text-4xl">We couldn&apos;t find that story.</h1><Link className="mt-4 inline-block underline" href="/spending">Back to spending</Link></main>;
-  return <main className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_320px]"><CampaignForm storyId={story.id} storyTitle={story.title} /><aside className="campaign-aside h-fit p-5 lg:sticky lg:top-8"><h2 className="text-xl">The path from question to action</h2><ol className="mt-5 space-y-4 text-sm"><li><strong>Gather members</strong><p className="text-[#716d64]">People join and bring their riding.</p></li><li><strong>Our team reviews</strong><p className="text-[#716d64]">We check the facts and the wording.</p></li><li><strong>Ask an MP</strong><p className="text-[#716d64]">A sponsor authorizes the official petition.</p></li><li><strong>Sign on ourcommons.ca</strong><p className="text-[#716d64]">The official petition is where signatures count.</p></li></ol></aside></main>;
+type Props = { searchParams: Promise<{ story?: string | string[] }> };
+
+export default async function NewCampaignPage({ searchParams }: Props) {
+  const { story: storyId } = await searchParams;
+  const story = typeof storyId === "string" ? await getStory(storyId) : null;
+
+  if (typeof storyId === "string" && !story) {
+    return (
+      <main>
+        <h1 className="text-xl font-semibold">We couldn&rsquo;t find that spending story</h1>
+        <Link href="/campaigns/new" className="mt-4 inline-block text-sm text-accent underline">
+          Choose another story
+        </Link>
+      </main>
+    );
+  }
+
+  if (!story) {
+    const stories = await listStories();
+    return (
+      <main>
+        <Link href="/campaigns" className="text-sm text-muted underline">← Campaigns</Link>
+        <h1 className="mt-5 text-2xl font-semibold">Start a campaign</h1>
+        <p className="mt-1 text-sm text-muted">Choose a spending story to connect your campaign to.</p>
+        <div className="mt-6 grid gap-3 sm:grid-cols-2">
+          {stories.map((item) => (
+            <article key={item.id} className="rounded-xl border border-line bg-paper p-4">
+              <p className="text-xs text-muted">{item.department} · {item.date}</p>
+              <h2 className="mt-2 text-sm font-semibold">{item.title}</h2>
+              <p className="mt-2 line-clamp-3 text-sm text-muted">{item.summary}</p>
+              <Link
+                href={`/campaigns/new?story=${encodeURIComponent(item.id)}`}
+                className="mt-4 inline-block text-sm font-medium text-accent underline"
+              >
+                Start a campaign on this story
+              </Link>
+            </article>
+          ))}
+        </div>
+      </main>
+    );
+  }
+
+  // One campaign per person per story: if they already started one here, open it instead of an empty form.
+  const user = await getCurrentUser();
+  if (!user) {
+    const returnTo = `/campaigns/new?story=${encodeURIComponent(story.id)}`;
+    return (
+      <main>
+        <h1 className="text-xl font-semibold">Sign in to start a campaign</h1>
+        <p className="mt-2 text-sm text-muted">Your campaign will be published on this spending story.</p>
+        <Link href={`/auth/login?returnTo=${encodeURIComponent(returnTo)}`} className="mt-4 inline-block text-sm text-accent underline">
+          Sign in and continue
+        </Link>
+      </main>
+    );
+  }
+  const mine = (await listCampaigns({ storyId: story.id, viewerId: user.id })).find((campaign) => campaign.isStarter);
+  if (mine) redirect(`/campaigns/${mine.id}/live`);
+
+  return <StartCampaign story={{ id: story.id, title: story.title }} />;
 }

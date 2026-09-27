@@ -10,6 +10,7 @@
 .tax-app .brand { display: flex; align-items: center; gap: 12px; border: 0; padding: 0; color: var(--wm-ink); background: transparent; font: 700 12px 'DM Sans', sans-serif; letter-spacing: .12em; text-transform: uppercase; }
 .tax-app .brand-mark { width: 30px; height: 30px; display: grid; place-items: center; border: 1px solid var(--wm-ink); border-radius: 50%; font: 11px 'DM Mono', monospace; }
 .tax-app .header-meta { color: var(--wm-muted); font: 10px 'DM Mono', monospace; letter-spacing: .04em; }
+.tax-app .campaigns-nav { color: var(--wm-ink); font: 600 10px 'DM Mono', monospace; letter-spacing: .04em; text-decoration: underline; text-underline-offset: 3px; }
 .tax-app main { flex: 1; }
 
 /* Landing */
