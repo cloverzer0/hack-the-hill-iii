@@ -20,7 +20,7 @@ export function useTaxInputs(): TaxInputsContextValue {
   return value;
 }
 
-export function TaxTrackerShell({ children, accountMenu }: { children: ReactNode; accountMenu?: ReactNode }) {
+export function TaxTrackerShell({ children, accountMenu, childrenAreMain = false }: { children: ReactNode; accountMenu?: ReactNode; childrenAreMain?: boolean }) {
   const inputs = useSyncExternalStore(subscribeToUserInputs, getUserInputsSnapshot, getUserInputsServerSnapshot);
   const pathname = usePathname();
   const router = useRouter();
@@ -56,7 +56,7 @@ export function TaxTrackerShell({ children, accountMenu }: { children: ReactNode
               </Link>
             ))}
           </nav>
-          <main>{children}</main>
+          {childrenAreMain ? children : <main>{children}</main>}
           <footer className="site-footer"><span>Where Does My Tax Go?</span><span>Estimate · fiscal year 2024–25</span></footer>
         </div>
       </div>

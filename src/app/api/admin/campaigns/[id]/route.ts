@@ -9,8 +9,24 @@ import { jsonError, readJson } from "@/lib/http";
 
 type Context = { params: Promise<{ id: string }> };
 
+const mpSchema = z.object({
+  name: z.string().min(1).max(200),
+  riding: z.string().min(1).max(200),
+  party: z.string().max(100).nullable(),
+  email: z.string().email().nullable(),
+  photoUrl: z.string().url().nullable(),
+  profileUrl: z.string().url().nullable(),
+  hillPhone: z.string().max(100).nullable(),
+  ridingPhone: z.string().max(100).nullable(),
+});
+
 const bodySchema = z
-  .object({ stage: z.enum(CAMPAIGN_STAGES).optional(), teamNote: z.string().max(2000).nullable().optional() })
+  .object({
+    stage: z.enum(CAMPAIGN_STAGES).optional(),
+    teamNote: z.string().max(2000).nullable().optional(),
+    sponsorMp: mpSchema.nullable().optional(),
+    sponsorRequestedAt: z.coerce.date().nullable().optional(),
+  })
   .refine((body) => body.stage !== undefined || body.teamNote !== undefined);
 
 /**

@@ -102,9 +102,14 @@ export function SpendingStoryDetailScreen({ storyId }: { storyId: string }) {
 }
 
 function StoryImage({ story }: { story: Story }) {
-  const [failed, setFailed] = useState(false);
+  const imageKey = `${story.id}:${story.image_url ?? ""}`;
+  const [failedKey, setFailedKey] = useState<string | null>(null);
+  const failed = failedKey === imageKey;
   if (story.image_url && !failed) {
-    return <div className="story-image story-image-photo"><Image src={story.image_url} alt={`Illustration for ${story.title}`} fill sizes="(max-width: 700px) 100vw, 900px" className="story-image-img" onError={() => setFailed(true)} /></div>;
+    const imageDescription = story.image_credit === "Editorial illustration"
+      ? `Editorial illustration for ${story.title}`
+      : `${story.image_credit ?? "Source"} image for ${story.title}`;
+    return <div className="story-image story-image-photo"><Image src={story.image_url} alt={imageDescription} fill sizes="(max-width: 700px) 100vw, 900px" className="story-image-img" onError={() => setFailedKey(imageKey)} /></div>;
   }
   return <div className="story-image story-image-fallback" role="img" aria-label={`${typeLabel(story)} illustration`}><span>{story.source_type === "news" ? "NEWS" : "RECORD"}</span><small>{story.dept_code}</small></div>;
 }

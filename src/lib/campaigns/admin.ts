@@ -1,8 +1,9 @@
-import { and, asc, desc, eq, inArray, ne, sql } from "drizzle-orm";
+import { and, asc, desc, eq, ne, sql } from "drizzle-orm";
 import { db } from "@/db";
 import { campaignMembers, campaigns, petitions, users } from "@/db/schema";
-import { normalizePetitionNumber, PetitionFetchError } from "@/lib/petitions/ourcommons";
+import { normalizePetitionNumber, PetitionFetchError, petitionUrl } from "@/lib/petitions/ourcommons";
 import { syncPetition } from "@/lib/petitions/petitions";
+import type { Mp } from "@/lib/mp/types";
 import type { CampaignStage } from "./campaigns";
 import { CampaignError } from "./errors";
 
@@ -33,7 +34,6 @@ export type CampaignMemberExport = {
 };
 
 const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
-const BEFORE_AGREED: CampaignStage[] = ["gathering", "in_review", "mp_asked"];
 
 /**
  * Purpose:
@@ -94,17 +94,20 @@ export async function listAdminCampaigns(options: { stage?: CampaignStage; sort?
  * Returns:
  *	Promise<void>; throws CampaignError not_found (404), or needs_petition (409) when setting "live" with no petition attached
  */
-export async function updateCampaignByAdmin(id: string, change: { stage?: CampaignStage; teamNote?: string | null }): Promise<void> {
+export async function updateCampaignByAdmin(id: string, change: { stage?: CampaignStage; teamNote?: string | null; sponsorMp?: Mp | null; sponsorRequestedAt?: Date | null }): Promise<void> {
   if (!UUID.test(id)) throw new CampaignError("not_found", 404);
   if (change.stage === "live") {
     const [petition] = await db.select({ number: petitions.number }).from(petitions).where(eq(petitions.campaignId, id));
     if (!petition) throw new CampaignError("needs_petition", 409);
   }
+  const requestedAt = change.sponsorRequestedAt ?? (change.stage === "mp_asked" && change.sponsorMp ? new Date() : undefined);
   const [updated] = await db
     .update(campaigns)
     .set({
       ...(change.stage ? { stage: change.stage } : {}),
       ...(change.teamNote !== undefined ? { teamNote: change.teamNote?.trim() || null } : {}),
+      ...(change.sponsorMp !== undefined ? { sponsorMp: change.sponsorMp } : {}),
+      ...(requestedAt !== undefined ? { sponsorRequestedAt: requestedAt } : {}),
       updatedAt: new Date(),
     })
     .where(eq(campaigns.id, id))
@@ -153,12 +156,29 @@ export async function listCampaignMembers(id: string): Promise<CampaignMemberExp
  *	Promise<object>: number and sync ("synced", "not_found" if not on ourcommons.ca yet, or "failed" if the site was unreachable);
  *	throws CampaignError not_found (404), invalid_petition_number (400) or petition_taken (409)
  */
-export async function attachPetition(id: string, input: { number: string; title: string }) {
+function officialPetitionUrl(value: string | undefined, number: string): string {
+  if (!value?.trim()) return petitionUrl(number);
+  let parsed: URL;
+  try {
+    parsed = new URL(value.trim());
+  } catch {
+    throw new CampaignError("invalid_petition_url", 400);
+  }
+  const host = parsed.hostname.toLowerCase();
+  if (parsed.protocol !== "https:" || !(host === "ourcommons.ca" || host.endsWith(".ourcommons.ca"))) {
+    throw new CampaignError("invalid_petition_url", 400);
+  }
+  return parsed.toString();
+}
+
+export async function attachPetition(id: string, input: { number: string; title: string; url?: string }) {
   const number = normalizePetitionNumber(input.number);
   if (!number) throw new CampaignError("invalid_petition_number", 400);
   if (!UUID.test(id)) throw new CampaignError("not_found", 404);
   const [campaign] = await db.select({ id: campaigns.id }).from(campaigns).where(eq(campaigns.id, id));
   if (!campaign) throw new CampaignError("not_found", 404);
+  const url = officialPetitionUrl(input.url, number);
+  const [current] = await db.select({ stage: campaigns.stage }).from(campaigns).where(eq(campaigns.id, id));
 
   const [taken] = await db
     .select({ campaignId: petitions.campaignId })
@@ -169,11 +189,11 @@ export async function attachPetition(id: string, input: { number: string; title:
   await db.transaction(async (tx) => {
     // One petition per campaign: replacing the number replaces the row.
     await tx.delete(petitions).where(eq(petitions.campaignId, id));
-    await tx.insert(petitions).values({ number, campaignId: id, title: input.title.trim() });
+    await tx.insert(petitions).values({ number, campaignId: id, title: input.title.trim(), url, stageBeforeLive: current?.stage === "live" ? "mp_agreed" : current?.stage });
     await tx
       .update(campaigns)
-      .set({ stage: "mp_agreed", updatedAt: new Date() })
-      .where(and(eq(campaigns.id, id), inArray(campaigns.stage, BEFORE_AGREED)));
+      .set({ stage: "live", updatedAt: new Date() })
+      .where(eq(campaigns.id, id));
   });
 
   let sync: "synced" | "not_found" | "failed";
@@ -184,4 +204,13 @@ export async function attachPetition(id: string, input: { number: string; title:
     sync = "failed";
   }
   return { number, sync };
+}
+
+export async function removePetition(number: string): Promise<void> {
+  const [petition] = await db.select({ campaignId: petitions.campaignId, stageBeforeLive: petitions.stageBeforeLive }).from(petitions).where(eq(petitions.number, number));
+  if (!petition) throw new CampaignError("not_found", 404);
+  await db.transaction(async (tx) => {
+    await tx.delete(petitions).where(eq(petitions.number, number));
+    await tx.update(campaigns).set({ stage: petition.stageBeforeLive ?? "mp_agreed", updatedAt: new Date() }).where(and(eq(campaigns.id, petition.campaignId), eq(campaigns.stage, "live")));
+  });
 }

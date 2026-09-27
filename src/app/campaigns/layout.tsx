@@ -7,7 +7,7 @@ export const metadata: Metadata = { title: "Campaigns · wheredoesmytaxgo" };
 
 export default function CampaignLayout({ children }: { children: React.ReactNode }) {
   return (
-    <TaxTrackerShell accountMenu={<AccountMenu />}>
+    <TaxTrackerShell accountMenu={<AccountMenu />} childrenAreMain>
       <div className="campaign-route-shell">{children}</div>
     </TaxTrackerShell>
   );

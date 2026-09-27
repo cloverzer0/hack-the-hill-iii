@@ -68,7 +68,6 @@ export function SettingsMenu({ name, email, canLogOut, isAdmin = false }: Props)
           </>
         )}
         <div className="my-3 border-t border-line" />
-        {isAdmin && <a href="/admin" className="-mx-2 block rounded px-2 py-1.5 hover:bg-canvas">Admin</a>}
         {canLogOut ? (
           // A plain link, not next/link: prefetching this URL would log the user out.
           <a href="/auth/logout" onClick={clearUserInputs} className="block rounded px-2 py-1.5 -mx-2 hover:bg-canvas">

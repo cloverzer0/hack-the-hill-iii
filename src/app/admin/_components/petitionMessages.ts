@@ -28,6 +28,8 @@ export function attachErrorFor(code: string): string {
       return "That doesn't look like a petition number (e.g. e-7203).";
     case "petition_taken":
       return "That petition is already attached to another campaign.";
+    case "invalid_petition_url":
+      return "Use the official https://ourcommons.ca petition URL.";
     case "invalid_body":
       return "Enter the petition number and its title.";
     default:

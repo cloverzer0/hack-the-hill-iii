@@ -1,6 +1,12 @@
+import io
+import tempfile
 import unittest
+from pathlib import Path
+from unittest.mock import patch
 
-from pipeline.image_sources import MetadataParser, _image_url, safe_story_key
+from PIL import Image
+
+from pipeline.image_sources import MetadataParser, _download_image, _image_url, safe_story_key
 
 
 class ImageSourceTests(unittest.TestCase):
@@ -16,6 +22,27 @@ class ImageSourceTests(unittest.TestCase):
 
     def test_safe_story_key_is_stable_and_path_safe(self):
         self.assertEqual(safe_story_key("News/ABC 123"), "news-abc-123")
+
+    def test_rejects_tiny_preview_images(self):
+        image = Image.new("RGB", (100, 100), "red")
+        data = io.BytesIO()
+        image.save(data, format="PNG")
+
+        class Headers:
+            def get_content_type(self):
+                return "image/png"
+
+        class Response(io.BytesIO):
+            headers = Headers()
+
+            def __enter__(self):
+                return self
+
+            def __exit__(self, *_):
+                self.close()
+
+        with tempfile.TemporaryDirectory() as directory, patch("urllib.request.urlopen", return_value=Response(data.getvalue())):
+            self.assertFalse(_download_image("https://example.com/tiny.png", Path(directory) / "tiny.webp"))
 
 
 if __name__ == "__main__":

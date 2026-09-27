@@ -5,6 +5,7 @@ import type { CurrentUser } from "@/lib/auth";
 import { toPetitionCard, type PetitionCard } from "@/lib/petitions/petitions";
 import { getStory, type Story } from "@/lib/stories";
 import { ensureUser } from "@/lib/users";
+import type { Mp } from "@/lib/mp/types";
 import { CampaignError } from "./errors";
 import { checkCampaignText, PETITION_OPENING, type CreateCampaignInput, type UpdateCampaignInput } from "./rules";
 
@@ -39,6 +40,8 @@ export type CampaignDetail = CampaignSummary & {
   canEdit: boolean;
   canJoin: boolean;
   canLeave: boolean;
+  sponsorMp: Mp | null;
+  sponsorRequestedAt: string | null;
 };
 
 export type StoryWithCampaigns = Story & { campaigns: CampaignSummary[] };
@@ -230,6 +233,8 @@ export async function getCampaign(id: string, viewerId: string | null = null): P
     canEdit: summary.isStarter && summary.memberCount <= 1 && c.stage === "gathering",
     canJoin: viewerId !== null && !summary.joined && JOINABLE.includes(c.stage),
     canLeave: summary.joined && !summary.isStarter,
+    sponsorMp: c.sponsorMp ?? null,
+    sponsorRequestedAt: c.sponsorRequestedAt?.toISOString() ?? null,
   };
 }
 

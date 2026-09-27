@@ -20,6 +20,7 @@ export function PetitionSection({ campaign }: Props) {
   const petition = campaign.petition;
   const [number, setNumber] = useState(petition?.number ?? "");
   const [title, setTitle] = useState(petition?.title ?? campaign.title);
+  const [url, setUrl] = useState(petition?.url ?? "");
   const [busy, setBusy] = useState(false);
   const [message, setMessage] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -57,6 +58,21 @@ export function PetitionSection({ campaign }: Props) {
     }
   }
 
+  async function remove() {
+    if (!petition) return;
+    setBusy(true);
+    setMessage(null);
+    setError(null);
+    try {
+      await apiFetch(`/api/petitions/${encodeURIComponent(petition.number)}`, { method: "DELETE" });
+      startRefresh(() => router.refresh());
+    } catch {
+      setError("Couldn't remove that petition. Try again.");
+    } finally {
+      setBusy(false);
+    }
+  }
+
   const sponsor = petition?.sponsorName
     ? `${petition.sponsorName}${petition.sponsorRiding ? ` (${petition.sponsorRiding})` : ""}`
     : "—";
@@ -86,7 +102,7 @@ export function PetitionSection({ campaign }: Props) {
         </p>
       )}
 
-      <form onSubmit={attach} className="mt-4 grid gap-3 sm:grid-cols-[10rem_minmax(0,1fr)_auto] sm:items-end">
+      <form onSubmit={attach} className="mt-4 grid gap-3 sm:grid-cols-[10rem_minmax(0,1fr)_minmax(0,1fr)_auto] sm:items-end">
         <label className="text-sm font-semibold">
           Number
           <input value={number} onChange={(event) => setNumber(event.target.value)} placeholder="e-7203" className={inputClass} />
@@ -94,6 +110,10 @@ export function PetitionSection({ campaign }: Props) {
         <label className="text-sm font-semibold">
           Title on ourcommons.ca
           <input value={title} onChange={(event) => setTitle(event.target.value)} className={inputClass} />
+        </label>
+        <label className="text-sm font-semibold">
+          Official URL
+          <input value={url} onChange={(event) => setUrl(event.target.value)} placeholder="https://www.ourcommons.ca/..." className={inputClass} />
         </label>
         <button
           type="submit"
@@ -111,6 +131,7 @@ export function PetitionSection({ campaign }: Props) {
       >
         Refresh from ourcommons.ca
       </button>
+      {petition && <button type="button" onClick={remove} disabled={busy || refreshing} className="ml-4 mt-3 text-sm text-danger underline disabled:opacity-60">Remove petition</button>}
       {message && <p className="mt-2 text-sm">{message}</p>}
       {error && (
         <p role="alert" className="mt-2 text-sm text-danger">

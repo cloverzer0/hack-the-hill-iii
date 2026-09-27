@@ -3,13 +3,16 @@
 import type { CampaignMemberExport } from "@/lib/campaigns/admin";
 import { membersCsv, ridingBreakdown } from "@/lib/campaigns/memberList";
 import { formatDate } from "../format";
+import { useState } from "react";
 
 type Props = { campaignId: string; members: CampaignMemberExport[] };
 
 const cell = "p-3 whitespace-nowrap";
 
 export function MembersSection({ campaignId, members }: Props) {
+  const [showAll, setShowAll] = useState(false);
   const ridings = ridingBreakdown(members);
+  const visibleMembers = showAll ? members : members.slice(0, 100);
 
   function download() {
     const url = URL.createObjectURL(new Blob(["\uFEFF", membersCsv(members)], { type: "text/csv;charset=utf-8" }));
@@ -29,6 +32,14 @@ export function MembersSection({ campaignId, members }: Props) {
         </button>
       </div>
       <p className="mt-2 text-sm text-muted">{ridings.map((row) => `${row.riding} ${row.count}`).join(" · ")}</p>
+      {members.length > visibleMembers.length && (
+        <p className="mt-2 flex flex-wrap items-center gap-3 text-sm text-muted">
+          Showing the first 100 members for a faster page.
+          <button type="button" onClick={() => setShowAll(true)} className="underline underline-offset-4">
+            Show all {members.length.toLocaleString("en-CA")} members
+          </button>
+        </p>
+      )}
       <div className="mt-3 max-h-[57.5rem] overflow-auto rounded-xl border border-line bg-paper">
         <table className="w-full text-left text-sm">
           <thead className="sticky top-0 z-10 border-b border-line bg-paper text-xs text-muted">
@@ -40,7 +51,7 @@ export function MembersSection({ campaignId, members }: Props) {
             </tr>
           </thead>
           <tbody>
-            {members.map((member) => (
+            {visibleMembers.map((member) => (
               <tr key={`${member.email}-${member.joinedAt}`} className="border-b border-line last:border-0">
                 <td className={cell}>
                   {member.name ?? "—"}

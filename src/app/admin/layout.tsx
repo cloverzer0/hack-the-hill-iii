@@ -9,7 +9,7 @@ export const metadata: Metadata = { title: "Admin · wheredoesmytaxgo" };
 export default async function AdminLayout({ children }: { children: React.ReactNode }) {
   await requireAdminPage();
   return (
-    <TaxTrackerShell accountMenu={<AccountMenu />}>
+    <TaxTrackerShell accountMenu={<AccountMenu />} childrenAreMain>
       <div className="admin-route-shell">
         <div className="admin-route-kicker">
           <span>TEAM CONSOLE</span>
