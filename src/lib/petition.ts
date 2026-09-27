@@ -12,15 +12,16 @@ export const LIMITS = {
 
 const requiredText = (max: number) => z.string().trim().min(1).max(max);
 
+// Generous caps: real Represent values are far shorter, but the API shouldn't store unbounded text.
 export const mpSchema = z.object({
-  name: z.string().min(1),
-  riding: z.string().min(1),
-  party: z.string().nullable(),
-  email: z.string().nullable(),
-  photoUrl: z.string().nullable(),
-  profileUrl: z.string().nullable(),
-  hillPhone: z.string().nullable(),
-  ridingPhone: z.string().nullable(),
+  name: z.string().min(1).max(200),
+  riding: z.string().min(1).max(200),
+  party: z.string().max(200).nullable(),
+  email: z.string().max(254).nullable(),
+  photoUrl: z.string().max(2048).nullable(),
+  profileUrl: z.string().max(2048).nullable(),
+  hillPhone: z.string().max(50).nullable(),
+  ridingPhone: z.string().max(50).nullable(),
 });
 
 export const createDraftSchema = z.object({
