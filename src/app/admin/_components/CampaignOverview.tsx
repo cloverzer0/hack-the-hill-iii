@@ -33,8 +33,8 @@ export function CampaignOverview({ campaign, starter }: Props) {
         </div>
       </dl>
       <article className="mt-6 rounded-xl border border-line bg-paper p-5 text-sm">
-        <p className="whitespace-pre-wrap">{campaign.issue}</p>
-        <p className="mt-3 whitespace-pre-wrap">{`${campaign.opening} ${campaign.request}`}</p>
+        <p className="whitespace-pre-wrap wrap-anywhere">{campaign.issue}</p>
+        <p className="mt-3 whitespace-pre-wrap wrap-anywhere">{`${campaign.opening} ${campaign.request}`}</p>
       </article>
     </section>
   );

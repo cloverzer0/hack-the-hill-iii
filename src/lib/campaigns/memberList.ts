@@ -21,8 +21,8 @@ export function ridingBreakdown(members: Pick<CampaignMemberExport, "riding">[])
 
 function csvField(value: string | null): string {
   let text = value ?? "";
-  // Names are typed by users; spreadsheet apps run cells starting with = + - @ as formulas.
-  if (/^[=+\-@]/.test(text)) text = `'${text}`;
+  // Names are typed by users; spreadsheet apps run cells starting with tabs, carriage returns, = + - @ as formulas.
+  if (/^[\t\r=+\-@]/.test(text)) text = `'${text}`;
   return /[",\r\n]/.test(text) ? `"${text.replace(/"/g, '""')}"` : text;
 }
 

@@ -49,9 +49,16 @@ describe("membersCsv", () => {
   });
 
   it("stops spreadsheet apps from running a name as a formula", () => {
-    const csv = membersCsv([member({ name: "=HYPERLINK(1)" }), member({ name: "@SUM(A1), x" })]);
+    const csv = membersCsv([
+      member({ name: "=HYPERLINK(1)" }),
+      member({ name: "@SUM(A1), x" }),
+      member({ name: "\t=HYPERLINK(1)" }),
+      member({ name: "\r=HYPERLINK(1)" }),
+    ]);
     const lines = csv.split("\r\n");
     expect(lines[1].startsWith("'=HYPERLINK(1),")).toBe(true);
     expect(lines[2].startsWith(`"'@SUM(A1), x",`)).toBe(true);
+    expect(lines[3].startsWith("'\t=HYPERLINK(1),")).toBe(true);
+    expect(csv).toContain("\"'\r=HYPERLINK(1)\",alice@example.com");
   });
 });

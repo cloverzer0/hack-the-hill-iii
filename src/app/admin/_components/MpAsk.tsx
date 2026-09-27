@@ -80,7 +80,7 @@ export function MpAsk({ campaign, members, teamGmail }: Props) {
           {email && (
             <div className="rounded-xl border border-line bg-paper p-4 text-sm">
               <p className="font-semibold">{email.subject}</p>
-              <p className="mt-3 whitespace-pre-wrap">{email.body}</p>
+              <p className="mt-3 whitespace-pre-wrap wrap-anywhere">{email.body}</p>
             </div>
           )}
           {!mp.email && (

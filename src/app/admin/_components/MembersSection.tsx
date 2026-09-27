@@ -12,12 +12,12 @@ export function MembersSection({ campaignId, members }: Props) {
   const ridings = ridingBreakdown(members);
 
   function download() {
-    const url = URL.createObjectURL(new Blob([membersCsv(members)], { type: "text/csv;charset=utf-8" }));
+    const url = URL.createObjectURL(new Blob(["\uFEFF", membersCsv(members)], { type: "text/csv;charset=utf-8" }));
     const link = document.createElement("a");
     link.href = url;
     link.download = `campaign-${campaignId.slice(0, 8)}-members.csv`;
     link.click();
-    URL.revokeObjectURL(url);
+    setTimeout(() => URL.revokeObjectURL(url), 0);
   }
 
   return (

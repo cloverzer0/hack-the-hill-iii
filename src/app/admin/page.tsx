@@ -20,7 +20,7 @@ export default async function AdminPage({ searchParams }: Props) {
       <h1 className="text-2xl font-semibold">Campaigns</h1>
       <AdminListFilters current={options} />
       {rows.length === 0 ? (
-        <p className="mt-6 text-sm text-muted">No campaigns yet.</p>
+        <p className="mt-6 text-sm text-muted">{options.stage ? "No campaigns at this stage." : "No campaigns yet."}</p>
       ) : (
         <div className="mt-6 overflow-x-auto rounded-xl border border-line bg-paper">
           <table className="w-full text-left text-sm">

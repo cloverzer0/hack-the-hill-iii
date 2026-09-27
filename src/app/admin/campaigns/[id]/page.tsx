@@ -18,14 +18,6 @@ export default async function AdminCampaignPage({ params }: Props) {
   const campaign = await getCampaign(id, admin.id);
   if (!campaign) notFound();
   const members = await listCampaignMembers(id);
-  // Sections that copy saved values into form state remount whenever the saved campaign changes.
-  const version = [
-    campaign.updatedAt,
-    campaign.stage,
-    campaign.teamNote,
-    campaign.petition?.number,
-    campaign.petition?.syncedAt,
-  ].join("|");
   const teamGmail = process.env.TEAM_GMAIL?.trim() || null;
 
   return (
@@ -34,7 +26,8 @@ export default async function AdminCampaignPage({ params }: Props) {
         ← All campaigns
       </Link>
       <CampaignOverview campaign={campaign} starter={members.find((member) => member.isStarter)} />
-      <StageControls key={`stage-${version}`} campaign={campaign} />
+      {/* Only a saved team-note change remounts this form; unrelated updates preserve in-progress edits. */}
+      <StageControls key={campaign.teamNote ?? ""} campaign={campaign} />
       <MembersSection campaignId={campaign.id} members={members} />
       <MpAsk campaign={campaign} members={members} teamGmail={teamGmail} />
       <PetitionSection campaign={campaign} />
