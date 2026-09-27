@@ -12,7 +12,7 @@ export default async function LivePage({ params }: Props) {
 
   return (
     <main className="mx-auto max-w-2xl">
-      <StepHeader step={3} backHref="/dev/petition" />
+      <StepHeader step={3} backHref={`/campaigns/${campaign.id}`} />
       <h1 className="text-2xl font-semibold">Your campaign is live</h1>
       <p className="mt-1 text-sm text-muted">
         On: <span className="font-medium text-ink">{campaign.storyTitle}</span>
@@ -25,7 +25,7 @@ export default async function LivePage({ params }: Props) {
           <span className="text-muted"> · until {campaign.deadline}</span>
         </p>
         {campaign.canEdit && (
-          <Link href={`/petition/${campaign.id}`} className="mt-3 inline-block text-sm text-accent underline">
+          <Link href={`/campaigns/${campaign.id}/edit`} className="mt-3 inline-block text-sm text-accent underline">
             Edit the text (until someone else joins)
           </Link>
         )}
@@ -39,8 +39,8 @@ export default async function LivePage({ params }: Props) {
         <li>Every member gets an email with the link. Signing there is what counts officially.</li>
       </ol>
 
-      <Link href="/dev/petition" className="mt-8 block text-center text-sm text-accent underline">
-        Back to spending
+      <Link href={`/campaigns/${campaign.id}`} className="mt-8 block text-center text-sm text-accent underline">
+        View your campaign
       </Link>
     </main>
   );

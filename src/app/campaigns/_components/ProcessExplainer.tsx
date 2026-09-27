@@ -1,6 +1,6 @@
 const STEPS = [
-  { title: "Write it", detail: "The issue and what you're asking for (you are here)." },
-  { title: "Publish to the app", detail: "It goes live on the story and others can join." },
+  { title: "Write the campaign", detail: "Describe the issue and requested action (you are here)." },
+  { title: "Publish in the app", detail: "The campaign goes live on the story and others can join." },
   { title: "1,000 members", detail: "Twice the 500 signatures an e-petition needs, since about half sign officially." },
   { title: "MP sponsor", detail: "Our team asks an MP to authorize it. Without one it can't go on ourcommons.ca." },
   { title: "Sign on ourcommons.ca", detail: "Our team opens the official e-petition and emails every member the link." },
@@ -10,7 +10,7 @@ const STEPS = [
 export function ProcessExplainer() {
   return (
     <aside className="rounded-xl border border-line bg-paper p-5 lg:sticky lg:top-8">
-      <h2 className="text-sm font-semibold">How a House of Commons e-petition works</h2>
+      <h2 className="text-sm font-semibold">From app campaign to official e-petition</h2>
       <ol className="mt-4 space-y-4">
         {STEPS.map((step, i) => (
           <li key={step.title} className="flex gap-3">

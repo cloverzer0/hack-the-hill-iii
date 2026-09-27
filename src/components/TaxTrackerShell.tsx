@@ -1,6 +1,7 @@
 "use client";
 
 import { createContext, useContext, useMemo, useSyncExternalStore, type ReactNode } from "react";
+import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { getUserInputsServerSnapshot, getUserInputsSnapshot, setUserInputs, subscribeToUserInputs } from "@/shared/userInputs";
 import type { UserInputs } from "@/shared/types";
@@ -39,6 +40,7 @@ export function TaxTrackerShell({ children, accountMenu }: { children: ReactNode
             </button>
             <div className="flex items-center gap-4">
               <div className="header-meta max-sm:hidden">{headerLabel}</div>
+              <Link href="/campaigns" className="campaigns-nav">Campaigns</Link>
               {accountMenu}
             </div>
           </header>

@@ -13,7 +13,7 @@ export function StepHeader({ step, backHref, onBack }: Props) {
             {label}
           </button>
         ) : (
-          <Link href={backHref ?? "/dev/petition"} className="text-muted hover:text-ink">
+          <Link href={backHref ?? "/"} className="text-muted hover:text-ink">
             {label}
           </Link>
         )}

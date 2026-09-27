@@ -45,7 +45,7 @@ export async function listStories(filter: { department?: string } = {}): Promise
 
 /**
  * Purpose:
- *	Find one story by its id, for the detail page and the petition flow.
+ *	Find one story by its id, for the detail page and the campaign flow.
  *
  * Args:
  *	- id: the story id, e.g. "data-fin-buv11-2024" or "news-95682aaf5c9c"
