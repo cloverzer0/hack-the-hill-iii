@@ -30,9 +30,10 @@ export function CinematicTaxJourney({ data, children }: CinematicTaxJourneyProps
   return (
     <section className="cash-journey" aria-labelledby="cash-journey-title">
       <div className="cash-copy">
-        <p className="cash-eyebrow">Start with your income · 01</p>
-        <h1 id="cash-journey-title">Follow the note.</h1>
-        <p className="cash-lede">See how your tax contribution moves through the country—and into the services around you.</p>
+        <p className="cash-eyebrow">Your public money story · 01</p>
+        <h1 id="cash-journey-title">You worked for it.<br /><em>See where it goes.</em></h1>
+        <p className="cash-lede">Trace your federal tax from your paycheque to the programs and decisions it funds.</p>
+        <p className="cash-promise"><span aria-hidden="true">01</span> Start with your income. We will follow the money.</p>
         {children}
         <div className="cash-footnote">
           <span className="cash-footnote-line" aria-hidden="true" />
@@ -48,13 +49,14 @@ export function CinematicTaxJourney({ data, children }: CinematicTaxJourneyProps
 function CashStage({ data }: { data: TaxJourneyData }) {
   return (
     <div className="cash-stage flow-stage" aria-labelledby="flow-stage-title">
-      <p className="cash-stage-label" id="flow-stage-title">Follow the money</p>
+      <p className="cash-stage-label" id="flow-stage-title">Your money, in motion</p>
           <div className="money-flow-scene">
             <MoneyStack incomeLabel={data.incomeLabel} />
             <MoneyStream />
             <TaxStream federalTaxLabel={data.federalTaxLabel} />
             <FederalGovernmentEndpoint />
       </div>
+      <p className="flow-discovery">Then see which public programs claim the largest share.</p>
       <AccessibleMoneyFlowSummary federalTaxLabel={data.federalTaxLabel} provinceLabel={data.provinceLabel} />
     </div>
   )

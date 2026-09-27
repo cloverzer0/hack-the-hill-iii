@@ -36,14 +36,14 @@ export function MpSearch({ onPick }: Props) {
   const shown = searchable ? results : [];
 
   return (
-    <div className="rounded-xl border border-line bg-paper p-4">
+    <div className="petition-card rounded-xl border border-line bg-paper p-4">
       <label className="block text-sm font-semibold">
         Search any MP by name or riding
         <input
           autoFocus
           value={query}
           onChange={(event) => setQuery(event.target.value)}
-          className="mt-2 w-full rounded-lg border border-line px-3 py-2 text-sm font-normal"
+          className="petition-input mt-2 w-full rounded-lg border border-line px-3 py-2 text-sm font-normal"
           placeholder="e.g. Naqvi or Ottawa Centre"
         />
       </label>

@@ -1,6 +1,6 @@
 const STEPS = [
   { title: "Write the campaign", detail: "Describe the issue and requested action (you are here)." },
-  { title: "Publish in the app", detail: "The campaign goes live on the story and others can join." },
+  { title: "Launch the campaign", detail: "The campaign goes live on the story and others can join." },
   { title: "1,000 members", detail: "Twice the 500 signatures an e-petition needs, since about half sign officially." },
   { title: "MP sponsor", detail: "Our team asks an MP to authorize it. Without one it can't go on ourcommons.ca." },
   { title: "Sign on ourcommons.ca", detail: "Our team opens the official e-petition and emails every member the link." },

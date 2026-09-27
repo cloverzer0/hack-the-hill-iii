@@ -47,6 +47,8 @@ const campaign = (petitionCard: PetitionCard | null): CampaignDetail => ({
   canEdit: false,
   canJoin: false,
   canLeave: false,
+  sponsorMp: null,
+  sponsorRequestedAt: null,
 });
 
 const render = (campaignDetail: CampaignDetail) => renderToStaticMarkup(createElement(SignNow, {

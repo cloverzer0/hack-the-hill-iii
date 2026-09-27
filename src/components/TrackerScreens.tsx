@@ -18,7 +18,7 @@ export function ReceiptScreen({ inputs, navigate }: { inputs: UserInputs; naviga
   return (
     <section className="tracker-page receipt-page" aria-labelledby="receipt-title" aria-busy={state.status === 'loading'}>
       <div className="tracker-heading">
-        <div><p className="screen-kicker">02 · YOUR FEDERAL RECEIPT</p><h1 id="receipt-title">Here is where<br />your money goes.</h1></div>
+        <div><p className="screen-kicker">02 · YOUR FEDERAL RECEIPT</p><h1 id="receipt-title">Your tax,<br />item by item.</h1></div>
         <button className="text-action" onClick={() => navigate('/')}>Edit inputs ↗</button>
       </div>
       {state.status === 'loading'
@@ -41,7 +41,7 @@ function Receipt({ breakdown, inputs, navigate }: { breakdown: Breakdown; inputs
   return (
     <section className="tracker-page receipt-page" aria-labelledby="receipt-title">
       <div className="tracker-heading">
-        <div><p className="screen-kicker">02 · YOUR FEDERAL RECEIPT</p><h1 id="receipt-title">Here is where<br />your money goes.</h1></div>
+        <div><p className="screen-kicker">02 · YOUR FEDERAL RECEIPT</p><h1 id="receipt-title">Your tax,<br />item by item.</h1></div>
         <button className="text-action" onClick={() => navigate('/')}>Edit inputs ↗</button>
       </div>
       <div className="receipt-layout">
@@ -52,16 +52,16 @@ function Receipt({ breakdown, inputs, navigate }: { breakdown: Breakdown; inputs
           <strong className="receipt-total">{money.format(base)}</strong>
           <p className="receipt-subtitle">{perHundred ? `No federal income tax on ${money.format(inputs.income)} income · ${inputs.province}` : `Based on ${money.format(inputs.income)} income · ${inputs.province}`}</p>
           <div className="receipt-rule receipt-rule-dashed" />
-          <div className="receipt-lines">{rows.map((row, index) => <div className="receipt-line" key={row.name} style={{ '--line-delay': `${index * 60}ms` } as React.CSSProperties}><span title={row.official_name || undefined}>{row.name}</span><strong>{money.format(row.personal)}</strong><span aria-hidden="true">·</span></div>)}</div>
+          <div className="receipt-lines">{rows.map((row, index) => <div className={`receipt-line ${index < 3 ? 'receipt-line-featured' : ''}`} key={row.name} style={{ '--line-delay': `${index * 60}ms` } as React.CSSProperties}><span title={row.official_name || undefined}>{row.name}{index === 0 && <small>largest slice</small>}</span><strong>{money.format(row.personal)}</strong><span className="receipt-line-static" aria-label={`${row.name} is informational only`}>—</span></div>)}</div>
           <div className="receipt-rule" />
           <p className="receipt-method">Estimate. Your federal income tax, split in the same proportions as total federal spending.</p>
           <div className="receipt-footer"><span>DATA: FISCAL YEAR {breakdown.fiscal_year.replace('-', '–')}</span><a href={breakdown.source.url} target="_blank" rel="noreferrer">OFFICIAL SOURCE ↗</a></div>
         </article>
         <aside className="receipt-insight">
-          <p className="section-label">A closer look</p>
+          <p className="section-label">The part that becomes contracts</p>
           <div className="receipt-stat"><strong>{topPercent.toFixed(1)}%</strong><span>goes to just {programs.length} of the {breakdown.program_count.toLocaleString('en-CA')} federal programs.</span></div>
           <div className="receipt-bars">{programs.slice(0, 6).map((row) => <div key={row.name} className="mini-bar"><span>{row.name}</span><i><b style={{ width: `${(row.percent / biggestPercent) * 100}%` }} /></i><em>{row.percent}%</em></div>)}</div>
-          <button className="text-action receipt-explore" onClick={() => navigate(`/category/${categoryOptions()[0].id}`)}>Browse spending records ↗</button>
+          <button className="text-action receipt-explore" onClick={() => navigate('/spending')}>Browse spending stories ↗</button>
           <details className="how-we-calculate">
             <summary>How we calculate</summary>
             {howWeCalculate(breakdown).map((section) => <section key={section.title}><h3>{section.title}</h3>{section.body.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}{section.sources.map((source) => <a key={source.url} href={source.url} target="_blank" rel="noreferrer">{source.label} ↗</a>)}</section>)}
@@ -113,7 +113,7 @@ export function DecisionScreen({ itemId, inputs, navigate }: { itemId: string; i
       <section className="detail-section"><p className="section-label">Plain-language summary</p><h2>What the record says</h2><p>{item.summary}</p><p className="ai-disclosure">AI summary — check the original record before drawing conclusions.</p></section>
       <section className="detail-section responsibility"><p className="section-label">Who is responsible</p><h2>{item.department}</h2><p>{item.ministerResponsible}</p><small>Responsible as of {dateLabel(item.ministerAsOf)}</small></section>
       {item.contextLinks.length > 0 && <section className="detail-section"><p className="section-label">Context</p><div className="context-links">{item.contextLinks.map((link) => <a key={link.url} href={link.url} target="_blank" rel="noreferrer">{link.label} ↗</a>)}</div></section>}
-      <section className="civic-placeholder"><p className="section-label">Civic action</p><h2>Questions and actions coming soon.</h2><p>This spending page will later connect to factual questions and official civic pathways.</p></section>
+      <section className="civic-placeholder"><p className="section-label">Now ask what happens next</p><h2>Turn the record into a public question.</h2><p>Follow the campaign path when a spending story needs an answer in public.</p></section>
       <footer className="detail-source"><span>DATA AS OF {item.dataAsOf}</span><a href={item.sources[0].url} target="_blank" rel="noreferrer">VIEW ORIGINAL RECORD ↗</a></footer>
     </section>
   )

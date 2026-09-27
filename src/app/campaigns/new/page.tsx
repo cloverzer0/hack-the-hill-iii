@@ -55,7 +55,7 @@ export default async function NewCampaignPage({ searchParams }: Props) {
     return (
       <main>
         <h1 className="text-xl font-semibold">Sign in to start a campaign</h1>
-        <p className="mt-2 text-sm text-muted">Your campaign will be published on this spending story.</p>
+        <p className="mt-2 text-sm text-muted">Your campaign will appear on this spending story.</p>
         <Link href={`/auth/login?returnTo=${encodeURIComponent(returnTo)}`} className="mt-4 inline-block text-sm text-accent underline">
           Sign in and continue
         </Link>

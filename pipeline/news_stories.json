@@ -1,5 +1,27 @@
 [
   {
+    "id": "news-3de807b167c0",
+    "title": "Ottawa provides $162M to Mitacs for small business AI internships",
+    "summary": "The federal government is providing $162 million to Mitacs. The funding supports an artificial intelligence internship program designed for smaller Canadian businesses.",
+    "amount": 162000000,
+    "date": "2026-09-25",
+    "fiscal_year": "2026-27",
+    "department": "Innovation, Science and Economic Development Canada",
+    "dept_code": "ISC",
+    "program_code": "BNP17",
+    "source_type": "news",
+    "level": "federal",
+    "sources": [
+      {
+        "label": "betakit.com",
+        "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxOd04wWVZhUkJqMk5Tb2lPV2RXdlBldmZVdlNYTENUT1ZwUU80aTNJSjBQYnh3dWFEcjg2UWJ6cFptV3MwRmc2TVJRVVUwM0tROEM4dmI2RjJnQjFBM3dsTXQ0MzdfV2J4aFQ1T25mMU1zOHhyRXhCNGdGaVBXWndpMFdxbDF3SU0zZ2R6Q0txdkJyLXVLdkN4b3pTQW1qSmtYaXNQUFFRWjQxZjA?oc=5"
+      }
+    ],
+    "image_url": "/story-images/news/news-3de807b167c0.webp",
+    "image_source_url": "https://betakit.com/feds-give-mitacs-162-million-for-ai-internship-program-for-smaller-canadian-businesses/",
+    "image_credit": "betakit.com"
+  },
+  {
     "id": "news-1ea76d425f6a",
     "title": "Canada commits $82 million for global ocean monitoring",
     "summary": "The Government of Canada has committed $82 million as the OceanEye Alliance secures $339 million for global ocean monitoring.",
@@ -17,7 +39,9 @@
         "url": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxPMWJGQnFNM3NTcU9FV0dWOGZuNXhTSm9jakxvb1RlS0owNGRzUmJDc0twbVBWbGtjbG42ZVZ0bzQxYUpFZDdoT0NxTTRYeWl4cm84YVJjNU10a3lUNDB1Vm5vOE1mYVhuZzMxN0xIc3FtLWN5cmhnSnptQTEzRG12dnRFdVpEOVBGeE9iRTZ0WHMxeHlTNTFZQ180a0JtRVpFOHluR3RmTy1NTENyaHYwYlNreFowTmpJOXU0dlBQN3JwU2RVNjF1RzBuMXltT3BFdVE?oc=5"
       }
     ],
-    "image_url": null
+    "image_url": "/story-images/news/news-1ea76d425f6a.webp",
+    "image_source_url": "https://www.netnewsledger.com/2026/09/24/canada-commits-82-million-as-oceaneye-alliance-secures-339-million-for-global-ocean-monitoring/",
+    "image_credit": "NetNewsLedger"
   },
   {
     "id": "news-ea665235c5a4",
@@ -37,7 +61,9 @@
         "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxQczZralBsYTAwdmViZ0I0anJvWUtHVUVyWXBDRnF3V084d2VRZTVYMUR0aXZlZXRkTi12U0xNREl2Nkl2Q2toeDRCSFRoZHJEQjZUak1zMzlYcFFUZWFocS11bFBXOGtvdUlCemlqNWJ0azNHSFA0Y3hMcjgwNWFiSzl3?oc=5"
       }
     ],
-    "image_url": null
+    "image_url": "/story-images/news/news-ea665235c5a4.webp",
+    "image_source_url": "https://www.independent.co.uk/news/world/americas/wild-horse-population-control-government-b3054833.html",
+    "image_credit": "Yahoo News UK"
   },
   {
     "id": "news-c14e48224d51",
@@ -57,7 +83,9 @@
         "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxPMmpJNE1NeVBUa2g4cXlsUlYySTcwS3huREszaFM3SHdSUHBHYy1LNTVCNklYZXpVT0l1RUtkektiSkRlXzZHcGRxejI0WkFoMU5XejNvSkNybmpDUlBGc3lyVkFBU2ZiWlZlRGcybEo1dmVINk9kM0pvNGt3ZmZhSQ?oc=5"
       }
     ],
-    "image_url": null
+    "image_url": null,
+    "image_source_url": null,
+    "image_credit": null
   },
   {
     "id": "news-95682aaf5c9c",
@@ -81,7 +109,9 @@
         "url": "https://news.google.com/rss/articles/CBMiigFBVV95cUxQX3RtNFFWTTRlc25zM1VDdXA4Rkh2TU1PUE9GVDB3VUFpVUo0dVI4cWpGeTB4S2hjazhoeXdZdGlvczJLZVBMcFNsRTBtYUFXcEVtb1N4V3pYai1Jd3FZRi1IN0M1dmJaOENTWXZuWFB5OVpBYVRfal9UWW50MVZlMkhLeU9GVXF2UkE?oc=5"
       }
     ],
-    "image_url": null
+    "image_url": "/story-images/news/news-700782369658.webp",
+    "image_source_url": "https://www.junonews.com/p/feds-launch-new-135-million-program-for-black-canadians",
+    "image_credit": "Juno News"
   },
   {
     "id": "news-a29026e981c1",
@@ -101,7 +131,9 @@
         "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxNclNRRkxXZzJmS2tkOXlmdUMtQUVOMmF0RlBMNEVjX2V1dnVYd0lVTW9pMWlxZ3dNQV93Q1hnSFVCZFJiSGxwMVl0amx2R2JwVVlHZGFyTTV3QnlDUnJMZlo4RUpZcUZEclhJVHk4QVZGSTJpcjJkcHpUWmQtWVpwanpGN2s0MjZ5OVJTd2lfUjdNTTA?oc=5"
       }
     ],
-    "image_url": null
+    "image_url": null,
+    "image_source_url": null,
+    "image_credit": null
   },
   {
     "id": "news-c241b09738bd",
@@ -121,7 +153,9 @@
         "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE1zcFlMOFRtbnUtT1U0RDF2ZzZNbHNCV2dBczdLcDJpN0lHOERLNzVkZS03emR2YmMxNkV0M2psS1dhRVlfN0xtdjNFMGRkTVJKTS1aS3o4ZmVwUQ?oc=5"
       }
     ],
-    "image_url": null
+    "image_url": "/story-images/news/news-c241b09738bd.webp",
+    "image_source_url": "https://www.cbc.ca/player/play/video/9.7351108",
+    "image_credit": "CBC"
   },
   {
     "id": "news-e49f93489251",
@@ -141,7 +175,9 @@
         "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxOalFCdmx6cWQ3a3BFS2djQUkybTZiNUY2N18tdzYwcXRYb0V2M3VWdHZkZkxMbE5fNnBiM2c1VXl4bWRDVldxVGNzWUR3Y3ZrSTR0N0ZrX2lHR0YyUHFZR0tFbG5lMDc3bThaSm5vMFBvbnZSWHhFWGlPSW84ZU9iZElMSDdGZEpjWGpDb0xueHZGTDdjLVE?oc=5"
       }
     ],
-    "image_url": null
+    "image_url": "/story-images/news/news-e49f93489251.webp",
+    "image_source_url": "https://www.verticalfarmdaily.com/article/9874480/canada-invests-5-million-in-haven-greens/",
+    "image_credit": "Vertical Farm Daily"
   },
   {
     "id": "news-935cc3e8795f",
@@ -161,7 +197,9 @@
         "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxQazhhV242SmNBYjRrR1FUeS1jdlpsbFAtQmhJZjJ4Ym9PczFKdUlKSW5Rc3NDaWNQUXpLbkJMck5EdEhBVEg2VnBLNEpPLUl4X3NDR1hFRkZ1NC1NWGdSYlpTdElEeUtEdnowaVRfWmZMS3NfTU5YbmtvOXR5SVZJTDN2N3Y5ZnA0Z01NQWJGMjBtYmFhT0RTTFJPT3BBUldwOGRXMmJNQVRLdDhoemluZw?oc=5"
       }
     ],
-    "image_url": null
+    "image_url": null,
+    "image_source_url": null,
+    "image_credit": null
   },
   {
     "id": "news-bdfd47b776c5",
@@ -181,7 +219,9 @@
         "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxNQmF1MlZYcjB2U0ZFeFNRVVV3YmlCYWNpMi1WbEFqNFRmWjdkdkxfNnB1OEZieXZyLWJiY1Fpd05Ibkp3NmZhbmN5UXJCYklleV92Zk5tSnhhWEtWWEJwT1VKZ21KMHROMndaZXlHLTRMRjVqVmZZWTBRa2lXMHI0X0U0ZVJrdzRnR0ZnYVN6TXQxdVJfUFJXOVNWQXVnYWNUczhnNmt1eWh5Sjc5VUE?oc=5"
       }
     ],
-    "image_url": null
+    "image_url": "/story-images/news/news-bdfd47b776c5.webp",
+    "image_source_url": "https://www.theglobeandmail.com/business/article-ottawa-funding-paid-four-month-placements-in-skilled-trades/",
+    "image_credit": "The Globe and Mail"
   },
   {
     "id": "news-b5ea83557e46",
@@ -201,7 +241,9 @@
         "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxPSVBBUVlfaGRZTzVGeWFUS2xUVFh2ZC03MUtRZWpTcDRDM1N6bGM0M0EyUHJWNzFSaGJ2WVk0WndIWjNOeHJCYlAxcTVJYi1NOUFsZVRsSklpQm5IRG15TWp4cVFqY3VRWlZjYXA4a09GQXBrZDNzOGV6NHNrWFEtRUxrMXVPYkItVXVPOVRKZHhiUGlYdmxlM1BWbUxrbXFwRVdmT3llV0pyYWst?oc=5"
       }
     ],
-    "image_url": null
+    "image_url": null,
+    "image_source_url": null,
+    "image_credit": null
   },
   {
     "id": "news-eaa7e7ea18a7",
@@ -221,7 +263,9 @@
         "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxNRkpoQi0xV3gtb0E5SFFNUzktX2Uxd2hsVHRUMUp3NXlHUEt6ZG1zaldVMEQ5NVVzblZ5WDhnaEU3aWtxMVRqVHdWWkVVbEVOazRjZm9vT2dDN3liNjMtTFlVY0R5S0NpcXVTSy16ZEpsZW1QUjBkaUNKaU5ZbHJNdTF2c2lTYTh4cUNPQVAyMHZ2QQ?oc=5"
       }
     ],
-    "image_url": null
+    "image_url": null,
+    "image_source_url": null,
+    "image_credit": null
   },
   {
     "id": "news-50aaa4b779a5",
@@ -241,7 +285,9 @@
         "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxQMm9KVGdGLXVvYklqalpDbWJkZXlHRlY3ZDNvNzJ4eC1ib2FRcHhONVcxTnhfVWZoWE9DYkRad1J4ZEo4RTFCdF8zaUxESWVRLWZQRlhIbUVua1BlaEZlSHV6ck8wMlU1THJTdXVXZTZBWTdqblhLN05EVUl3NTRibnRYQk9CUzlHT0pRY1A1cUtaMnROMnNYWnRyRHFyNjNvaG92a1ZsVTJScUZNUEF0VDZFWHU3X3JvdWc?oc=5"
       }
     ],
-    "image_url": null
+    "image_url": null,
+    "image_source_url": null,
+    "image_credit": null
   },
   {
     "id": "news-15beea9f0e27",
@@ -273,7 +319,9 @@
         "url": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxNVWhjWE9tal9VZm5XWEMtZ2JZaU9tQjNjSWI3X254VmxWSjJqUk5GRm9tMTN5ME1fdmNsQzgtWGZGZ0F3WFJFYnVJall2NVcwdm1UM0doV3pqRFk2ek5veVo1TlF6Tk9PZldGRVdtdU0zZzlXVE1Qc0VaczJqYU5CSU9FVHp1ZmJRVU1yekQ5bzAtMlc1a0hyeFlVbDZzMXJMaTdFb3RtYmNPbWpfWlJKaW5wTWJ6dTdwMmQ5eUc3bTFXQllJTTFnQXVlekZHRElVRFNqV1FYYw?oc=5"
       }
     ],
-    "image_url": null
+    "image_url": "/story-images/news/news-15beea9f0e27.webp",
+    "image_source_url": "https://www.cp24.com/news/sports/2026/09/16/federal-government-invests-76-million-in-national-basketball-centre-in-toronto/",
+    "image_credit": "CTV News"
   },
   {
     "id": "news-2c5410b5ac82",
@@ -297,7 +345,9 @@
         "url": "https://news.google.com/rss/articles/CBMiqAJBVV95cUxQZHNQWHJNcE1XZmR3RVZBeDdOaGU3blFydDZOUzE2ZHlWZWRseEFDODVkaEpYSm41UnJRV0Y4dDhsUlZ4UEFjRE9YOGhnLU1SYnZPeEFoeXYtYmlhZGtwUVFJWWlaYVhKMjljNU54MkpPMjd4MlRRYlBadm1hNTN0VFJWcXozSER2bGtERVdTQmhhZ3pmTS1vMk9yUkE2bEw2YVUwR2RNcWRSb25LSXZvdVpBb045eGhGSUtBTVRBOGFMR3lWQ3lEcWlsR25WdVJpdnp0LThJM2VuTS1wUFdlVXF6ZHIyTDk0eUdjbkJ4VlBGeGhveVl3NTJ0Um1MREVoWDRXZUhfRTYxb25tZnRYU0w4MFdjSmZWZEk2Q0J2aThkdmhUZGVvaw?oc=5"
       }
     ],
-    "image_url": null
+    "image_url": "/story-images/news/news-2c5410b5ac82.webp",
+    "image_source_url": "https://windsorite.ca/2026/09/government-of-canada-invests-nearly-7-5-million-at-windsor-airport/",
+    "image_credit": "windsoriteDOTca News"
   },
   {
     "id": "news-c3c83f3e1caf",
@@ -317,7 +367,9 @@
         "url": "https://news.google.com/rss/articles/CBMiugJBVV95cUxQUTkteVR4RUdHajd4X2plUjNXQnlGYUI2bUh1RG5MYnA3WGpHUW5RbGkzc2VXZUY1Smp3dWxEb2tpSVR6RGFWdEg3VnNCRzRvem5CTGx5bDJVMDNRZTFxUDc2XzZMbEFKUFRMZUFrZFJ1U3dFcXFRVUlZN3JHeXVjU2ZUNjBncHdfWGczb1o5aVkxQUs2S0M0WG5rYkY3MjhzYzk5YnF0d2RjWGptV3NqZXFyQmttb0ZvMTlkc3B4cmxBaUtsT1I5YmtqenVQb3BmMmREQmY5SDVEeFlFbmZGTUtUV3YxOWFSSkhfT2NMdEt3ZE5JbnpQV0RCeWVTMWR0TTJOVVhuR2lPUThIemFpeVZrUDVoZGliNDFvbnJlMFZkVHI0ejRMVmxHMWk5blF1blJxTVB4cDhrdw?oc=5"
       }
     ],
-    "image_url": null
+    "image_url": null,
+    "image_source_url": null,
+    "image_credit": null
   },
   {
     "id": "news-753dd62e809f",
@@ -341,7 +393,9 @@
         "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxOZXRCeUE0Rk1LTWR5TjAxeTJvZks2eDlyTmFXU0JlZml3dDBHMGNKdzZXdXR0aVg1elYzdlZFYlh4OV9GdHpyZENxV0RCWnRqR2lGSlNvdXNoSUNZOWc4cGVQTXpKbWJra3F0LUt4d1FuRmVOMk5JZnlqZzZMRjZFTUxPTlZGS3kxX0FlUUVhTVVuWG5LblNWaHV4Yw?oc=5"
       }
     ],
-    "image_url": null
+    "image_url": "/story-images/news/news-753dd62e809f.webp",
+    "image_source_url": "https://ca.finance.yahoo.com/news/federal-government-invests-2-6-210800573.html",
+    "image_credit": "Yahoo! Finance Canada"
   },
   {
     "id": "news-9a5e15494372",
@@ -361,7 +415,9 @@
         "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxNTVd3SWQtWFBSN2p3UDd6XzhmV09uSklvNUhHdTdiek1PbGdGdTRoYnBYa3FzUEx5MUFfa25sSm03ZzJVbWV4R3U1bHRYaXM5Q2liYW03Q1cxdk1YaFZySlpldUcwdFFQZ0Rpc24zOWpxX2d1ME1qUUdiMDNQSXJzTVM4bF9QbnBXWmpxSXZrV0JsUUJfSy1V?oc=5"
       }
     ],
-    "image_url": null
+    "image_url": null,
+    "image_source_url": null,
+    "image_credit": null
   },
   {
     "id": "news-c63a206fc7f1",
@@ -381,7 +437,9 @@
         "url": "https://news.google.com/rss/articles/CBMi8AFBVV95cUxPeE1GMjRZczVsaHMtOUtMV0pBZkFuOWMxbTlSOXUtQnZaeFR6dzZvaHAyaGlueDFxblZpLVJ3RUhqd056UlN6S1Jxcnp6Y0lqUlBoVFFiS0hHbzZjTVpQS1I4SGowTU1PcEkyaVk0YnZBdHFIRkNqUkNMdjBnQ0tHUWstaUc0cmlOOElvTE9RTG1TT2JzVmFwaDRBRFhURTJKZ3JkRTA1bGpmTGVQaXZOVlFFZDNPb0UxcFVHM3M2ZnpWYTJJd1VPdFZQV2NSX2dvdHVYZkU1Wm1iWDdYSEdqeDVCd09kVFB2c3hpcFo4UFQ?oc=5"
       }
     ],
-    "image_url": null
+    "image_url": "/story-images/news/news-c63a206fc7f1.webp",
+    "image_source_url": "https://nationalpost.com/news/canada/1-4b-of-federal-grants-spent-on-research-about-justin-trudeaus-speeches-canadian-dancefloors-and-low-carbon-videogames-ctf",
+    "image_credit": "National Post"
   },
   {
     "id": "news-fc05078c77b4",
@@ -401,7 +459,9 @@
         "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxQSzNiMTl2UlJyNFZ2SGRJSDhQX25ZZU1OV1ZSU3llS0ZWb3JKV25xanpOaEphenR0QzhkdXJ3cUJwWFB4VENVVDVvS0RhYnhQSmc4MjdTa1htSExDbXJNZmwxbTc5NlZjaDdZWnZSMUtJTEJVR0Y5VU5nMzZvdU40TF9YLTZaUFYzdmx1TEt1U1hMNm9ZcGQ4YjFLb01lWWkzNmdrbndXSHpWUzA?oc=5"
       }
     ],
-    "image_url": null
+    "image_url": "/story-images/news/news-fc05078c77b4.webp",
+    "image_source_url": "https://www.stocktitan.net/sec-filings/ZTEKF/6-k-zentek-ltd-current-report-foreign-issuer-65b32e07a11c.html",
+    "image_credit": "Stock Titan"
   },
   {
     "id": "news-631c30f4a1ce",
@@ -421,7 +481,9 @@
         "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxPa01xVnFrY3RfX0htUk5KbHg3VXJ1d2RyeW9iN2NraF9uZGtqMmJmRTdDclFfVkwxZDBobE81MjA3R1BVNEc4WG9PdjZGS3MtbzRXOFE2YXZGM0xFaTk2Sm5IRjNuMEVQMXk1b3V5bWtoczNQaWF3RnhIRVVqWkE3TXo1RzFNZHJ6UmIzM2UwX0poNHZyVG41TjBRUnQ4dw?oc=5"
       }
     ],
-    "image_url": null
+    "image_url": null,
+    "image_source_url": null,
+    "image_credit": null
   },
   {
     "id": "news-961d68580751",
@@ -441,7 +503,9 @@
         "url": "https://news.google.com/rss/articles/CBMiygFBVV95cUxNanNmZTN5SE5jZFQ5YUJVTTRjZTVpMWp2dS0wOUVrdmt2VHVXaHhsbDRpR0tMTzhROGZudHN5TFI1c2xReFB0cGNJdFIzbVhzaml1LURrU1JKd3BHVGlOYzgwdHZzbk5TTUNzZjQ3QV9KM1RETnYwa20zbms5UjE4Q05LSmRXWWc4SklkVm4waFdFMnp0UmFTb0ZkV3VNS01JUVF3b3h2d1VTYmpLOFBZcVhMSzZvTnpkVjUzMmFGT3VNeWttcWdEeWtn?oc=5"
       }
     ],
-    "image_url": null
+    "image_url": null,
+    "image_source_url": null,
+    "image_credit": null
   },
   {
     "id": "news-a8eec1d5754f",
@@ -461,7 +525,9 @@
         "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxOaXZvWjIzdWgxSFRuMjVTbE01bzFBZ0hoU3BNSllmeXdXYkE4eVpXbklQUW56QVJkbmJSdWRxMUV5MlczV0MwSGt1MVJ3YkYzX2dEc1FxZlUyN1lDSUlva1F0eDFVV0J5LUNPbzRva04xSHFwMUk3U3dMVnFHazdjRWZ6d1NqRVhmWXBpZ2F3MEM0YlNxRWp2UXFTejJpdGE5?oc=5"
       }
     ],
-    "image_url": null
+    "image_url": "/story-images/news/news-a8eec1d5754f.webp",
+    "image_source_url": "https://www.intelligencer.ca/news/bay-of-quinte-mohawks-awarded-66-4m-to-end-boil-water-advisories/",
+    "image_credit": "Belleville Intelligencer"
   },
   {
     "id": "news-a49f84fd54b2",
@@ -481,7 +547,9 @@
         "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxPT2RxRXdyOVF0ejQtalpkTjB6Qk9Nblh2cHlBdUZEV3JyZFhMRk0ya2RSWThmU2NrUnd5VzA1NW04c0VnWXVTSktINGxleldDdnV4aTZmeEZVb0JBakNtbHItVHZmSnVoR1hUYVJEOXBrX1Z5MXlrUEtGZDBrczZOZjZLWHRKYldYTjByc0VYWkdkVDNQdnQxRkR0Zm1Ba0NTeGRzdGdwSk91VjM4cmc?oc=5"
       }
     ],
-    "image_url": null
+    "image_url": "/story-images/news/news-a49f84fd54b2.webp",
+    "image_source_url": "https://www.hpcwire.com/off-the-wire/qubic-wins-ca1-5m-canadian-government-contract-for-cryogenic-amplifiers/",
+    "image_credit": "HPCwire"
   },
   {
     "id": "news-e78764b2e8d0",
@@ -501,7 +569,9 @@
         "url": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxQTDVPVHhTZ1dMOE9hR0tGRTFoT0V2T2ZCUTBzYVhXc3Y4M1lCeTBXSG5SNGszZV80MVZmMGV4R0pUT1ExSHJqNHFtX2lXekF2dkZtLXAzampmQjhJc05nQWZoWV9kMU9sTE9uNE01QmJlSjl3VDYtallVU1Z1Wk0yNUZSWTN2VkkzOXR6dUtramNNQU9NQk1QckpZZ3VYMjNDVEhUWVJfSldySjlFMF9jalo5eUdQcXJ0a1c3Q05GajN5OFF4WHBGVkdOSEdJMkFDUjNseQ?oc=5"
       }
     ],
-    "image_url": null
+    "image_url": null,
+    "image_source_url": null,
+    "image_credit": null
   },
   {
     "id": "news-5b68a7193d7b",
@@ -521,7 +591,9 @@
         "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxOQjhKTGdoeTlLZG4tckxiMkZMZ2Q5Z1NBSUZ0OUliQTBfcEZJbHp6ekpIT2RTYi15YjlCVnFzTWhRWXFyZlhGaVZkT01wWElZUTd2WnBUMXpncE9EZEZGSHA4VXhpcGwtOVlzRHpoUkNsYXR5OVZyRGNfcTczWE52NVRFVDdpalYyWmZKMGIxanVXWVhLdFRxM1R3TGwxY3FUVzJ4S3pEalpYYzNkMXYzTVBIcFRvNGxBZ1RnSWxqMkxRNmNWMWc?oc=5"
       }
     ],
-    "image_url": null
+    "image_url": "/story-images/news/news-5b68a7193d7b.webp",
+    "image_source_url": "https://www.ctvnews.ca/atlantic/nova-scotia/article/federal-government-spending-15m-on-gang-violence-prevention-in-cape-breton/",
+    "image_credit": "CTV News"
   },
   {
     "id": "news-1ef08cae15ae",
@@ -541,7 +613,9 @@
         "url": "https://news.google.com/rss/articles/CBMi9wFBVV95cUxNNzAwMVhFMFpQOF9NR1VwTkJHOWlaVC1jOU52bzV6S21ONHRzeHZQM3d5S0JSSWJtNTBrc1kyYVNrbTB6WUYxS3RlejNOZVFJcTlyM1pfZTZrU253ZVk1ZjNiRlJ1YjVkYzBOWHhQQm9lZXZ6UFhmcnFxcG95b0lucWN3REcxUXd2emdPRXY5MURxY19KRjhnQTZQWFhLYmdyNlIxOXlJeVQwVnB5RGVOSHVaSzYtQWRtSkM2alJYZVNhTm5rSzVoQS1PUmc4ODBodDIyX3hHb3ZFWERVd2wyV3pCYW5vaENHQi1yWUt3b1drMGctaVJn?oc=5"
       }
     ],
-    "image_url": null
+    "image_url": "/story-images/news/news-1ef08cae15ae.webp",
+    "image_source_url": "https://www.newswire.ca/news-releases/government-of-canada-announces-substantial-completion-of-a-new-34-6m-parks-canada-national-fire-equipment-cache-899972404.html",
+    "image_credit": "PR Newswire Canada"
   },
   {
     "id": "news-fd6afce623fb",
@@ -563,12 +637,18 @@
       {
         "label": "niagaraatlarge.com",
         "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxPVmg4WGdMZTNKdHlOMFVEVVMyWFNMQlptd05razc5YVZob0V1U3FWNnd2MXN2dzRpNzN2Rml2SmRUTFpYRkhSV2JjS2I0Vi0zTU54SEIxWWhrbHk0Rk42Vl9QRlcyU2tVcnpnenRnN29oQ3VaNjdpdG5TZ0lENnQtMzloZEhTOFlQVlE5NE9qRm9nWlRqRGxhRjdjcnBuZzJPbXNqcmhkeTh0ZG1McjBnSk5icW9uMFc3RGc?oc=5"
+      },
+      {
+        "label": "cbc.ca",
+        "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxOMmdpOUxOUm9CX3FxOTQ5ZFBLc2VfbXN1Tk1DTUhRVDhoV1Q1UDBUM0NKOVU4SEZ0VXBHRktZWE5uS0FiMEpJaDUtS3NaMkZvTWRzS1FJQnFCem5DejBTdUxBN3lxa1o4OXlSRVdvWTJOazFsaGtKWVBwVWMwQlMwSFhrb3FGZHBxb1FGS3c0YldlQWQwY3lUNHdWYnFDUTJlOTRSMjVvbw?oc=5"
       }
     ],
-    "image_url": null
+    "image_url": null,
+    "image_source_url": null,
+    "image_credit": null
   },
   {
-    "id": "news-d5802130b42a",
+    "id": "news-ab54611a1d38",
     "title": "Feds announce $5M for HIV self-testing and support staff",
     "summary": "The federal government announced $5 million for HIV self-test kits and additional peer support staff.",
     "amount": 5000000,
@@ -583,9 +663,23 @@
       {
         "label": "CBC",
         "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxObkQ4UXhJekZlaFZVRU9PWFNjR3JyR0hDSFEwZUh0QWREMUpGdEdMV2lxYVR5eTdseTcyMS1qT05oVW12OGJOZHI3cEVKc1JMWFpJNWhmRHozcTJ2N2NqVUljN2lEM0d0d2lGdndjUEc2R3dMX1ZFcDlzRTY4SHp3TnJlZWJ2alBFOWpfZk5xMXpjZG8?oc=5"
+      },
+      {
+        "label": "CTV News",
+        "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxNNGhGdXotek01QmQ5S0tyYk44SWh5cHV4c29vNUpPWkFnRndJRWxJbjJTUFdkdThsUERzb3AzcmpHenpKNzFCZFFKd0NkbHRadzVqRXc4ZFY2WHc2ZzFEWXlNMldBM1lTdzVOd1BxU1BzVDlrVmkzc1RZM3RkNmVuRlB3X1NzWGJ1UGl0aExOdFFRaFdfcXJ6bmZKODJIVTkwWVdzeU1qQ2lkcWJMa2c?oc=5"
+      },
+      {
+        "label": "castanet.net",
+        "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxQeEZEQU9Fem5DV0xIY0ROd19BcVRMTVp3VjhGck8xaFBZc1RTR1NHbFpZMEloRlNlZ0dHelhpQUtPX25jakpmSG1kSkx0VFBXSTlYUmlNR2pnN0ZnN3Q1cG9UMThoRHFTalpQNm5ReVA5eVZCbHhZVlpSdmZUQ3R3Q2x2cWMySTlwQ2ZVWjl1RENRdDlSUWxxS3JVcFFobWJTREE?oc=5"
+      },
+      {
+        "label": "新住民全球新聞網",
+        "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxQSXdDWXRJWUxQdTRkVTMyOVE2WExMa1daNmpWWE4waTVFWnZrT19TTERGVnNxMVNaakFDaHpWMEdvTlJlSzdvcWYtX2JBeWhZTzBXNm0xcXVWMllQd0FXNmhUTE9uVnBFOVVJZmlLOVZuVW1ucDBLeTh3TWpqLV94UTVRNUJha0RyY2ZIWVNIS0NoZUx6SzNyUTNpSQ?oc=5"
       }
     ],
-    "image_url": null
+    "image_url": "/story-images/news/news-ab54611a1d38.webp",
+    "image_source_url": "https://www.ctvnews.ca/winnipeg/article/ottawa-announces-5m-for-hiv-self-test-kits-support-staff/",
+    "image_credit": "CTV News"
   },
   {
     "id": "news-8a3fbe1df937",
@@ -605,7 +699,9 @@
         "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxQaTZrSnNjcjF5Z05vd0hYdzluVFQ0U0ozWnBoQnR2MGFRZXJsNEotV3g5S3RMMW5TS2FCUXlvdmE2TVhXZ2hWZXVGZHRlRzhmbHRTQ1lNb2RxMWh4UlM2eXhyWDJUT0h3OHowdjJHQWlnVlFSdUVKNF9FV1plako3d25Fckp5M3laQWt3VWpvb1Fhb3BMRF96ZER0VldoUERL?oc=5"
       }
     ],
-    "image_url": null
+    "image_url": null,
+    "image_source_url": null,
+    "image_credit": null
   },
   {
     "id": "news-6a9bc54a3c8a",
@@ -625,7 +721,9 @@
         "url": "https://news.google.com/rss/articles/CBMi8gFBVV95cUxQMVc4RzZ4bTdDS1lTcVZSME00QnktSHIycFowZ01xZlMwclBrRTNOMExUalB2THVTXzVOZU4xR3FaeDQ1YUptbkdjMHkwR2lKRGVHOEJjeThqWXlleVlsSjhsazVJNjVIVkl6WlN4VHlPWmRTamQ2OXhBLU9FUUZud3loR05IdWdHWS1JNmZ0eWtZdFRhNlotQTNFM3Z2NC1Ld21xTWhnUzVuazVXMGJ3MXl3UEtITDZ5TEhPMGtZSWh3MG0walpfc2JwR1A3OFZ1SUV4YmFPdERCTTd2eEF5VDFTai1KQ1F1elo2MmMyQkdodw?oc=5"
       }
     ],
-    "image_url": null
+    "image_url": "/story-images/news/news-6a9bc54a3c8a.webp",
+    "image_source_url": "https://www.newswire.ca/news-releases/government-of-canada-invests-over-11-million-to-strengthen-businesses-jobs-and-communities-in-northern-b-c--874252031.html",
+    "image_credit": "PR Newswire Canada"
   },
   {
     "id": "news-bb75e583d515",
@@ -645,7 +743,9 @@
         "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxNUHE5NThOeHJkY2hRNzhUV090c1BfNjZTWlBCVjJtU1B3SF8wbmJNOFZhRm5MSTN3c1doSWQ5T0ZCbExWRmhOVm5ndkxUMWZnQWE4a1ZnUjEzVUMyZl9Ya0ZCdVlSdWJEbG80b3RxdjhaZUJXMG53eHNPSjljczlfQ3BfbmVOaVI5WWtRQlI0cTZNMmZsclRvSl8tVUdYZWdyTFJkemln?oc=5"
       }
     ],
-    "image_url": null
+    "image_url": null,
+    "image_source_url": null,
+    "image_credit": null
   },
   {
     "id": "news-0ed6f37bf9c8",
@@ -665,7 +765,9 @@
         "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxOTlNxSDJGNGdrQzYyMEhFRnNMTFFDU1c5Z1hEaFROSXdWemg5OVBBcGtkN3A2SjZwLXFhelpPNU02Q1VTWnVnRkdUWmtQTEFOd0RXOTBmMzhzdm9EbDliNXkyS3dVSmdTZnhmcExETzNhb1RmZjhlUHpiSS1EZ2RxSFFVM0FQTWt5YUxrWWVzWFBHUFpXSDAzaVNManRteUplakJmZGhGbm9HYVJwaEYtOUJR?oc=5"
       }
     ],
-    "image_url": null
+    "image_url": "/story-images/news/news-0ed6f37bf9c8.webp",
+    "image_source_url": "https://www.on-sitemag.com/construction/pomerleau-lands-121-6m-federal-building-contract-in-st-johns/1003987929/",
+    "image_credit": "On-Site Magazine"
   },
   {
     "id": "news-28b59b949d4f",
@@ -697,7 +799,9 @@
         "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxNNjdFZTFLcFpTc2V0bGhvMzdYUURJZ3daTEFmNVRQU0sxYlFCZ3N6TzktTU5SdUxzVzdJOUp1XzFYdVdvOG9qeXZoVk11dmtYRVZhUWVJQUtGaVZ6eTR5cU5GLWlkTGpkTFoyQmo3UWFfek1GSVJGY09DelM0T0tnLUNsb1U3ejZ3Q2dTMWN4VWYxRjRoNVhmQTd0SUt6TWVoTkJvMlpKd3Qwc2JuTDhPSktFZXY?oc=5"
       }
     ],
-    "image_url": null
+    "image_url": "/story-images/news/news-28b59b949d4f.webp",
+    "image_source_url": "https://www.ctvnews.ca/northern-ontario/article/ottawa-spending-47b-on-new-made-in-canada-via-rail-passenger-cars/",
+    "image_credit": "CTV News"
   },
   {
     "id": "news-3d3817a9a717",
@@ -717,7 +821,9 @@
         "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxObjRYc2JsWTZiWi1rWjhkYUp5S1kxbXhFVzRGQ3ljcmtlTmx6RTZsb0FlMmlUVGRDZVRrRzZ3QkhXZm5XZExmRTNGT0lWaURoZk5FMzNoSmpqbmdCV09RdktVRmJjMXRMb3R3U1RmeDdRVlFiS0ZBUFRRRWQtUXIwNVdHOW9BTzk5bHdROHFvQVB4a0tFamxvakpDbzREZDE2UTBCZ1o1OHh5NVBqRWpRUWpn?oc=5"
       }
     ],
-    "image_url": null
+    "image_url": null,
+    "image_source_url": null,
+    "image_credit": null
   },
   {
     "id": "news-132e38686a2e",
@@ -741,7 +847,9 @@
         "url": "https://news.google.com/rss/articles/CBMiuwJBVV95cUxOZEFVYmhDcG9MRGxEYmJzaldOUXk2UTdVUFdHaXZCbHdPOFpDZUJNNkoySW1NeTk3a3lXWTFLMXZVMTJJcUlxMHZXTGUtOUgxX1ZzSmFPazcwa2E5dnBIWnh6dmFaRUR1YXVJekprUGxKLWdNS0tiUE41V19sei1GMEN0MS1iYTdQNmNRd3RnLW9aM0xQUS1QdHVxNVlOQ0Exc3ptaTJGTHNXa0NxMHJMX2ZQSkJvR0N3ZFFMeTFpLVJ2dnV1cGo4QnRqTkJqbl9BT0txX1c4Y0E2QUVxTmlkdDJlR0tacndyX0pLYlA5cG93MHVnWUk4UGdfZzVRcThYbFpfQi1mYW9oRll2eVlSNkNYWkkwNEZDUkpTeE92SkUzSXJSVWNTbVNZYUs4ZmNNZXdESnpTVjliU1k?oc=5"
       }
     ],
-    "image_url": null
+    "image_url": "/story-images/news/news-4db66bb84f11.webp",
+    "image_source_url": "https://www.newswire.ca/news-releases/government-of-canada-and-fcm-invest-67-8-million-in-urban-forestry-projects-through-the-growing-canada-s-community-canopies-initiative-820067146.html",
+    "image_credit": "PR Newswire Canada"
   },
   {
     "id": "news-6f27708d16c8",
@@ -761,7 +869,9 @@
         "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxObU1JYlZ6R3JVQWF5SkNWZlpqZldYU0RBMlNsOVpWb2ZYbldUTWZoOU5zVVZLZ283VTdwMDliak8xSHIxS3FuN0dubEpNVDVvRTE3ZFV5ZjkxVkVLZG5tSzVoQWt1R21zbDVkbkFxR3NMQlpDWnVWX0luUHdJMmRaNTNyQU9aMVlnc09XT3BVd00?oc=5"
       }
     ],
-    "image_url": null
+    "image_url": null,
+    "image_source_url": null,
+    "image_credit": null
   },
   {
     "id": "news-6e7d3e44e5a4",
@@ -789,7 +899,9 @@
         "url": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxNTzZ2MnVRMng5TFk4d01GRTJjdUR3alhDQkhIODQwNzlEdE1WUGxBSzBYc2tiQXZiRTFPODlqamo5TFRUYWI3YmJLZ3hwcm1MN09Wa0w0RWVNbC1pTFkzSnRITTlrSUh4T2hWWW5VN09FOVZUQXE2U25KbTVqYUFyTG5icF9BbmF0Unhnem5xSjFvYTNXT3pWU09vMGNzVEhZUjEtdkYzMFZoLWUxMzAzemZJRTNBWDZiVXA2WHJ3UzNGbkhXRkJvT2JlX1ZzNGdKRkFYQUNn?oc=5"
       }
     ],
-    "image_url": null
+    "image_url": "/story-images/news/news-bd9dcbfbb8c3.webp",
+    "image_source_url": "https://www.ctvnews.ca/atlantic/nova-scotia/article/ottawa-spending-nearly-130m-on-improvements-to-parks-canada-sites-in-cape-breton-canso/",
+    "image_credit": "CTV News"
   },
   {
     "id": "news-bbcbea65de3f",
@@ -809,7 +921,9 @@
         "url": "https://news.google.com/rss/articles/CBMiigFBVV95cUxNV0FMZ2ZWVl9HTmpyQ1h0RXJsNWo0NEFrZkJxRW95TkNhekp5QjlKRzFHRFJpNGs4ZnNjdFVzSHBEcUNhc2VocDgtQ1RDWXItZ3hvajJkNlZmbTB3dTc2NUdrd2VxOXh0T2xOaTM4cGRVb3FPSGI0SGJTZ0NralJYNUNSX1VlQl9KTXc?oc=5"
       }
     ],
-    "image_url": null
+    "image_url": "/story-images/news/news-bbcbea65de3f.webp",
+    "image_source_url": "https://money.ca/news/economy/bc-salmon-hatcheries-ottawa-50-million-local-economy",
+    "image_credit": "Money.ca"
   },
   {
     "id": "news-b6e6ec730cb2",
@@ -829,7 +943,9 @@
         "url": "https://news.google.com/rss/articles/CBMizwFBVV95cUxQd3o2S01PeldUQlRQS2ZmcHdCbVotQnZad3QtTU9rUmJOeUhlSEV2X09lUWRwSTd4a0VwUmpGcDlJMElPY1AtNFBzZG13RnR3d0VQOFRoYzdZWVdsOWtPOXpSMEc2bzNlUGFmOU1NU0Q1ZWw0cDE1SlN5RmhHSXE0dkQ2eHhKakhmQjd5SDR6MnVXQm4zZFVmdlRsMFNseE1OSENSVzFaMkVOR3JKbFVibWE1blUzY0xHVDFTVk9HcDZuV1FuNlU2NHgzTnh6Rkk?oc=5"
       }
     ],
-    "image_url": null
+    "image_url": "/story-images/news/news-b6e6ec730cb2.webp",
+    "image_source_url": "https://www.saltwire.com/nova-scotia/federal-government-commits-14-1-million-to-nova-scotia-businesses-affected-by-tariff-war-with-u-s",
+    "image_credit": "saltwire.com"
   },
   {
     "id": "news-7b0f1d5d4b0e",
@@ -849,7 +965,9 @@
         "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxNcmZwUmxsNXB6TzhIdzJDOUFURlFpZFZKY2ZtN1U5V2VXVXVfYTl6b0U2aE9TaEZNRXlQSFlNSE0wTThCVVlfZkJmcWtfMU55anhEVkEwVDA2TlVXMk5TWldQYl9qZGdvZGxBajdSTjMxUHJDRmhjLTFmZDNybDBDeG9nRnJQQVlmUnp3d04zQzd3ZV80bDA2Ym5rTnJrRDcxQ0lvZ2xLc3RFQzBoYUE?oc=5"
       }
     ],
-    "image_url": null
+    "image_url": "/story-images/news/news-7b0f1d5d4b0e.webp",
+    "image_source_url": "https://www.ctvnews.ca/saskatoon/article/federal-govt-invests-116m-into-northern-sask-airport-infrastructure/",
+    "image_credit": "CTV News"
   },
   {
     "id": "news-5b475691404a",
@@ -869,7 +987,31 @@
         "url": "https://news.google.com/rss/articles/CBMi3wFBVV95cUxOX3RpcWZhWm5RTUZCVTFWMV9rcnpmTnZvb1hUYnJEZVVrb1FzTllpQWtUaUpPNGswOXVHN2xQcTZFd25ycXVoWkVIZTczU2pqVmdhcFRkbUtxcFR4T3dRbDVkXzN2Zi1NVVFQbzFqdW1rTXRaaVdXdVZKSEhVbmpmU0tuZWs1S3dhcURzdmd4cVh1dWo3LUVFZWZweTdjWVRqN2VXajhQZXI0RWJrWVo0andvTWRzYWFSM1hidzVQWlI0bDJ6XzlHRmQtelB1STNReGVoNk91Q3FYZ1BEM25N?oc=5"
       }
     ],
-    "image_url": null
+    "image_url": null,
+    "image_source_url": null,
+    "image_credit": null
+  },
+  {
+    "id": "news-4617880007ba",
+    "title": "Nine Hamilton businesses to receive $12.5M in federal tariff relief",
+    "summary": "The federal government is providing $12.5 million in funding to assist nine Hamilton businesses impacted by tariffs.",
+    "amount": 12500000,
+    "date": "2026-08-31",
+    "fiscal_year": "2026-27",
+    "department": "Federal Economic Development Agency for Southern Ontario",
+    "dept_code": "FEDSO",
+    "program_code": "BNM10",
+    "source_type": "news",
+    "level": "federal",
+    "sources": [
+      {
+        "label": "cbc.ca",
+        "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxNNlNhaFltSS1ZeHduWGtQRHRWRTJsVDAzQkdHRlFrX3E3OWcyXy1ualpOdjI2SFpsMktzLVh1ZkQ0dWg1b3F0ckhHQU8wTi1wUldkLXlNYkNJWTQydWxhWlZyUDZTaU8tWmJneVg4T3p6Z21pTHBGOE5QbFFxVHpfSXkyZXZpSG5nZXAyMzA1QUVnamVFTmZKb08zbFhETF9STDVLRFlR?oc=5"
+      }
+    ],
+    "image_url": null,
+    "image_source_url": null,
+    "image_credit": null
   },
   {
     "id": "news-0695339cc4ce",
@@ -913,7 +1055,9 @@
         "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxOaHdVNG4xZlU5Wkh1YWhHRjNSMi1fVXdIdFNTZUFkQUNwNnhER0ZtMWFxWGhDLWN0blN5X2xXQ0lTaVBFaUU2NkRreXJFRTg1UGw3U25XLTM2dkt2eDFUUnZacWZsdnJhbGMtOGg0c1FXOUZqUEJSWVppVnJxMWVJSDlMYzJuMERBTkl4X2tzN2VIOFBNYkhsYUxDeDlKWUhiOHlQUXJGR2paWWR4Qzd4OGJKX3dWWTVpOXc?oc=5"
       }
     ],
-    "image_url": null
+    "image_url": "/story-images/news/news-0695339cc4ce.webp",
+    "image_source_url": "https://financialpost.com/technology/ottawa-195-million-quantum-manufacturing-xanadu",
+    "image_credit": "Financial Post"
   },
   {
     "id": "news-1cc5432a3151",
@@ -937,7 +1081,9 @@
         "url": "https://news.google.com/rss/articles/CBMivgJBVV95cUxNYTVnQzFhZjZEdEFjTnNZVDJ1bE5BYUR3SDVxejlzNnBtQW1WX2JaaGlOcWVNdmtCV01YVU95RFh0aW9DWHZBVW9xeXRzSjRyMXk3OVhpZTFWdE5FNkRMRXNVM1RjVnEtM3NaZzk5SkNCR3VXN0hHblh3NWMyck9iUU0yNGxvMmZMbzhLT29heFF6cHdkM0pqN2V0TDNXTFBUV05vWjRNM2ZDSVZTSVVqeDYyeXJrTlNJdzlLclczVmpyLVR4QWR6MzZzWk15blcxdzl1SEFJRTc5LTdPWnIwN2xhZVFJQXpraWcxU0RQLWRwaUd3ZUNkUWpaWS1EOWpHMk9Oc3FoYWZOT21OSFI1RUtGaWZlU0tkcWJEUHlDNnJVVE1tMkhPVnVUY1hZa2xKd2t5WlQ0YmNtVkdTalE?oc=5"
       }
     ],
-    "image_url": null
+    "image_url": "/story-images/news/news-49a5c7f0b93e.webp",
+    "image_source_url": "https://www.canada.ca/en/pacific-economic-development/news/2026/08/government-of-canada-invests-over-10-million-to-help-lower-mainland-businesses-navigate-trade-disruptions-and-seize-new-opportunities.html",
+    "image_credit": "canada.ca"
   },
   {
     "id": "news-605aa7d06d6e",
@@ -957,7 +1103,9 @@
         "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxQZDkwSHBNOVBJcFBQRnlzVXBLY09oVVgzT1J2YlAzWFR0Ukl1d3BiRTFmVDBUN2FRby0xd0o1elBKaVViWWgzN2taa3ZVNjJ1ckpabW1MRG9ITVNvWDdRNzgtLWN1R0dRMHZaT1JHLUxaVGREWDBmUDRYOEFvQzBDdzFBWXlmNzB2aVZCUw?oc=5"
       }
     ],
-    "image_url": null
+    "image_url": null,
+    "image_source_url": null,
+    "image_credit": null
   },
   {
     "id": "news-9d510d4cbb31",
@@ -981,6 +1129,8 @@
         "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxORlJ4dXM0d1NBS2ZaNW5icGpuMnRTXy1oOWJrTWFEZ2U3bENDNmpBRGM4RzNzLUlHdWRycFIzajV5bFFtMFZJTU9BRmdmVUZydGo1Y2Fjd0hwSXRjeDVMVGxHdlNzOTh3Tk9OV0E2aTZEcURYclhmc09FMnlabm0xaEtqZ045VU9oeURaZHBkc3Z3RGh4alJfNmZuTQ?oc=5"
       }
     ],
-    "image_url": null
+    "image_url": null,
+    "image_source_url": null,
+    "image_credit": null
   }
 ]

@@ -1,4 +1,5 @@
-import { date, index, integer, numeric, pgEnum, pgTable, primaryKey, text, timestamp, unique, uuid } from "drizzle-orm/pg-core";
+import type { Mp } from "@/lib/mp/types";
+import { date, index, integer, jsonb, numeric, pgEnum, pgTable, primaryKey, text, timestamp, unique, uuid } from "drizzle-orm/pg-core";
 
 export const users = pgTable("users", {
   id: text("id").primaryKey(),
@@ -81,6 +82,8 @@ export const campaigns = pgTable(
     // Set when started: 30 to 120 days out, the same window as an e-petition.
     deadline: date("deadline").notNull(),
     teamNote: text("team_note"),
+    sponsorMp: jsonb("sponsor_mp").$type<Mp | null>(),
+    sponsorRequestedAt: timestamp("sponsor_requested_at", { withTimezone: true }),
     createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
     updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
   },
@@ -117,6 +120,8 @@ export const petitions = pgTable("petitions", {
     .unique()
     .references(() => campaigns.id, { onDelete: "cascade" }),
   title: text("title").notNull(),
+  url: text("url"),
+  stageBeforeLive: campaignStage("stage_before_live"),
   sponsorName: text("sponsor_name"),
   sponsorRiding: text("sponsor_riding"),
   signatures: integer("signatures").notNull().default(0),

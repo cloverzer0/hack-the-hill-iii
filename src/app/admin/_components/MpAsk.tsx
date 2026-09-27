@@ -20,7 +20,7 @@ export function MpAsk({ campaign, members, teamGmail }: Props) {
   const router = useRouter();
   const [refreshing, startRefresh] = useTransition();
   const [searching, setSearching] = useState(false);
-  const [mp, setMp] = useState<Mp | null>(null);
+  const [mp, setMp] = useState<Mp | null>(campaign.sponsorMp);
   const [note, setNote] = useState("");
   const [copied, setCopied] = useState<"idle" | "copied" | "failed">("idle");
   const [saving, setSaving] = useState(false);
@@ -49,7 +49,7 @@ export function MpAsk({ campaign, members, teamGmail }: Props) {
     try {
       await apiFetch(`/api/admin/campaigns/${campaign.id}`, {
         method: "PATCH",
-        body: teamNote ? { stage: "mp_asked", teamNote } : { stage: "mp_asked" },
+        body: { stage: "mp_asked", sponsorMp: mp, sponsorRequestedAt: new Date().toISOString(), ...(teamNote ? { teamNote } : {}) },
       });
       startRefresh(() => router.refresh());
     } catch {
