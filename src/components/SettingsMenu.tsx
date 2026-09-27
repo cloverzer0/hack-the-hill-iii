@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useId, useRef, useState } from "react";
 import { clearUserInputs } from "@/shared/userInputs";
 
@@ -7,9 +8,10 @@ type Props = {
   name: string | null;
   email: string | null;
   canLogOut: boolean;
+  isAdmin?: boolean;
 };
 
-export function SettingsMenu({ name, email, canLogOut }: Props) {
+export function SettingsMenu({ name, email, canLogOut, isAdmin = false }: Props) {
   const [open, setOpen] = useState(false);
   const rootRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
@@ -57,6 +59,14 @@ export function SettingsMenu({ name, email, canLogOut }: Props) {
         <p className="text-xs text-muted">Signed in as</p>
         <p className="mt-0.5 truncate font-medium">{primary}</p>
         {secondary && <p className="truncate text-xs text-muted">{secondary}</p>}
+        {isAdmin && (
+          <>
+            <div className="my-3 border-t border-line" />
+            <Link href="/admin" className="block rounded px-2 py-1.5 -mx-2 hover:bg-canvas">
+              Admin
+            </Link>
+          </>
+        )}
         <div className="my-3 border-t border-line" />
         {canLogOut ? (
           // A plain link, not next/link: prefetching this URL would log the user out.
