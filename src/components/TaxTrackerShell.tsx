@@ -29,6 +29,12 @@ export function TaxTrackerShell({ children, accountMenu }: { children: ReactNode
     () => pathname === "/" ? "A public money story" : `${money.format(inputs.income)} · ${inputs.province}`,
     [inputs, pathname],
   );
+  const navigation = [
+    { href: "/", label: "Start", active: pathname === "/" },
+    { href: "/receipt", label: "Receipt", active: pathname === "/receipt" },
+    { href: "/spending", label: "Stories", active: pathname.startsWith("/spending") },
+    { href: "/campaigns", label: "Campaigns", active: pathname.startsWith("/campaigns") },
+  ];
 
   return (
     <TaxInputsContext.Provider value={{ inputs, updateInputs }}>
@@ -40,11 +46,16 @@ export function TaxTrackerShell({ children, accountMenu }: { children: ReactNode
             </button>
             <div className="flex items-center gap-4">
               <div className="header-meta max-sm:hidden">{headerLabel}</div>
-              <Link href="/spending" className="campaigns-nav">Stories</Link>
-              <Link href="/campaigns" className="campaigns-nav">Campaigns</Link>
               {accountMenu}
             </div>
           </header>
+          <nav className="site-nav" aria-label="Primary navigation">
+            {navigation.map((item) => (
+              <Link key={item.href} href={item.href} className={`site-nav-link${item.active ? " active" : ""}`} aria-current={item.active ? "page" : undefined}>
+                {item.label}
+              </Link>
+            ))}
+          </nav>
           <main>{children}</main>
           <footer className="site-footer"><span>Where Does My Tax Go?</span><span>Estimate · fiscal year 2024–25</span></footer>
         </div>
