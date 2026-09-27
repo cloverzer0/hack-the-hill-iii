@@ -182,6 +182,8 @@ describe("starting a campaign", () => {
       canLeave: false,
       petition: null,
     });
+    expect(detail).not.toHaveProperty("sponsorMp");
+    expect(detail).not.toHaveProperty("sponsorRequestedAt");
     const [row] = await db.select().from(users);
     expect(row.riding).toBe("Ottawa Centre");
     expect(JSON.stringify(row)).not.toMatch(/K1P/i);
