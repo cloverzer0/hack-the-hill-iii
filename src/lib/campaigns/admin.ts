@@ -192,7 +192,7 @@ export async function attachPetition(id: string, input: { number: string; title:
     await tx.insert(petitions).values({ number, campaignId: id, title: input.title.trim(), url, stageBeforeLive: current?.stage === "live" ? "mp_agreed" : current?.stage });
     await tx
       .update(campaigns)
-      .set({ stage: "live", updatedAt: new Date() })
+      .set({ stage: current?.stage === "closed" ? "closed" : "mp_agreed", updatedAt: new Date() })
       .where(eq(campaigns.id, id));
   });
 
