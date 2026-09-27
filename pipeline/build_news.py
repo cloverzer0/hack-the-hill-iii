@@ -149,7 +149,9 @@ def dedupe(stories):
         sources = []
         for s in sorted(members, key=lambda s: s["date"]):
             sources += [src for src in s["sources"] if src["label"] not in {x["label"] for x in sources}]
-        merged.append(pick | {"date": min(s["date"] for s in members), "sources": sources})
+        # Campaigns point at story ids, so the id comes from the earliest article: a newer outlet never changes it.
+        first = min(members, key=lambda s: (s["date"], s["id"]))
+        merged.append(pick | {"id": first["id"], "date": first["date"], "sources": sources})
     for s in merged:
         s.pop("_words")
     return sorted(merged, key=lambda s: s["date"], reverse=True)
@@ -235,7 +237,6 @@ def main():
             "level": "federal",
             "sources": [{"label": a["outlet"], "url": a["link"]}],
             "image_url": image_url(e["dept_code"]),
-            "petition": None,
             "_words": words(a["title"]) | words(e["title"]),
         })
 
