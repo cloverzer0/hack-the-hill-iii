@@ -15,6 +15,15 @@ export async function proxy(request: NextRequest) {
   const { pathname, search } = request.nextUrl;
   if (pathname.startsWith("/auth/")) return authResponse;
 
+  // Campaign discovery and details are public; starter tools stay behind the normal login redirect.
+  const publicCampaignPage = pathname === "/campaigns" || pathname === "/campaigns/new" || /^\/campaigns\/[^/]+$/.test(pathname);
+  const publicCampaignRead = request.method === "GET" && (
+    pathname === "/api/campaigns" || /^\/api\/campaigns\/[^/]+$/.test(pathname)
+  );
+  if (publicCampaignPage || publicCampaignRead) {
+    return authResponse;
+  }
+
   const session = await auth0.getSession(request);
   if (session) return authResponse;
 

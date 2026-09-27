@@ -6,7 +6,7 @@ import { formatDate } from "../format";
 
 type Props = { campaignId: string; members: CampaignMemberExport[] };
 
-const cell = "p-3";
+const cell = "p-3 whitespace-nowrap";
 
 export function MembersSection({ campaignId, members }: Props) {
   const ridings = ridingBreakdown(members);
@@ -29,9 +29,9 @@ export function MembersSection({ campaignId, members }: Props) {
         </button>
       </div>
       <p className="mt-2 text-sm text-muted">{ridings.map((row) => `${row.riding} ${row.count}`).join(" · ")}</p>
-      <div className="mt-3 overflow-x-auto rounded-xl border border-line bg-paper">
+      <div className="mt-3 max-h-[57.5rem] overflow-auto rounded-xl border border-line bg-paper">
         <table className="w-full text-left text-sm">
-          <thead className="border-b border-line text-xs text-muted">
+          <thead className="sticky top-0 z-10 border-b border-line bg-paper text-xs text-muted">
             <tr>
               <th className={cell}>Name</th>
               <th className={cell}>Email</th>

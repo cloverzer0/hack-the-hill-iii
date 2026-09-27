@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { ApiError, apiFetch } from "@/lib/apiFetch";
 import type { CampaignText } from "@/lib/campaigns/rules";
-import { PetitionForm } from "./PetitionForm";
+import { CampaignForm } from "./CampaignForm";
 import { ProcessExplainer } from "./ProcessExplainer";
 import { PublishStep, type PublishChoices } from "./PublishStep";
 import { StepHeader } from "./StepHeader";
@@ -49,11 +49,11 @@ export function StartCampaign({ story }: { story: { id: string; title: string } 
         method: "POST",
         body: { storyId: story.id, ...text, ...choices, consent: true },
       });
-      router.push(`/petition/${id}/live`);
+      router.push(`/campaigns/${id}/live`);
     } catch (caught) {
       // One campaign per person per story: open the one they already started.
       if (caught instanceof ApiError && caught.code === "already_started" && typeof caught.details.campaignId === "string") {
-        router.push(`/petition/${caught.details.campaignId}/live`);
+        router.push(`/campaigns/${caught.details.campaignId}/live`);
         return;
       }
       setError(messageFor(caught));
@@ -72,9 +72,9 @@ export function StartCampaign({ story }: { story: { id: string; title: string } 
 
   return (
     <main>
-      <StepHeader step={1} backHref="/dev/petition" />
+      <StepHeader step={1} backHref="/campaigns/new" />
       <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_320px]">
-        <PetitionForm
+        <CampaignForm
           storyTitle={story.title}
           initial={text ?? undefined}
           submitLabel="Next: publish to the app"

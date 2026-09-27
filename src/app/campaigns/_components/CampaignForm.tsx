@@ -15,8 +15,8 @@ type Props = {
 const inputClass =
   "mt-2 w-full rounded-lg border border-line bg-paper px-3 py-2 text-sm focus:border-ink focus:outline-none";
 
-// Step 1: write the petition. Checked live with the same rules the API uses (src/lib/campaigns/rules.ts).
-export function PetitionForm({ storyTitle, initial, submitLabel, busy = false, error, onSubmit }: Props) {
+// Step 1: write the campaign text that can later become an official e-petition.
+export function CampaignForm({ storyTitle, initial, submitLabel, busy = false, error, onSubmit }: Props) {
   const [values, setValues] = useState<CampaignText>(initial ?? { title: "", issue: "Whereas ", request: "" });
   const [showProblems, setShowProblems] = useState(false);
   const { words, maxWords, problems } = checkCampaignText(values);
@@ -32,13 +32,14 @@ export function PetitionForm({ storyTitle, initial, submitLabel, busy = false, e
 
   return (
     <form onSubmit={submit} noValidate>
-      <h1 className="text-2xl font-semibold">Write your petition</h1>
+      <h1 className="text-2xl font-semibold">Write your campaign</h1>
       <p className="mt-1 text-sm text-muted">
+        Write the request people will support in the app. If an MP sponsors it, the team can create a separate official e-petition.
         Linked to: <span className="font-medium text-ink">{storyTitle}</span>
       </p>
 
       <label className="mt-6 block">
-        <span className="text-sm font-semibold">Title</span>
+        <span className="text-sm font-semibold">Campaign title</span>
         <input className={inputClass} value={values.title} onChange={set("title")} />
       </label>
       <p className="mt-1 text-right text-xs text-muted">
