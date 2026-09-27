@@ -90,7 +90,7 @@ export function SpendingScreen({ inputs, navigate }: { inputs: UserInputs; navig
       <div className="spending-context"><span>Your federal tax</span><strong>{money.format(tax)}</strong><small>{inputs.province} · {money.format(inputs.income)} income</small></div>
     </div>
     {state.status === 'loading' && <p className="feed-status" role="status">Loading spending stories…</p>}
-    {state.status === 'error' && <div className="empty-state feed-status" role="alert"><strong>We couldn&apos;t load the spending stories.</strong><p>Check your connection and try again.</p><button className="text-action" onClick={() => setDepartment(department)}>Try again ↻</button></div>}
+    {state.status === 'error' && <div className="empty-state feed-status" role="alert"><strong>We couldn&apos;t load the spending stories.</strong><p>Check your connection and try again.</p><button className="text-action" onClick={() => window.location.reload()}>Try again ↻</button></div>}
     {state.status === 'ready' && <>
       <div className="department-filter" aria-label="Filter spending stories by department" role="group">
         <button className={department === null ? 'filter-chip active' : 'filter-chip'} onClick={() => setDepartment(null)} aria-pressed={department === null}>All stories</button>
@@ -104,6 +104,7 @@ export function SpendingScreen({ inputs, navigate }: { inputs: UserInputs; navig
 function StoryCard({ story, tax, total, featured, navigate }: { story: Story; tax: number; total: number | null; featured: boolean; navigate: (path: string) => void }) {
   return <article className={featured ? 'story-card story-card-featured' : 'story-card'}>
     <div className="story-card-top"><span className={story.source_type === 'news' ? 'story-type story-type-news' : 'story-type'}>{story.source_type === 'news' ? 'NEWS RECORD' : 'DATA STORY'}</span><span>{story.fiscal_year}</span></div>
+    {story.image_url ? <div className="story-image story-image-photo" role="img" aria-label={`Illustration for ${story.title}`} style={{ backgroundImage: `url(${story.image_url})` }} /> : <div className="story-image story-image-fallback" role="img" aria-label={`Public record from ${story.department}`}><span>{story.dept_code}</span><small>PUBLIC RECORD</small></div>}
     <button className="story-card-link" onClick={() => navigate(`/decision/${story.id}`)}><h2>{story.title}</h2><span className="decision-arrow" aria-hidden="true">↗</span></button>
     <p>{story.summary}</p>
     <div className="story-card-facts"><span><b>Public amount</b>{money.format(story.amount)}</span><span><b>Department</b>{story.department}</span><span className="story-share"><b>Your share</b>{shareOf(tax, story.amount, total)}</span></div>
@@ -173,9 +174,16 @@ export function ApiDecisionScreen({ itemId, inputs, navigate }: { itemId: string
     <section className="your-share"><p className="section-label">Your share</p><strong>{shareOf(tax, story.amount, total)}</strong><p>An estimate of how much of this story is represented by your federal tax, using the {story.fiscal_year} federal spending pool.</p></section>
     <section className="detail-section"><p className="section-label">What happened</p><h2>The record, in plain language.</h2><p>{story.summary}</p><p className="ai-disclosure">Story summary — check the original record before drawing conclusions.</p></section>
     <section className="detail-section evidence-section"><p className="section-label">Evidence</p><h2>Read the source.</h2><div className="context-links">{story.sources.map((source) => <a key={source.url} href={source.url} target="_blank" rel="noreferrer">{source.label} ↗</a>)}</div></section>
-    <section className="civic-placeholder"><p className="section-label">What happens next?</p><h2>Stay with the record.</h2><p>Read the source, ask what changed, and follow the public decisions that come after this spending.</p></section>
+    <ActionSection story={story} />
     <footer className="detail-source"><span>DATA AS OF {story.date}</span><a href={story.sources[0]?.url} target="_blank" rel="noreferrer">VIEW ORIGINAL RECORD ↗</a></footer>
   </section>
+}
+
+function ActionSection({ story }: { story: Story }) {
+  if (story.petition) {
+    return <section className="civic-action"><p className="section-label">Civic action</p><h2>This story already has an official petition.</h2><div className="petition-progress"><strong>{story.petition.signatures.toLocaleString('en-CA')}</strong><span>signatures so far</span></div><p className="action-copy">{story.petition.title}. Signatures count on the official House of Commons petition.</p><div className="action-links"><a className="primary-action" href={story.petition.url} target="_blank" rel="noreferrer">Sign on ourcommons.ca ↗</a><a className="text-action" href={`/petition/new?story=${encodeURIComponent(story.id)}`}>Start a different petition ↗</a></div><small>Closes {dateLabel(story.petition.closes)}</small></section>
+  }
+  return <section className="civic-action"><p className="section-label">Civic action</p><h2>What happens next?</h2><p className="action-copy">Turn a question about this spending story into a draft petition for your MP to review.</p><a className="primary-action" href={`/petition/new?story=${encodeURIComponent(story.id)}`}>Start a petition ↗</a><small>Only federal spending stories can lead to a House of Commons e-petition.</small></section>
 }
 
 function categoryFor(item: SpendingItem) {

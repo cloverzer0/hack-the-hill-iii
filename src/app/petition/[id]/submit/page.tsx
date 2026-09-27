@@ -15,7 +15,7 @@ export default async function SubmitPage({ params }: Props) {
   return (
     <main className="mx-auto max-w-2xl">
       <StepHeader step={3} backHref={`/petition/${draft.id}/sponsor`} />
-      <h1 className="text-2xl font-semibold">Submit it on ourcommons.ca</h1>
+      <h1 className="petition-page-title text-2xl font-semibold">Submit it on ourcommons.ca</h1>
       <ol className="mt-4 list-decimal space-y-1 pl-5 text-sm">
         <li>Log in or create an account on ourcommons.ca and start a new e-petition.</li>
         <li>Paste in the title, the issue and the requested action below.</li>
@@ -33,11 +33,11 @@ export default async function SubmitPage({ params }: Props) {
         href={OURCOMMONS_CREATE_URL}
         target="_blank"
         rel="noopener noreferrer"
-        className="mt-6 block rounded-lg bg-ink px-4 py-3 text-center text-sm font-medium text-paper"
+        className="petition-primary-action mt-6 block rounded-lg px-4 py-3 text-center text-sm font-medium"
       >
         Open ourcommons.ca
       </a>
-      <Link href="/dev/petition" className="mt-4 block text-center text-sm text-accent underline">
+      <Link href="/spending" className="petition-back-link mt-4 block text-center text-sm underline">
         Back to spending
       </Link>
     </main>

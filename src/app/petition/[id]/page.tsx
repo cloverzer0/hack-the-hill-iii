@@ -9,8 +9,8 @@ export default async function EditPetitionPage({ params }: Props) {
   const draft = await loadDraft(params);
   return (
     <main>
-      <StepHeader step={1} backHref="/dev/petition" />
-      <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_320px]">
+      <StepHeader step={1} backHref={`/decision/${draft.storyId}`} />
+      <div className="petition-grid grid gap-10 lg:grid-cols-[minmax(0,1fr)_320px]">
         <PetitionForm story={{ id: draft.storyId, title: draft.storyTitle }} draft={draft} />
         <ProcessExplainer />
       </div>

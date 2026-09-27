@@ -9,7 +9,7 @@ const STEPS = [
 
 export function ProcessExplainer() {
   return (
-    <aside className="rounded-xl border border-line bg-paper p-5 lg:sticky lg:top-8">
+    <aside className="petition-explainer rounded-xl border border-line bg-paper p-5 lg:sticky lg:top-8">
       <h2 className="text-sm font-semibold">How a House of Commons e-petition works</h2>
       <ol className="mt-4 space-y-4">
         {STEPS.map((step, i) => (

@@ -19,7 +19,7 @@ export function LetterEditor({ letter, edited, onSave }: Props) {
   }
 
   return (
-    <div>
+    <div className="petition-letter">
       <div className="flex items-center justify-between">
         <h2 className="text-sm font-semibold">Sponsorship request</h2>
         <div className="flex gap-3 text-sm">
@@ -40,10 +40,10 @@ export function LetterEditor({ letter, edited, onSave }: Props) {
           onBlur={(event) => {
             if (event.target.value !== letter) onSave(event.target.value);
           }}
-          className="mt-2 min-h-72 w-full rounded-xl border border-line bg-paper p-4 text-sm"
+          className="petition-input mt-2 min-h-72 w-full rounded-xl border border-line bg-paper p-4 text-sm"
         />
       ) : (
-        <p className="mt-2 whitespace-pre-wrap rounded-xl border border-line bg-paper p-4 text-sm">{letter}</p>
+        <p className="petition-letter-box mt-2 whitespace-pre-wrap rounded-xl border border-line bg-paper p-4 text-sm">{letter}</p>
       )}
     </div>
   );

@@ -27,7 +27,7 @@ export function SendOptions({ links, emailText, continueHref, onSent }: Props) {
         target="_blank"
         rel="noopener noreferrer"
         onClick={onSent}
-        className="block rounded-lg bg-ink px-4 py-3 text-center text-sm font-medium text-paper"
+        className="petition-primary-action block rounded-lg px-4 py-3 text-center text-sm font-medium"
       >
         Open in Gmail
       </a>

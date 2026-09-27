@@ -13,10 +13,10 @@ export function CopyField({ label, text }: Props) {
   }
 
   return (
-    <div className="rounded-xl border border-line bg-paper p-4">
+    <div className="petition-card rounded-xl border border-line bg-paper p-4">
       <div className="flex items-center justify-between">
         <h3 className="text-sm font-semibold">{label}</h3>
-        <button type="button" onClick={copy} className="text-sm text-accent underline">
+        <button type="button" onClick={copy} className="petition-copy-button text-sm underline">
           {status === "copied" ? "Copied" : "Copy"}
         </button>
       </div>

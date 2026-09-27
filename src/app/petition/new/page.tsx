@@ -14,7 +14,7 @@ export default async function NewPetitionPage({ searchParams }: Props) {
     return (
       <main>
         <h1 className="text-xl font-semibold">We couldn&rsquo;t find that spending story</h1>
-        <Link href="/dev/petition" className="mt-4 inline-block text-sm text-accent underline">
+        <Link href="/spending" className="mt-4 inline-block text-sm text-accent underline">
           Back to spending
         </Link>
       </main>
@@ -23,8 +23,8 @@ export default async function NewPetitionPage({ searchParams }: Props) {
 
   return (
     <main>
-      <StepHeader step={1} backHref="/dev/petition" />
-      <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_320px]">
+      <StepHeader step={1} backHref={`/decision/${story.id}`} />
+      <div className="petition-grid grid gap-10 lg:grid-cols-[minmax(0,1fr)_320px]">
         <PetitionForm story={{ id: story.id, title: story.title }} />
         <ProcessExplainer />
       </div>

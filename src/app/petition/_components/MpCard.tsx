@@ -9,7 +9,7 @@ export function MpCard({ mp }: { mp: Mp }) {
   ];
 
   return (
-    <div className="rounded-xl border border-line bg-paper p-4">
+    <div className="petition-card rounded-xl border border-line bg-paper p-4">
       <div className="flex items-center gap-4">
         {mp.photoUrl ? (
           <Image
