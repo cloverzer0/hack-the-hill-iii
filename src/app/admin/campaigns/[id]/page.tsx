@@ -4,6 +4,7 @@ import { listCampaignMembers } from "@/lib/campaigns/admin";
 import { getCampaign } from "@/lib/campaigns/campaigns";
 import { CampaignOverview } from "../../_components/CampaignOverview";
 import { MembersSection } from "../../_components/MembersSection";
+import { MpAsk } from "../../_components/MpAsk";
 import { StageControls } from "../../_components/StageControls";
 import { requireAdminPage } from "../../requireAdminPage";
 
@@ -23,6 +24,7 @@ export default async function AdminCampaignPage({ params }: Props) {
     campaign.petition?.number,
     campaign.petition?.syncedAt,
   ].join("|");
+  const teamGmail = process.env.TEAM_GMAIL?.trim() || null;
 
   return (
     <main className="space-y-10">
@@ -32,6 +34,7 @@ export default async function AdminCampaignPage({ params }: Props) {
       <CampaignOverview campaign={campaign} starter={members.find((member) => member.isStarter)} />
       <StageControls key={`stage-${version}`} campaign={campaign} />
       <MembersSection campaignId={campaign.id} members={members} />
+      <MpAsk campaign={campaign} members={members} teamGmail={teamGmail} />
     </main>
   );
 }

@@ -19,4 +19,17 @@ describe("composeLinks", () => {
   it("builds a mailto link", () => {
     expect(links.mailto).toBe("mailto:mp@parl.gc.ca?subject=A%20%26%20B&body=Line%201%0ALine%202");
   });
+
+  it("opens Gmail in the team's account when one is given", () => {
+    const withAccount = composeLinks({
+      to: "mp@parl.gc.ca",
+      subject: "A & B",
+      body: "Line 1\nLine 2",
+      authuser: "team@gmail.com",
+    });
+    expect(withAccount.gmail).toBe(
+      "https://mail.google.com/mail/?authuser=team%40gmail.com&view=cm&fs=1&to=mp%40parl.gc.ca&su=A%20%26%20B&body=Line%201%0ALine%202",
+    );
+    expect(withAccount.outlook).toBe(links.outlook);
+  });
 });
