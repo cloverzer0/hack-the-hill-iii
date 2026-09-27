@@ -1,19 +1,19 @@
 @import "tailwindcss";
 
-/* Colours from the wireframe. Izu can replace these with the final design tokens. */
+/* Shared warm civic palette: campaign/admin routes use these same tokens as the tax journey. */
 @theme {
-  --color-paper: #faf9f6;
-  --color-canvas: #eceae5;
-  --color-ink: #1c1b19;
-  --color-muted: #6b6862;
-  --color-line: #dcd9d2;
-  --color-accent: #1f6f4a;
-  --color-danger: #b42318;
+  --color-paper: #f7f2e9;
+  --color-canvas: #e9e3d7;
+  --color-ink: #201d19;
+  --color-muted: #716d64;
+  --color-line: #d0c6b8;
+  --color-accent: #b54834;
+  --color-danger: #b54834;
 }
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #e9e3d7;
+  --foreground: #201d19;
 }
 
 @theme inline {
@@ -33,5 +33,5 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
 }

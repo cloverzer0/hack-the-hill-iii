@@ -2,16 +2,17 @@
 
 import { useEffect, useState } from "react";
 import { apiFetch } from "@/lib/apiFetch";
-import type { Department, Story } from "@/lib/stories";
+import type { StoryWithCampaigns } from "@/lib/campaigns/campaigns";
+import type { Department } from "@/lib/stories";
 
 export type SpendingListState =
   | { status: "loading" }
-  | { status: "ready"; stories: Story[]; departments: Department[]; department: string | null }
+  | { status: "ready"; stories: StoryWithCampaigns[]; departments: Department[]; department: string | null }
   | { status: "error"; department: string | null };
 
 export type SpendingDetailState =
   | { status: "loading" }
-  | { status: "ready"; story: Story; id: string }
+  | { status: "ready"; story: StoryWithCampaigns; id: string }
   | { status: "error"; id: string };
 
 export function useSpending(department: string | null): SpendingListState {
@@ -21,7 +22,7 @@ export function useSpending(department: string | null): SpendingListState {
     let live = true;
     const query = department ? `?department=${encodeURIComponent(department)}` : "";
     Promise.all([
-      apiFetch<Story[]>(`/api/spending${query}`),
+      apiFetch<StoryWithCampaigns[]>(`/api/spending${query}`),
       apiFetch<Department[]>("/api/departments"),
     ]).then(
       ([stories, departments]) => live && setState({ status: "ready", stories, departments, department }),
@@ -38,7 +39,7 @@ export function useSpendingDetail(id: string): SpendingDetailState {
 
   useEffect(() => {
     let live = true;
-    apiFetch<Story>(`/api/spending/${encodeURIComponent(id)}`).then(
+    apiFetch<StoryWithCampaigns>(`/api/spending/${encodeURIComponent(id)}`).then(
       (story) => live && setState({ status: "ready", story, id }),
       () => live && setState({ status: "error", id }),
     );

@@ -66,7 +66,8 @@
 .story-list { display: grid; gap: 14px; margin-top: 25px; }
 .story-card { padding: 24px 25px 22px; border-top: 1px solid var(--wm-line-strong); background: rgba(247, 242, 233, .55); }
 .story-card-featured { padding: 29px 30px 27px; border-top: 3px solid var(--wm-red); background: var(--wm-surface); box-shadow: 0 16px 30px rgba(42, 34, 25, .08); }
-.story-image { display: block; width: 100%; height: 150px; margin-top: 22px; object-fit: cover; background: var(--wm-stone); }
+.story-image { position: relative; display: block; width: 100%; aspect-ratio: 16 / 9; min-height: 210px; margin-top: 22px; overflow: hidden; background: var(--wm-stone); }
+.story-image-img { object-fit: contain; object-position: center; }
 .story-image-photo { background-position: center; background-size: cover; }
 .story-image-fallback { display: flex; align-items: end; justify-content: space-between; padding: 17px; background: linear-gradient(135deg, var(--wm-olive) 0 48%, var(--wm-stone) 48% 100%); color: var(--wm-paper); }
 .story-image-fallback span { font: 500 38px 'Newsreader', serif; letter-spacing: -.05em; }
@@ -84,6 +85,17 @@
 .story-card-facts .story-share { color: var(--wm-red); }
 .story-source { display: inline-block; margin-top: 22px; color: var(--wm-red); font: 9px 'DM Mono', monospace; text-decoration: none; }
 .story-source:hover, .story-source:focus-visible { text-decoration: underline; text-underline-offset: 4px; }
+.story-image-credit { display: block; margin-top: 7px; color: var(--wm-muted); font: 8px/1.35 'DM Mono', monospace; }
+.story-image-credit a { color: inherit; text-decoration: none; }
+.story-image-credit a:hover, .story-image-credit a:focus-visible { color: var(--wm-red); text-decoration: underline; text-underline-offset: 3px; }
+.story-campaign-empty { margin: 18px 0 0; color: var(--wm-muted); font: 10px 'DM Mono', monospace; }
+.campaign-rows { display: grid; gap: 7px; margin-top: 18px; }
+.campaign-row { display: flex; align-items: center; justify-content: space-between; gap: 14px; padding: 11px 12px; border: 1px solid var(--wm-line); color: var(--wm-ink); background: rgba(247, 242, 233, .55); text-decoration: none; }
+.campaign-row:hover, .campaign-row:focus-visible { border-color: var(--wm-red); }
+.campaign-row b, .campaign-row small { display: block; }
+.campaign-row b { font: 500 15px/1.15 'Newsreader', serif; }
+.campaign-row small { margin-top: 5px; color: var(--wm-muted); font: 9px 'DM Mono', monospace; }
+.campaign-row > span:last-child { color: var(--wm-red); font: 16px 'DM Mono', monospace; }
 .evidence-section { margin-bottom: 10px; }
 .civic-action { max-width: 640px; margin-top: 48px; padding: 27px 30px; border-top: 3px solid var(--wm-red); background: var(--wm-ink); color: var(--wm-paper); }
 .civic-action .section-label { color: #bdb5aa; }
@@ -97,16 +109,24 @@
 .primary-action:hover, .primary-action:focus-visible { background: #ffe08b; }
 .civic-action .text-action { color: var(--wm-paper); }
 .civic-action > small { display: block; margin-top: 18px; }
+
+/* Receipt hierarchy: make the largest public-money destinations feel discoverable. */
+.tax-app .receipt-line > span:first-child { display: grid; gap: 3px; }
+.tax-app .receipt-line small { color: var(--wm-red); font-size: 8px; letter-spacing: .04em; text-transform: uppercase; }
+.tax-app .receipt-line-featured { min-height: 44px; font-size: 12px; }
+.tax-app .receipt-line-featured strong { font-size: 13px; }
+.tax-app .receipt-line-static { color: var(--wm-soft); font-size: 12px; text-align: center; }
 @media (max-width: 700px) {
   .tax-app .spending-heading { display: block; }
   .tax-app .spending-context { margin-top: 28px; padding: 14px 0 0 15px; }
   .tax-app .department-filter { margin-top: 31px; margin-inline: -22px; padding-inline: 22px; }
   .tax-app .story-card, .tax-app .story-card-featured { padding: 20px 17px 19px; }
-  .tax-app .story-image { height: 110px; }
+  .tax-app .story-image { min-height: 0; aspect-ratio: 16 / 10; }
   .tax-app .story-card h2, .tax-app .story-card-featured h2 { font-size: 29px; }
   .tax-app .story-card-facts { display: grid; grid-template-columns: 1fr 1fr; }
   .tax-app .story-card-facts span { min-width: 0; }
   .tax-app .story-card-facts .story-share { grid-column: 1 / -1; }
   .tax-app .civic-action { padding: 23px 20px; }
+  .tax-app .campaign-row b { font-size: 14px; }
   .tax-app .action-links { align-items: start; flex-direction: column; gap: 14px; }
 }

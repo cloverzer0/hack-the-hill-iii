@@ -25,6 +25,7 @@ from typing import Literal, Optional
 from pydantic import BaseModel
 
 from find_jumps import load
+from image_sources import cache_article_image, safe_story_key
 from make_images import image_url
 
 HERE = Path(__file__).parent
@@ -148,7 +149,11 @@ def dedupe(stories):
             sources += [src for src in s["sources"] if src["label"] not in {x["label"] for x in sources}]
         # Campaigns point at story ids, so the id comes from the earliest article: a newer outlet never changes it.
         first = min(members, key=lambda s: (s["date"], s["id"]))
+        illustrated = next((s for s in sorted(members, key=lambda s: (s["date"], s["id"])) if s.get("image_url")), first)
         merged.append(pick | {"id": first["id"], "date": first["date"], "sources": sources})
+        merged[-1]["image_url"] = illustrated.get("image_url")
+        merged[-1]["image_source_url"] = illustrated.get("image_source_url")
+        merged[-1]["image_credit"] = illustrated.get("image_credit")
     for s in merged:
         s.pop("_words")
     return sorted(merged, key=lambda s: s["date"], reverse=True)
@@ -216,8 +221,12 @@ def main():
             dropped[reason] = dropped.get(reason, 0) + 1
             continue
         program = e["program_code"] if (e["dept_code"], e["program_code"]) in programs else None
+        story_id = "news-" + hashlib.sha256(a["id"].encode()).hexdigest()[:12]
+        image = cache_article_image(a["link"], safe_story_key(story_id))
+        if image["image_url"]:
+            print(f"  cached image for {a['outlet']}: {e['title']}")
         stories.append({
-            "id": "news-" + hashlib.sha256(a["id"].encode()).hexdigest()[:12],
+            "id": story_id,
             "title": e["title"],
             "summary": e["summary"],
             "amount": e["amount_cad"],
@@ -229,7 +238,9 @@ def main():
             "source_type": "news",
             "level": "federal",
             "sources": [{"label": a["outlet"], "url": a["link"]}],
-            "image_url": image_url(e["dept_code"]),
+            "image_url": image["image_url"] or image_url(e["dept_code"]),
+            "image_source_url": image["image_source_url"],
+            "image_credit": a["outlet"] if image["image_url"] else ("Editorial illustration" if image_url(e["dept_code"]) else None),
             "_words": words(a["title"]) | words(e["title"]),
         })
 

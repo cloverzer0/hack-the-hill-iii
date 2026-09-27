@@ -162,6 +162,8 @@ def main():
             "level": "federal",
             "sources": [SOURCE],
             "image_url": image_url(p["dept_code"]),
+            "image_source_url": None,
+            "image_credit": "Editorial illustration" if image_url(p["dept_code"]) else None,
         })
 
     OUT.parent.mkdir(exist_ok=True)

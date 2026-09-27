@@ -40,6 +40,7 @@ export function TaxTrackerShell({ children, accountMenu }: { children: ReactNode
             </button>
             <div className="flex items-center gap-4">
               <div className="header-meta max-sm:hidden">{headerLabel}</div>
+              <Link href="/spending" className="campaigns-nav">Stories</Link>
               <Link href="/campaigns" className="campaigns-nav">Campaigns</Link>
               {accountMenu}
             </div>
