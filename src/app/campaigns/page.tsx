@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { connection } from "next/server";
 import { getCurrentUser } from "@/lib/auth";
 import { listCampaigns } from "@/lib/campaigns/campaigns";
 import { STAGE_LABELS } from "@/lib/campaigns/stages";
@@ -6,6 +7,8 @@ import { STAGE_LABELS } from "@/lib/campaigns/stages";
 const count = new Intl.NumberFormat("en-CA");
 
 export default async function CampaignsPage() {
+  // The campaign list is backed by Postgres and must be loaded for a real request, not during the build.
+  await connection();
   const user = await getCurrentUser();
   const campaigns = await listCampaigns({ viewerId: user?.id ?? null });
 
