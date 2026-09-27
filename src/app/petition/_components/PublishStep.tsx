@@ -1,141 +1,105 @@
 "use client";
 
-import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { useState, type FormEvent } from "react";
-import { ApiError, apiFetch } from "@/lib/apiFetch";
-import { CONSENT_TEXT, publishErrorFor, type PublishProblem } from "@/lib/campaigns/publish";
-import { PETITION_OPENING } from "@/lib/campaigns/rules";
-import type { Draft } from "@/lib/petition";
+import { MAX_DAYS, MIN_DAYS, type CampaignText } from "@/lib/campaigns/rules";
+import { normalizePostal } from "@/lib/mp/postal";
+import { fullRequest } from "@/lib/petition";
 
-type Props = { draft: Draft; savedRiding: string | null };
+const DAYS = [MIN_DAYS, 60, 90, MAX_DAYS];
 
-function stringList(value: unknown): string[] {
-  return Array.isArray(value) ? value.filter((item): item is string => typeof item === "string") : [];
-}
+export type PublishChoices = { postalCode?: string; days: number };
 
-export function PublishStep({ draft, savedRiding }: Props) {
-  const router = useRouter();
-  const [askPostal, setAskPostal] = useState(savedRiding === null);
-  const [postalCode, setPostalCode] = useState("");
+type Props = {
+  storyTitle: string;
+  text: CampaignText;
+  busy: boolean;
+  error: string | null;
+  onPublish: (choices: PublishChoices) => void;
+};
+
+// Step 2: publish the campaign to its story. Nothing is saved until this step: publishing starts it, with the
+// starter as its first member. Consent is required, the same as for everyone who joins.
+export function PublishStep({ storyTitle, text, busy, error, onPublish }: Props) {
+  const [postal, setPostal] = useState("");
+  const [days, setDays] = useState(MAX_DAYS);
   const [consent, setConsent] = useState(false);
-  const [publishing, setPublishing] = useState(false);
-  const [problem, setProblem] = useState<PublishProblem | null>(null);
-  const [textProblems, setTextProblems] = useState<string[]>([]);
+  const [postalError, setPostalError] = useState<string | null>(null);
 
-  async function publish(event: FormEvent) {
+  function submit(event: FormEvent) {
     event.preventDefault();
-    setPublishing(true);
-    setProblem(null);
-    setTextProblems([]);
-    try {
-      const { id } = await apiFetch<{ id: string }>("/api/campaigns", {
-        method: "POST",
-        body: {
-          storyId: draft.storyId,
-          title: draft.title,
-          issue: draft.issue,
-          request: draft.request,
-          // Leaving the postal code out tells the API to use the saved riding.
-          ...(askPostal ? { postalCode } : {}),
-          consent: true,
-        },
-      });
-      // The draft has done its job. If deleting it fails, publishing again only reopens this campaign.
-      await apiFetch(`/api/me/drafts/${draft.id}`, { method: "DELETE" }).catch(() => null);
-      router.push(`/petition/published/${id}`);
-    } catch (error) {
-      const code = error instanceof ApiError ? error.code : "";
-      const details = error instanceof ApiError ? error.details : {};
-      if (code === "already_started" && typeof details.campaignId === "string") {
-        router.push(`/petition/published/${details.campaignId}?existing=1`);
-        return;
-      }
-      const found = publishErrorFor(code);
-      setProblem(found);
-      setTextProblems(stringList(details.problems));
-      if (found.askPostal) setAskPostal(true);
-      setPublishing(false);
+    const code = postal.trim() ? normalizePostal(postal) : null;
+    if (postal.trim() && !code) {
+      setPostalError("Enter a postal code like K1P 1A4.");
+      return;
     }
+    setPostalError(null);
+    onPublish({ days, ...(code ? { postalCode: code } : {}) });
   }
 
   return (
-    <section>
-      <h1 className="text-2xl font-semibold">Publish your campaign</h1>
-      <p className="mt-1 text-sm text-muted">
-        Once it&rsquo;s published, anyone reading this story can join it. When it has enough support, our team asks an
-        MP to sponsor it.
-      </p>
+    <div className="grid gap-10 lg:grid-cols-2">
+      <section className="rounded-xl border border-line bg-paper p-5 text-sm">
+        <p className="text-xs text-muted">On: {storyTitle}</p>
+        <h2 className="mt-2 font-semibold">{text.title}</h2>
+        <p className="mt-3 whitespace-pre-line">{text.issue}</p>
+        <p className="mt-3">{fullRequest(text.request)}</p>
+      </section>
 
-      <article className="mt-6 rounded-xl border border-line bg-paper p-5 text-sm">
-        <h2 className="text-lg font-semibold">{draft.title}</h2>
-        <p className="mt-3 whitespace-pre-wrap">{draft.issue}</p>
-        <p className="mt-3 whitespace-pre-wrap">{`${PETITION_OPENING} ${draft.request}`}</p>
-        <Link href={`/petition/${draft.id}`} className="mt-4 inline-block text-accent underline">
-          Edit
-        </Link>
-      </article>
+      <form onSubmit={submit} noValidate>
+        <h1 className="text-2xl font-semibold">Publish to the app</h1>
+        <p className="mt-1 text-sm text-muted">
+          Your campaign goes live on the story and you become its first member. Others can then join. Once it
+          reaches 1,000 members, our team takes it to an MP and ourcommons.ca.
+        </p>
 
-      <form onSubmit={publish} className="mt-6 space-y-4">
-        {askPostal ? (
-          <label className="block text-sm font-semibold">
-            Your postal code
-            <input
-              value={postalCode}
-              onChange={(event) => setPostalCode(event.target.value)}
-              placeholder="K1P 1A4"
-              autoComplete="postal-code"
-              className="mt-2 w-full rounded-lg border border-line bg-paper px-3 py-2 text-sm font-normal"
-            />
-            <span className="mt-1 block text-xs font-normal text-muted">
-              We use it to find your riding. We save the riding, never your postal code.
-            </span>
-          </label>
-        ) : (
-          <p className="text-sm">
-            Your riding: <span className="font-medium">{savedRiding}</span>{" "}
-            <button type="button" onClick={() => setAskPostal(true)} className="text-accent underline">
-              Change
-            </button>
-          </p>
-        )}
-
-        <label className="flex items-start gap-2 text-sm">
+        <label className="mt-6 block">
+          <span className="text-sm font-semibold">Postal code</span>
+          <span className="block text-xs text-muted">
+            Finds your riding, so an MP can see members from theirs. Only the riding is saved. You can leave it
+            empty if you&rsquo;ve given it before.
+          </span>
           <input
-            type="checkbox"
-            checked={consent}
-            onChange={(event) => setConsent(event.target.checked)}
-            className="mt-1"
+            value={postal}
+            onChange={(event) => setPostal(event.target.value)}
+            placeholder="K1P 1A4"
+            className="mt-2 w-full rounded-lg border border-line bg-paper px-3 py-2 text-sm"
           />
-          <span>{CONSENT_TEXT}</span>
+        </label>
+        {postalError && <p className="mt-1 text-xs text-danger">{postalError}</p>}
+
+        <label className="mt-4 block">
+          <span className="text-sm font-semibold">Gather support for</span>
+          <select
+            value={days}
+            onChange={(event) => setDays(Number(event.target.value))}
+            className="mt-2 w-full rounded-lg border border-line bg-paper px-3 py-2 text-sm"
+          >
+            {DAYS.map((d) => (
+              <option key={d} value={d}>
+                {d} days
+              </option>
+            ))}
+          </select>
         </label>
 
-        {problem && (
-          <div role="alert" className="text-sm text-danger">
-            <p>{problem.message}</p>
-            {textProblems.length > 0 && (
-              <ul className="mt-1 list-disc pl-5">
-                {textProblems.map((text) => (
-                  <li key={text}>{text}</li>
-                ))}
-              </ul>
-            )}
-            {problem.editText && (
-              <Link href={`/petition/${draft.id}`} className="mt-1 inline-block underline">
-                Edit your text
-              </Link>
-            )}
-          </div>
-        )}
+        <label className="mt-4 flex gap-2 text-sm">
+          <input type="checkbox" checked={consent} onChange={(event) => setConsent(event.target.checked)} />
+          <span>Email me about this campaign, and share my name, email and riding with the MP we ask to sponsor it.</span>
+        </label>
 
+        {error && (
+          <p role="alert" className="mt-4 text-sm text-danger">
+            {error}
+          </p>
+        )}
         <button
           type="submit"
-          disabled={!consent || publishing}
-          className="w-full rounded-lg bg-ink px-4 py-3 text-sm font-medium text-paper disabled:opacity-60"
+          disabled={busy || !consent}
+          className="mt-6 w-full rounded-lg bg-ink px-4 py-3 text-sm font-medium text-paper disabled:opacity-60"
         >
-          {publishing ? "Publishing…" : "Publish to the app"}
+          {busy ? "Publishing…" : "Publish campaign"}
         </button>
       </form>
-    </section>
+    </div>
   );
 }

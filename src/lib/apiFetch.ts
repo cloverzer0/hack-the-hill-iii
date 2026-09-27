@@ -2,7 +2,7 @@ export class ApiError extends Error {
   constructor(
     readonly status: number,
     readonly code: string,
-    /** The whole error body, e.g. { error, campaignId } for 409 already_started. */
+    // The rest of the error body, e.g. { problems } for invalid_text or { campaignId } for already_started.
     readonly details: Record<string, unknown> = {},
   ) {
     super(code);
@@ -34,10 +34,8 @@ export async function apiFetch<T>(path: string, { method = "GET", body }: Option
 
   const data: unknown = await response.json().catch(() => null);
   if (!response.ok) {
-    const details = data !== null && typeof data === "object" ? (data as Record<string, unknown>) : {};
-    const code = details.error;
+    const { error: code, ...details } = (data ?? {}) as { error?: unknown } & Record<string, unknown>;
     throw new ApiError(response.status, typeof code === "string" ? code : "server_error", details);
   }
-  if (response.status === 204) return null as T;
   return data as T;
 }
