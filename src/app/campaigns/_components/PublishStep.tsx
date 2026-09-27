@@ -46,10 +46,10 @@ export function PublishStep({ storyTitle, text, busy, error, onPublish }: Props)
       </section>
 
       <form onSubmit={submit} noValidate>
-        <h1 className="text-2xl font-semibold">Publish to the app</h1>
+        <h1 className="text-2xl font-semibold">Set up your campaign</h1>
         <p className="mt-1 text-sm text-muted">
-          Your campaign goes live on the story and you become its first member. Others can then join. Once it
-          reaches 1,000 members, our team takes it to an MP and ourcommons.ca.
+          Launch your campaign on this story and become its first member. Others can then join. Once it reaches
+          1,000 members, our team takes it to an MP and eventually to ourcommons.ca.
         </p>
 
         <label className="mt-6 block">
@@ -97,7 +97,7 @@ export function PublishStep({ storyTitle, text, busy, error, onPublish }: Props)
           disabled={busy || !consent}
           className="mt-6 w-full rounded-lg bg-ink px-4 py-3 text-sm font-medium text-paper disabled:opacity-60"
         >
-          {busy ? "Publishing…" : "Publish campaign"}
+          {busy ? "Launching…" : "Launch campaign"}
         </button>
       </form>
     </div>

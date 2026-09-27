@@ -28,7 +28,7 @@ function messageFor(error: unknown): string {
     case "story_not_found":
       return "That spending story no longer exists.";
     default:
-      return "We couldn't publish your campaign. Try again.";
+      return "We couldn't launch your campaign. Try again.";
   }
 }
 
@@ -77,7 +77,7 @@ export function StartCampaign({ story }: { story: { id: string; title: string } 
         <CampaignForm
           storyTitle={story.title}
           initial={text ?? undefined}
-          submitLabel="Next: publish to the app"
+          submitLabel="Next: review campaign"
           onSubmit={(values) => {
             setText(values);
             setStep(2);
