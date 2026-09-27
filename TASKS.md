@@ -2,17 +2,22 @@
 
 ## MVP
 
-A user enters income + province, sees their federal tax broken down by where it goes, browses real federal spending stories with their personal share of each, and either opens a linked House of Commons e-petition or drafts a new one and emails their MP to sponsor it.
+A user enters income + province, sees their federal tax broken down by where it goes, browses real federal spending stories with their personal share of each, and starts or joins a campaign on that story in the app. Once a campaign has enough supporters, our team asks an MP to sponsor it, opens the official e-petition on ourcommons.ca, and emails every supporter a link to sign it there.
 
 **In the MVP:** 6 screens (layout from the wireframe), real tax math, real government spending data, stories from that data plus news, real MP lookup, Auth0 login when the app opens.
 
-**Not in the MVP (stretch):** tracking petitions, signature trend charts (Tiger Data), provincial items, milestone notifications.
+**Not in the MVP (stretch):** automated emails through an email service (e.g. telling members when their campaign changes stage, reminders), syncing official signature counts + the government's response from ourcommons.ca, auto-closing campaigns at the deadline, signature trend charts, provincial items.
 
 **Ground rules**
 - Auth0 login comes first, before screen 01. Every screen needs a logged-in user.
 - Income never leaves the device. The tax calculation runs on the client.
-- Only federal items get a petition card. House of Commons e-petitions can't cover provincial spending.
-- Petitions can't be signed or submitted inside the app. "Join petition" opens ourcommons.ca, and "Start a petition" produces a draft + sponsor email.
+- Only federal items get a campaign card. House of Commons e-petitions can't cover provincial spending.
+- **Our app builds support; the official petition lives on ourcommons.ca.** Joining in the app is support, not a signature. Everyone signs again on ourcommons.ca.
+- A story can have many campaigns, but each person can start only one per story. The starter writes it ("Start a campaign") and is its first member; others tap "Join" on the one they support, which shares their name, email and riding (with consent) so an MP can verify supporters.
+- **Only petitions from our own campaigns.** We don't search ourcommons.ca for other people's e-petitions or match them to stories.
+- **No email service in the MVP.** Emails are sent by hand: the MP ask and the "sign it now" message go from the app's Gmail account (compose links / BCC), and the ourcommons.ca account is registered with a team member's personal email.
+- **Target: 1,000 supporters** (2× the 500 signatures ourcommons.ca needs, assuming about half sign officially). **Deadline: 30–120 days**, same as an e-petition.
+- **Our team is the petitioner on ourcommons.ca.** One person can have only one petition open for signatures at a time, so each official petition is opened by a different team member (real name, city, postal code, phone; the name is published).
 - **The wireframe is a layout guide only.** Its numbers, labels and dates are placeholders. Real numbers come from the data.
 
 ## Decisions made
@@ -40,9 +45,9 @@ One branch per task, named `<area>/<task>` (listed under each task below). Merge
 | Person | Area |
 |---|---|
 | **Izu** | UI: all 6 screens |
-| **Raphael** | Data: tax calculator, spending data load, breakdown, DB schema, API, petition sync |
-| **Great** | Stories: data stories from spending jumps, news scraping, petition matching |
-| **Muktar** | Everything else: Auth0, MP lookup, sponsor email, draft flow, deploy, demo |
+| **Raphael** | Data: tax calculator, breakdown, spending API, official petitions (`/api/petitions`) |
+| **Great** | Stories: data stories, news scraping, campaigns (start + join) |
+| **Muktar** | Everything else: Auth0, MP lookup, draft flow, admin page, deploy, demo |
 
 ## Shared contract (agree on this first, together)
 
@@ -63,19 +68,32 @@ The spending item (story) shape everyone builds against:
   "level": "federal",
   "sources": [{ "label": "GC InfoBase: Federal Programs Spending", "url": "https://..." }],
   "image_url": "https://...",
-  "petition": {
-    "number": "e-5123",
+  "campaigns": [{
+    "id": "string",
     "title": "...",
-    "signatures": 18420,
-    "closes": "2025-06-01",
-    "url": "https://www.ourcommons.ca/petitions/en/Petition/Details?Petition=e-5123"
-  }
+    "starter": "Ana",
+    "supporters": 412,
+    "target": 1000,
+    "deadline": "2026-12-25",
+    "status": "gathering",
+    "joined": false,
+    "petition": {
+      "number": "e-5123",
+      "url": "https://www.ourcommons.ca/petitions/en/Petition/Details?Petition=e-5123",
+      "signatures": 318,
+      "closes": "2027-02-01"
+    }
+  }]
 }
 ```
 
 - `source_type` is `"data"` (from the spending file) or `"news"` (scraped).
 - `program_code` is filled for data stories, and for news stories when Great can match one.
-- `petition` is `null` when no open petition matches.
+- **Campaign** = the in-app part (start, join, 1,000 target). **Petition** = the official e-petition on ourcommons.ca.
+- `campaigns` lists the story's campaigns (empty → "No campaigns yet. Start the first one."). Order: official first, then most supporters; closed ones last.
+- `status`: `gathering` (collecting supporters) → `review` (hit the target, team checks it) → `sponsor_asked` (team emailed an MP) → `official` (live on ourcommons.ca) → `closed`.
+- `petition` is `null` until the e-petition is live on ourcommons.ca (Raphael's `/api/petitions`). `joined` is whether the logged-in user has joined.
+- Stories are **not** stored in the database. They live in Great's `pipeline/stories.json` + `pipeline/news_stories.json` and are read by `src/lib/stories.ts`. The database (Neon + Drizzle) holds users, drafts, campaigns, supporters, petitions and the GC InfoBase tables for the breakdown. Story `id`s never change, because campaigns point at them.
 
 ---
 
@@ -91,12 +109,12 @@ Branch: `ui/onboarding-overview`
 Branch: `ui/feed-detail`
 - **Phase 1:** Create `mock/spending.json` (~5 items in the shared shape). Build feed cards, department filter chips, bottom tab bar and the detail page from mock data.
 - **Phase 2:** Swap mock data for `GET /spending?department=` and `GET /spending/:id`. Show personal share using the formula in Decisions #3. Detail page in order: facts → "How this relates to you" → sources → action card.
-- **Phase 3:** Both action card states: open petition (progress bar, Join → ourcommons.ca, Start different) vs. none (Start a petition only). Empty feed state, image fallbacks.
+- **Phase 3:** Campaigns section from `campaigns`: empty ("No campaigns yet. Start the first one."), each row gathering ("412 of 1,000 supporters", deadline, Join / Joined) or official ("Sign on ourcommons.ca" + official count). "Start a campaign" becomes "Your campaign" if you already started one on this story. Empty feed state, image fallbacks.
 
 ### Task 3: Build the petition flow (screens 05–06)
 Branch: `ui/petition-flow`
 - **Phase 1:** Screen 05 form (title with 250-char counter, issue with "Whereas" helper, requested action, 6-step explainer under the form). Screen 06 layout (postal code + Find, MP card, email template) with a sample MP.
-- **Phase 2:** Wire to Muktar's `GET /mp?postal=` and draft endpoints. Step progress bar (1 of 3, 2 of 3). Editable sponsorship email.
+- **Phase 2:** Wire to Muktar's draft endpoints. Step 2 becomes "Publish to the app" (the campaign goes live on its story for others to join) instead of the user emailing an MP. Step progress bar.
 - **Phase 3:** Step 3 hand-off screen, validation messages, final visual pass across all screens.
 
 ---
@@ -109,18 +127,17 @@ Branch: `data/tax-breakdown`
 - **Phase 2:** From programs_spending.csv (2024–25): compute **total federal spending** (Decisions #3) and the top 7 programs. Write a plain-English name for each of the 7. Serve via `GET /breakdown` → `[{ name, amount, percent }]` + "All other programs".
 - **Phase 3:** Unit tests for a few incomes per province. Write the "How we calculate" content with sources.
 
-### Task 2: Build the database + spending API
+### Task 2: Build the spending API
 Branch: `data/db-api`
-- **Phase 1:** Set up Postgres (Tiger Data if going for that prize; it's still Postgres). Load the 3 GC InfoBase files into tables: `programs_spending`, `programs`, `organizations`. Also create `stories`, `petitions`, `users` (Auth0 `sub`), `drafts`.
-- **Phase 2:** Endpoints `GET /spending?department=`, `GET /spending/:id`, `GET /departments` (for filter chips), and `POST /internal/spending` (Great's scripts write stories here, protected with a shared secret).
-- **Phase 3:** Include the matched petition inline in `/spending` responses. Endpoints `POST /me/drafts`, `GET /me/drafts`, `PATCH /me/drafts/:id` using Muktar's auth middleware.
+- **Phase 1:** ~~Set up the database, `users`, `drafts`, drafts endpoints~~ Done by Muktar (Neon + Drizzle). ✅ GC InfoBase files loaded (`npm run db:load`) for the breakdown. Stories stay in JSON (see Shared contract).
+- **Phase 2:** ✅ `GET /api/spending?department=`, `GET /api/spending/:id`, `GET /api/departments`, reading stories through `src/lib/stories.ts`. Each story also gets its `campaigns` (see Shared contract).
 
-### Task 3: Build the petition sync
-Branch: `data/petition-sync`
-- **Phase 1:** Figure out how to get open e-petitions from ourcommons.ca (export or scrape). Pull a handful by hand into `petitions`.
-- **Phase 2:** Scheduled job that refreshes open petitions and signature counts.
-- **Phase 3 (stretch, Tiger Data prize):** Store hourly snapshots `(petition_id, time, count)` as a hypertable, expose a trend endpoint for a signature chart on screen 04.
-
+### Task 3: Build official petitions (`/api/petitions`) — MVP
+Branch: `data/petitions`
+A **petition** is the official e-petition on ourcommons.ca. It belongs to one in-app **campaign** (see Shared contract).
+- **Phase 1:** Drizzle `petitions` table: `campaign_id` (unique), e-petition `number`, ourcommons.ca `url`, `petitioner` (which team member opened it), `signatures`, `status` (open / closed / presented / responded), `closes`, `created_at`.
+- **Phase 2:** `POST /api/petitions` (team-only; the admin page calls it with the campaign id + number + url once a team member opens it on ourcommons.ca) sets the campaign's status to `official`. `GET /api/petitions/:id`. Each campaign's `petition` is filled from this table. Seed one official demo petition.
+- **Phase 3 (stretch):** Scheduled sync from ourcommons.ca for our petitions only: signature count, open/closed, and the government's response (due within 45 days of being presented), shown on the story.
 ---
 
 ## Great (Stories)
@@ -137,12 +154,12 @@ Branch: `stories/news-pipeline`
 - **Phase 2:** LLM extraction per article → `amount, department, date, level`, a neutral headline and summary. Drop `level: provincial`. Match to a `program_code` if possible. Push with `source_type: "news"`.
 - **Phase 3:** Dedupe the same story across outlets. Find or generate images. Run it on a schedule.
 
-### Task 3: Build petition matching
-Branch: `stories/petition-matching`
-- **Phase 1:** Hand-match a few stories to open e-petitions to see what a good match looks like.
-- **Phase 2:** For each story, find candidate petitions from Raphael's `petitions` table (keywords or embeddings), then an LLM yes/no check. Set `petition` or leave it `null`.
-- **Phase 3:** Review matches for the demo stories and fix bad ones by hand. Make sure the demo story has a live petition.
-
+### Task 3: Build campaigns (start + join) — MVP
+Branch: `stories/campaigns`
+No fuzzy matching: a campaign belongs to the story it was started from. A story can have many campaigns, one per person.
+- **Phase 1:** Make news story ids stable: a merged story always keeps its earliest article's id, so a newer outlet never changes it. Drizzle tables: `campaigns` (story_id, started_by, title, issue, request, target 1,000, deadline, status; unique `story_id` + `started_by`) and `campaign_supporters` (campaign, user, name, email, riding, consent to share with an MP, joined at; one row per user per campaign). Seed 2–3 demo campaigns, one already at 1,000.
+- **Phase 2:** `POST /api/campaigns` publishes a draft as a campaign on its story, with the starter as first member (if they already started one on this story, return that one). `POST /api/campaigns/:id/join`: one tap + consent; riding from the user's postal code via Muktar's MP lookup. At 1,000 supporters the status moves to `review`.
+- **Phase 3:** Attach each story's `campaigns` (with `starter`, `supporters`, `target`, `deadline`, `status`, `joined`) to `/api/spending` and `/api/spending/:id`. Demo check: joining raises the count, no joining twice, no second campaign by the same person on a story, stories without one show the empty state.
 ---
 
 ## Muktar (Everything else)
@@ -156,21 +173,28 @@ Branch: `platform/auth`
 ### Task 2: Build MP lookup + sponsor email
 Branch: `platform/mp-lookup`
 - **Phase 1:** Test the Open North Represent API: `https://represent.opennorth.ca/postcodes/K1P1A4/` → MP name, riding, email, phones.
-- **Phase 2:** `GET /mp?postal=` endpoint wrapping it (return only the federal MP). Sponsor email template filled from the draft + MP.
+- **Phase 2:** `GET /mp?postal=` endpoint wrapping it (return only the federal MP). Sponsor email template filled from the draft + MP (becomes the MP ask in Task 4).
 - **Phase 3:** "Send request by email" opens a `mailto:` link with subject and body. "Choose a different MP" flow. Handle bad postal codes.
 
 ### Task 3: Build the draft flow + deploy + demo
 Branch: `platform/draft-deploy`
 - **Phase 1:** Set up hosting (e.g. Vercel) with env vars so there's a deploy URL from the start.
-- **Phase 2:** Draft flow: step 1 saves the draft, step 2 attaches the MP, step 3 hands off to ourcommons.ca with the text ready to copy.
+- **Phase 2:** Draft flow: step 1 saves the draft, step 2 publishes it as a campaign on its story (Great's `POST /api/campaigns`) so others can join. The MP ask and the ourcommons.ca hand-off move to Task 4.
 - **Phase 3:** End-to-end test of the full path on the deployed URL. Demo script, pitch deck, final deploy.
 
+
+### Task 4: Build the admin page (hand-off to ourcommons.ca) — MVP
+Branch: `platform/admin`
+No email service: the team sends everything by hand from the app's Gmail account.
+- **Phase 1:** Team-only admin page (`ADMIN_EMAILS` allowlist, checked on the server; others get "page not found"). Lists campaigns with members, stage and last updated; filter by stage. Campaign view: text, starter, members by riding, member table + CSV download.
+- **Phase 2:** Pick the sponsor MP with the existing MP search. **MP ask** email built on the sponsor email ("This campaign has N members from M ridings, including X in yours. We can share the member list so you can verify them."), with Copy / Open in Gmail / Open in Outlook, sent from the app's Gmail. Stage buttons (can move back, e.g. if an MP says no), sets `sponsor_asked`.
+- **Phase 3:** Record the ourcommons.ca number + link once a team member opens it (calls Raphael's `POST /api/petitions`, campaign becomes `official`). **Sign now** message ("It's live on ourcommons.ca, sign it here: <link>. Your signature only counts after you confirm the House of Commons email.") + "Copy member emails" for BCC.
 ---
 
 ## If time runs out, cut in this order
 
-1. Stretch items (Tiger Data trends, tracking petitions, provincial items)
+1. Stretch items (official sync + government response, reminders, auto-close, trend charts, provincial items)
 2. News pipeline (data stories alone fill the feed)
-3. Petition matching (show "Start a petition" everywhere)
+3. Admin page (do the MP ask and the ourcommons.ca step by hand from the database, show it in the demo script)
 
-Never cut: tax calc, breakdown, data stories, detail page, MP lookup + email.
+Never cut: tax calc, breakdown, data stories, detail page, start + join a campaign, MP lookup, emailing supporters.

@@ -1,6 +1,11 @@
-:root {
+.tax-app {
   --wm-canvas: #e9e3d7;
   --wm-surface: #f7f2e9;
+  --ink: var(--wm-ink);
+  --paper: var(--wm-canvas);
+  --muted: var(--wm-muted);
+  --rule: var(--wm-line);
+  --surface: var(--wm-surface);
   --wm-ink: #201d19;
   --wm-muted: #716d64;
   --wm-soft: #aaa399;
