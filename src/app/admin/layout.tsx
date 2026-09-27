@@ -1,23 +1,22 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { AccountMenu } from "@/components/AccountMenu";
+import { TaxTrackerShell } from "@/components/TaxTrackerShell";
 import { requireAdminPage } from "./requireAdminPage";
+import "../(tracker)/tax-journey.css";
 
 export const metadata: Metadata = { title: "Admin · wheredoesmytaxgo" };
 
 export default async function AdminLayout({ children }: { children: React.ReactNode }) {
   await requireAdminPage();
   return (
-    <div className="min-h-screen bg-canvas text-ink">
-      <div className="mx-auto max-w-[1200px] px-4 py-6 sm:px-6 lg:py-10">
-        <div className="mb-6 flex items-center justify-between">
-          <Link href="/admin" className="text-sm font-semibold">
-            wheredoesmytaxgo admin
-          </Link>
-          <AccountMenu />
+    <TaxTrackerShell accountMenu={<AccountMenu />} childrenAreMain>
+      <div className="admin-route-shell">
+        <div className="admin-route-kicker">
+          <span>TEAM CONSOLE</span>
+          <span>CAMPAIGN OPERATIONS</span>
         </div>
         {children}
       </div>
-    </div>
+    </TaxTrackerShell>
   );
 }

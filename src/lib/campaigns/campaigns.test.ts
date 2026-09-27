@@ -16,6 +16,7 @@ import * as campaignsRoute from "@/app/api/campaigns/route";
 import * as meRidingRoute from "@/app/api/me/riding/route";
 import * as meRoute from "@/app/api/me/route";
 import * as petitionsRoute from "@/app/api/petitions/route";
+import * as petitionByIdRoute from "@/app/api/petitions/[id]/route";
 import { getCurrentUser, requireUser, UnauthorizedError, type CurrentUser } from "@/lib/auth";
 import { lookupMpByPostal } from "@/lib/mp/represent";
 import { syncPetitions } from "@/lib/petitions/petitions";
@@ -181,6 +182,8 @@ describe("starting a campaign", () => {
       canLeave: false,
       petition: null,
     });
+    expect(detail).not.toHaveProperty("sponsorMp");
+    expect(detail).not.toHaveProperty("sponsorRequestedAt");
     const [row] = await db.select().from(users);
     expect(row.riding).toBe("Ottawa Centre");
     expect(JSON.stringify(row)).not.toMatch(/K1P/i);
@@ -334,9 +337,12 @@ describe("admin", () => {
     expect(list).toEqual([expect.objectContaining({ id, starterEmail: "alice@example.com", memberCount: 2, ridingCount: 2, stage: "gathering" })]);
 
     const patch = (body: unknown) => adminCampaignRoute.PATCH(req("/", "PATCH", body), ctx(id));
-    expect(await (await patch({ stage: "mp_asked", teamNote: "Asked Yasir Naqvi on Sept 27." })).json()).toMatchObject({
+    const sponsorMp = { name: "Yasir Naqvi", riding: "Vanier—Colonnade", party: "Liberal", email: "yasir@example.ca", photoUrl: null, profileUrl: null, hillPhone: null, ridingPhone: null };
+    expect(await (await patch({ stage: "mp_asked", sponsorMp, sponsorRequestedAt: "2026-09-27T12:00:00.000Z", teamNote: "Asked Yasir Naqvi on Sept 27." })).json()).toMatchObject({
       stage: "mp_asked",
       teamNote: "Asked Yasir Naqvi on Sept 27.",
+      sponsorMp,
+      sponsorRequestedAt: "2026-09-27T12:00:00.000Z",
     });
     expect(await (await patch({ stage: "live" })).json()).toEqual({ error: "needs_petition" });
     expect((await patch({})).status).toBe(400);
@@ -369,6 +375,13 @@ describe("admin", () => {
     const listed = await (await petitionsRoute.GET(req(`/api/petitions?story=${STORY}`))).json();
     expect(listed.map((p: { number: string }) => p.number)).toEqual(["e-4701"]);
     expect(await (await petitionsRoute.GET(req("/api/petitions?story=other"))).json()).toEqual([]);
+
+    const detail = await (await petitionByIdRoute.GET(req("/"), { params: Promise.resolve({ id: "e-4701" }) })).json();
+    expect(detail).toMatchObject({ number: "e-4701", url: "https://www.ourcommons.ca/petitions/en/Petition/Details?Petition=e-4701" });
+    loginAs(ADMIN);
+    expect((await petitionByIdRoute.DELETE(req("/", "DELETE"), { params: Promise.resolve({ id: "e-4701" }) })).status).toBe(200);
+    const removed = await campaignRoute.GET(req("/"), ctx(id));
+    expect(await removed.json()).toMatchObject({ stage: "gathering", petition: null });
   });
 
   it("rejects a bad or already used petition number", async () => {

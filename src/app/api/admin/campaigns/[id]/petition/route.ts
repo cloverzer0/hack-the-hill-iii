@@ -8,7 +8,7 @@ import { jsonError, readJson } from "@/lib/http";
 
 type Context = { params: Promise<{ id: string }> };
 
-const bodySchema = z.object({ number: z.string().trim().min(1).max(20), title: z.string().trim().min(1).max(500) });
+const bodySchema = z.object({ number: z.string().trim().min(1).max(20), title: z.string().trim().min(1).max(500), url: z.string().trim().url().optional() });
 
 /**
  * Purpose:

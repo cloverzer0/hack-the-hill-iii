@@ -9,6 +9,23 @@ import { JoinCampaign } from "./JoinCampaign";
 type Props = { params: Promise<{ id: string }> };
 const count = new Intl.NumberFormat("en-CA");
 
+function campaignProgress(campaign: { stage: keyof typeof STAGE_LABELS; deadline: string }): string {
+  switch (campaign.stage) {
+    case "gathering":
+      return `gathering until ${campaign.deadline}`;
+    case "in_review":
+      return "target reached · team review in progress";
+    case "mp_asked":
+      return "sponsorship requested from an MP";
+    case "mp_agreed":
+      return "MP sponsorship agreed";
+    case "live":
+      return "official petition live";
+    case "closed":
+      return "campaign closed";
+  }
+}
+
 export default async function CampaignPage({ params }: Props) {
   const [{ id }, user] = await Promise.all([params, getCurrentUser()]);
   const campaign = await getCampaign(id, user?.id ?? null);
@@ -27,7 +44,7 @@ export default async function CampaignPage({ params }: Props) {
         <p className="text-sm font-medium">{campaign.issue}</p>
         <p className="mt-4 text-sm">{fullRequest(campaign.request)}</p>
         <div className="mt-5 border-t border-line pt-4 text-sm text-muted">
-          {count.format(campaign.memberCount)} of {count.format(campaign.target)} members · {campaign.ridingCount} ridings · gathering until {campaign.deadline}
+          {count.format(campaign.memberCount)} of {count.format(campaign.target)} members · {campaign.ridingCount} ridings · {campaignProgress(campaign)}
         </div>
       </section>
 

@@ -26,7 +26,11 @@ export async function GET(_request: Request, { params }: Context) {
     const campaign = await getCampaign((await params).id, viewer?.id ?? null);
     if (!campaign) return jsonError("not_found", 404);
     if (campaign.petition) after(refreshStalePetitions);
-    return NextResponse.json(campaign);
+    return NextResponse.json({
+      ...campaign,
+      sponsorMp: undefined,
+      sponsorRequestedAt: undefined,
+    });
   } catch (error) {
     return campaignErrorResponse(error);
   }

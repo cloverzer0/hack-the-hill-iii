@@ -2,7 +2,7 @@ import { and, eq, inArray, isNull, lt, or } from "drizzle-orm";
 import { db } from "@/db";
 import { campaigns, petitions, type PetitionRow } from "@/db/schema";
 import { SIGNATURES_NEEDED } from "@/lib/campaigns/rules";
-import { fetchPetition, petitionUrl } from "./ourcommons";
+import { fetchPetition, normalizePetitionNumber, petitionUrl } from "./ourcommons";
 
 // Official e-petitions our team created from campaigns, and their numbers from ourcommons.ca.
 
@@ -69,7 +69,7 @@ export function toPetitionCard(row: PetitionRow, campaign: { id: string; title: 
   return {
     number: row.number,
     title: row.title,
-    url: petitionUrl(row.number),
+    url: row.url ?? petitionUrl(row.number),
     campaignId: campaign.id,
     campaignTitle: campaign.title,
     storyId: campaign.storyId,
@@ -84,6 +84,17 @@ export function toPetitionCard(row: PetitionRow, campaign: { id: string; title: 
     responseTabledAt: iso(row.responseTabledAt),
     syncedAt: iso(row.syncedAt),
   };
+}
+
+export async function getPetition(numberInput: string): Promise<PetitionCard | null> {
+  const number = normalizePetitionNumber(numberInput);
+  if (!number) return null;
+  const [row] = await db
+    .select({ petition: petitions, campaign: { id: campaigns.id, title: campaigns.title, storyId: campaigns.storyId } })
+    .from(petitions)
+    .innerJoin(campaigns, eq(campaigns.id, petitions.campaignId))
+    .where(eq(petitions.number, number));
+  return row ? toPetitionCard(row.petition, row.campaign) : null;
 }
 
 /**

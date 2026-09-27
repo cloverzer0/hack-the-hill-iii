@@ -1,6 +1,8 @@
 import type { Category, SpendingItem } from './types'
 
 const officialSource = { label: 'Government of Canada · mock source', url: 'https://www.canada.ca/en.html' }
+export const mockFiscalYear = '2024-25'
+export const mockTotalFederalSpending = 1_000_000_000_000
 
 export const receiptCategories: Category[] = [
   { id: 'seniors', name: "Seniors' pensions", amount: 1503, percent: 15.8, description: 'Income support for seniors through Old Age Security and related benefits.', drillable: false, source: officialSource },
