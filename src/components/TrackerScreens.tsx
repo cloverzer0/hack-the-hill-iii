@@ -4,6 +4,9 @@ import { howWeCalculate } from '../shared/howWeCalculate'
 import { estimateTax } from '../shared/tax'
 import type { SpendingItem, UserInputs } from '../shared/types'
 import { useBreakdown } from './useBreakdown'
+import { useSpending, useSpendingDetail } from './useSpending'
+import type { Story } from '@/lib/stories'
+import { useState } from 'react'
 
 const money = new Intl.NumberFormat('en-CA', { style: 'currency', currency: 'CAD', maximumFractionDigits: 0 })
 const cents = new Intl.NumberFormat('en-CA', { style: 'currency', currency: 'CAD', minimumFractionDigits: 2, maximumFractionDigits: 2 })
@@ -61,7 +64,7 @@ function Receipt({ breakdown, inputs, navigate }: { breakdown: Breakdown; inputs
           <p className="section-label">A closer look</p>
           <div className="receipt-stat"><strong>{topPercent.toFixed(1)}%</strong><span>goes to just {programs.length} of the {breakdown.program_count.toLocaleString('en-CA')} federal programs.</span></div>
           <div className="receipt-bars">{programs.slice(0, 6).map((row) => <div key={row.name} className="mini-bar"><span>{row.name}</span><i><b style={{ width: `${(row.percent / biggestPercent) * 100}%` }} /></i><em>{row.percent}%</em></div>)}</div>
-          <button className="text-action receipt-explore" onClick={() => navigate(`/category/${categoryOptions()[0].id}`)}>Browse spending records ↗</button>
+          <button className="text-action receipt-explore" onClick={() => navigate('/spending')}>Browse spending stories ↗</button>
           <details className="how-we-calculate">
             <summary>How we calculate</summary>
             {howWeCalculate(breakdown).map((section) => <section key={section.title}><h3>{section.title}</h3>{section.body.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}{section.sources.map((source) => <a key={source.url} href={source.url} target="_blank" rel="noreferrer">{source.label} ↗</a>)}</section>)}
@@ -71,6 +74,41 @@ function Receipt({ breakdown, inputs, navigate }: { breakdown: Breakdown; inputs
       </div>
     </section>
   )
+}
+
+export function SpendingScreen({ inputs, navigate }: { inputs: UserInputs; navigate: (path: string) => void }) {
+  const [department, setDepartment] = useState<string | null>(null)
+  const state = useSpending(department)
+  const tax = federalTax(inputs)
+  const breakdown = useBreakdown()
+  const total = breakdown.status === 'ready' ? breakdown.breakdown.total_federal_spending : null
+
+  return <section className="tracker-page spending-page" aria-labelledby="spending-title" aria-busy={state.status === 'loading'}>
+    <button className="back-action" onClick={() => navigate('/receipt')}>← Back to receipt</button>
+    <div className="tracker-heading spending-heading">
+      <div><p className="screen-kicker">03 · PUBLIC SPENDING STORIES</p><h1 id="spending-title">Follow the money.</h1><p className="category-intro">Real federal spending, translated into stories you can investigate. Your share keeps the scale personal.</p></div>
+      <div className="spending-context"><span>Your federal tax</span><strong>{money.format(tax)}</strong><small>{inputs.province} · {money.format(inputs.income)} income</small></div>
+    </div>
+    {state.status === 'loading' && <p className="feed-status" role="status">Loading spending stories…</p>}
+    {state.status === 'error' && <div className="empty-state feed-status" role="alert"><strong>We couldn&apos;t load the spending stories.</strong><p>Check your connection and try again.</p><button className="text-action" onClick={() => setDepartment(department)}>Try again ↻</button></div>}
+    {state.status === 'ready' && <>
+      <div className="department-filter" aria-label="Filter spending stories by department" role="group">
+        <button className={department === null ? 'filter-chip active' : 'filter-chip'} onClick={() => setDepartment(null)} aria-pressed={department === null}>All stories</button>
+        {state.departments.map((item) => <button key={item.dept_code} className={department === item.dept_code ? 'filter-chip active' : 'filter-chip'} onClick={() => setDepartment(item.dept_code)} aria-pressed={department === item.dept_code}>{item.name} <span>{item.count}</span></button>)}
+      </div>
+      {state.stories.length ? <div className="story-list">{state.stories.map((story, index) => <StoryCard key={story.id} story={story} tax={tax} total={total} featured={index === 0} navigate={navigate} />)}</div> : <div className="empty-state"><strong>No stories in this department yet.</strong><p>Try another department or return to all stories.</p><button className="text-action" onClick={() => setDepartment(null)}>Show all stories ↗</button></div>}
+    </>}
+  </section>
+}
+
+function StoryCard({ story, tax, total, featured, navigate }: { story: Story; tax: number; total: number | null; featured: boolean; navigate: (path: string) => void }) {
+  return <article className={featured ? 'story-card story-card-featured' : 'story-card'}>
+    <div className="story-card-top"><span className={story.source_type === 'news' ? 'story-type story-type-news' : 'story-type'}>{story.source_type === 'news' ? 'NEWS RECORD' : 'DATA STORY'}</span><span>{story.fiscal_year}</span></div>
+    <button className="story-card-link" onClick={() => navigate(`/decision/${story.id}`)}><h2>{story.title}</h2><span className="decision-arrow" aria-hidden="true">↗</span></button>
+    <p>{story.summary}</p>
+    <div className="story-card-facts"><span><b>Public amount</b>{money.format(story.amount)}</span><span><b>Department</b>{story.department}</span><span className="story-share"><b>Your share</b>{shareOf(tax, story.amount, total)}</span></div>
+    <a className="story-source" href={story.sources[0]?.url} target="_blank" rel="noreferrer">{story.sources[0]?.label ?? 'Official source'} ↗</a>
+  </article>
 }
 
 export function CategoryScreen({ categoryId, inputs, navigate }: { categoryId: string; inputs: UserInputs; navigate: (path: string) => void }) {
@@ -117,6 +155,27 @@ export function DecisionScreen({ itemId, inputs, navigate }: { itemId: string; i
       <footer className="detail-source"><span>DATA AS OF {item.dataAsOf}</span><a href={item.sources[0].url} target="_blank" rel="noreferrer">VIEW ORIGINAL RECORD ↗</a></footer>
     </section>
   )
+}
+
+export function ApiDecisionScreen({ itemId, inputs, navigate }: { itemId: string; inputs: UserInputs; navigate: (path: string) => void }) {
+  const state = useSpendingDetail(itemId)
+  const breakdown = useBreakdown()
+  const tax = federalTax(inputs)
+  const total = breakdown.status === 'ready' ? breakdown.breakdown.total_federal_spending : null
+  if (state.status === 'loading') return <section className="tracker-page detail-page" aria-busy="true"><p className="screen-kicker">04 · SPENDING STORY</p><p className="feed-status" role="status">Loading this spending story…</p></section>
+  if (state.status === 'error') return <section className="tracker-page detail-page"><button className="back-action" onClick={() => navigate('/spending')}>← Back to stories</button><div className="empty-state" role="alert"><strong>We couldn&apos;t load this story.</strong><p>Return to the feed and try again.</p><button className="text-action" onClick={() => navigate('/spending')}>Back to spending ↗</button></div></section>
+  const story = state.story
+  return <section className="tracker-page detail-page" aria-labelledby="story-title">
+    <button className="back-action" onClick={() => navigate('/spending')}>← Back to spending stories</button>
+    <p className="screen-kicker">04 · SPENDING STORY</p>
+    <div className="detail-hero"><div><h1 id="story-title">{story.title}</h1><p className="detail-recipient">{story.department} · {story.fiscal_year}</p></div><span className="detail-stamp">PUBLIC<br />RECORD</span></div>
+    <div className="detail-facts"><span><b>Department</b>{story.department}</span><span><b>Date</b>{dateLabel(story.date)}</span><span><b>Public amount</b>{money.format(story.amount)}</span></div>
+    <section className="your-share"><p className="section-label">Your share</p><strong>{shareOf(tax, story.amount, total)}</strong><p>An estimate of how much of this story is represented by your federal tax, using the {story.fiscal_year} federal spending pool.</p></section>
+    <section className="detail-section"><p className="section-label">What happened</p><h2>The record, in plain language.</h2><p>{story.summary}</p><p className="ai-disclosure">Story summary — check the original record before drawing conclusions.</p></section>
+    <section className="detail-section evidence-section"><p className="section-label">Evidence</p><h2>Read the source.</h2><div className="context-links">{story.sources.map((source) => <a key={source.url} href={source.url} target="_blank" rel="noreferrer">{source.label} ↗</a>)}</div></section>
+    <section className="civic-placeholder"><p className="section-label">What happens next?</p><h2>Stay with the record.</h2><p>Read the source, ask what changed, and follow the public decisions that come after this spending.</p></section>
+    <footer className="detail-source"><span>DATA AS OF {story.date}</span><a href={story.sources[0]?.url} target="_blank" rel="noreferrer">VIEW ORIGINAL RECORD ↗</a></footer>
+  </section>
 }
 
 function categoryFor(item: SpendingItem) {

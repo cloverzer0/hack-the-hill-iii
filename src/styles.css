@@ -52,3 +52,40 @@
 @media (max-width: 700px) and (prefers-reduced-motion: reduce) { .tax-app .stream-bill { left: 50%; top: 96%; } }
 .tax-app .receipt-explore { display: block; margin-top: 26px; }.tax-app .how-we-calculate { margin-top: 26px; padding-top: 16px; border-top: 1px solid var(--wm-line); }.tax-app .how-we-calculate summary { color: var(--wm-ink); font: 10px 'DM Mono', monospace; letter-spacing: .1em; text-transform: uppercase; cursor: pointer; }.tax-app .how-we-calculate section { margin-top: 18px; }.tax-app .how-we-calculate h3 { margin: 0 0 6px; color: var(--wm-ink); font: 500 19px/1.1 'Newsreader', serif; }.tax-app .how-we-calculate p { margin: 0 0 8px; color: var(--wm-muted); font-size: 12px; line-height: 1.55; }.tax-app .how-we-calculate a { display: block; margin-top: 4px; color: var(--wm-red); font: 9px/1.5 'DM Mono', monospace; text-decoration: none; }
 .receipt-status { margin-top: 57px; color: var(--wm-muted); font: 11px 'DM Mono', monospace; }
+.spending-context { min-width: 190px; padding: 18px 0 0 20px; border-left: 2px solid var(--wm-red); color: var(--wm-muted); font: 10px 'DM Mono', monospace; }
+.spending-context span, .spending-context small { display: block; }
+.spending-context strong { display: block; margin: 7px 0 5px; color: var(--wm-ink); font: 500 28px 'DM Mono', monospace; letter-spacing: -.06em; }
+.spending-context small { font-size: 9px; }
+.department-filter { display: flex; gap: 8px; overflow-x: auto; margin-top: 43px; padding: 0 0 10px; scrollbar-width: thin; }
+.filter-chip { flex: 0 0 auto; padding: 9px 11px; border: 1px solid var(--wm-line); border-radius: 999px; color: var(--wm-muted); background: transparent; font: 10px 'DM Mono', monospace; cursor: pointer; }
+.filter-chip:hover, .filter-chip:focus-visible, .filter-chip.active { border-color: var(--wm-ink); color: var(--wm-ink); }
+.filter-chip.active { background: var(--wm-surface); box-shadow: 0 3px 9px rgba(42, 34, 25, .08); }
+.filter-chip span { margin-left: 4px; color: var(--wm-red); }
+.feed-status { margin-top: 43px; color: var(--wm-muted); font: 11px 'DM Mono', monospace; }
+.story-list { display: grid; gap: 14px; margin-top: 25px; }
+.story-card { padding: 24px 25px 22px; border-top: 1px solid var(--wm-line-strong); background: rgba(247, 242, 233, .55); }
+.story-card-featured { padding: 29px 30px 27px; border-top: 3px solid var(--wm-red); background: var(--wm-surface); box-shadow: 0 16px 30px rgba(42, 34, 25, .08); }
+.story-card-top, .story-card-facts { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; color: var(--wm-muted); font: 9px 'DM Mono', monospace; }
+.story-type { color: var(--wm-olive); letter-spacing: .08em; }
+.story-type-news { color: var(--wm-red); }
+.story-card-link { display: flex; align-items: start; justify-content: space-between; width: 100%; margin-top: 18px; padding: 0; border: 0; color: var(--wm-ink); background: transparent; text-align: left; cursor: pointer; }
+.story-card h2 { max-width: 720px; margin: 0; font: 500 34px/1 'Newsreader', serif; letter-spacing: -.03em; }
+.story-card-featured h2 { font-size: 43px; }
+.story-card > p { max-width: 690px; margin: 14px 0 0; color: var(--wm-muted); font-size: 14px; line-height: 1.55; }
+.story-card-facts { justify-content: start; margin-top: 24px; }
+.story-card-facts span { min-width: 170px; color: var(--wm-ink); }
+.story-card-facts b { display: block; margin-bottom: 5px; color: var(--wm-muted); font-weight: 400; }
+.story-card-facts .story-share { color: var(--wm-red); }
+.story-source { display: inline-block; margin-top: 22px; color: var(--wm-red); font: 9px 'DM Mono', monospace; text-decoration: none; }
+.story-source:hover, .story-source:focus-visible { text-decoration: underline; text-underline-offset: 4px; }
+.evidence-section { margin-bottom: 10px; }
+@media (max-width: 700px) {
+  .tax-app .spending-heading { display: block; }
+  .tax-app .spending-context { margin-top: 28px; padding: 14px 0 0 15px; }
+  .tax-app .department-filter { margin-top: 31px; margin-inline: -22px; padding-inline: 22px; }
+  .tax-app .story-card, .tax-app .story-card-featured { padding: 20px 17px 19px; }
+  .tax-app .story-card h2, .tax-app .story-card-featured h2 { font-size: 29px; }
+  .tax-app .story-card-facts { display: grid; grid-template-columns: 1fr 1fr; }
+  .tax-app .story-card-facts span { min-width: 0; }
+  .tax-app .story-card-facts .story-share { grid-column: 1 / -1; }
+}
