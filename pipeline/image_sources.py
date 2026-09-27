@@ -176,7 +176,7 @@ def cache_article_image(article_url: str, story_key: str) -> dict[str, str | Non
             if resolved:
                 page_url, parser = _metadata(resolved)
         canonical = urllib.parse.urljoin(page_url, parser.canonical) if parser.canonical else page_url
-        image_urls = _image_urls(page_url, parser)
+        image_urls = [url for url in _image_urls(page_url, parser) if not ((urllib.parse.urlparse(page_url).hostname or "").endswith("news.google.com") and (urllib.parse.urlparse(url).hostname or "").endswith("googleusercontent.com"))]
         if not image_urls and canonical != page_url:
             canonical_page, canonical_parser = _metadata(canonical)
             canonical = urllib.parse.urljoin(canonical_page, canonical_parser.canonical) if canonical_parser.canonical else canonical_page
