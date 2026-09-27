@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { buildMpAsk } from "./outreach";
+import { buildMpAsk, buildSignNow } from "./outreach";
 
 const CAMPAIGN = {
   title: "Publish a plan to lower debt interest",
@@ -53,5 +53,26 @@ describe("buildMpAsk", () => {
   it("doesn't count a missing riding as a riding", () => {
     const { body } = buildMpAsk({ campaign: CAMPAIGN, mp: MP, members: members("Ottawa Centre", null) });
     expect(body).toContain("This campaign has 2 members from 1 riding, including 1 in Ottawa Centre.");
+  });
+});
+
+describe("buildSignNow", () => {
+  it("tells members where to sign and that the confirmation email matters", () => {
+    const { subject, body } = buildSignNow({
+      campaign: { title: "Publish a plan to lower debt interest" },
+      petition: { number: "e-7203", url: "https://www.ourcommons.ca/petitions/en/Petition/Details?Petition=e-7203" },
+    });
+    expect(subject).toBe("It's live: sign Publish a plan to lower debt interest on ourcommons.ca");
+    expect(body).toBe(
+      [
+        "The campaign you joined is now official petition e-7203. Sign it here:",
+        "https://www.ourcommons.ca/petitions/en/Petition/Details?Petition=e-7203",
+        "",
+        "Your signature only counts after you confirm the email from the House of Commons.",
+        "",
+        "Thank you,",
+        "The wheredoesmytaxgo team",
+      ].join("\n"),
+    );
   });
 });

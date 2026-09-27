@@ -47,3 +47,26 @@ export function buildMpAsk({
     ].join("\n"),
   };
 }
+
+/** The "it's live, sign here" email for every member, sent by hand with the addresses in BCC. */
+export function buildSignNow({
+  campaign,
+  petition,
+}: {
+  campaign: { title: string };
+  petition: { number: string; url: string };
+}): Email {
+  return {
+    subject: `It's live: sign ${campaign.title} on ourcommons.ca`,
+    body: [
+      `The campaign you joined is now official petition ${petition.number}. Sign it here:`,
+      // On its own line so email apps don't fold punctuation into the link.
+      petition.url,
+      "",
+      "Your signature only counts after you confirm the email from the House of Commons.",
+      "",
+      "Thank you,",
+      "The wheredoesmytaxgo team",
+    ].join("\n"),
+  };
+}

@@ -5,6 +5,8 @@ import { getCampaign } from "@/lib/campaigns/campaigns";
 import { CampaignOverview } from "../../_components/CampaignOverview";
 import { MembersSection } from "../../_components/MembersSection";
 import { MpAsk } from "../../_components/MpAsk";
+import { PetitionSection } from "../../_components/PetitionSection";
+import { SignNow } from "../../_components/SignNow";
 import { StageControls } from "../../_components/StageControls";
 import { requireAdminPage } from "../../requireAdminPage";
 
@@ -35,6 +37,8 @@ export default async function AdminCampaignPage({ params }: Props) {
       <StageControls key={`stage-${version}`} campaign={campaign} />
       <MembersSection campaignId={campaign.id} members={members} />
       <MpAsk campaign={campaign} members={members} teamGmail={teamGmail} />
+      <PetitionSection campaign={campaign} />
+      <SignNow campaign={campaign} members={members} teamGmail={teamGmail} />
     </main>
   );
 }
