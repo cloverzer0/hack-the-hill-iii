@@ -1,5 +1,25 @@
 [
   {
+    "id": "news-3de807b167c0",
+    "title": "Ottawa provides $162M to Mitacs for small business AI internships",
+    "summary": "The federal government is providing $162 million to Mitacs. The funding supports an artificial intelligence internship program designed for smaller Canadian businesses.",
+    "amount": 162000000,
+    "date": "2026-09-25",
+    "fiscal_year": "2026-27",
+    "department": "Innovation, Science and Economic Development Canada",
+    "dept_code": "ISC",
+    "program_code": "BNP17",
+    "source_type": "news",
+    "level": "federal",
+    "sources": [
+      {
+        "label": "betakit.com",
+        "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxOd04wWVZhUkJqMk5Tb2lPV2RXdlBldmZVdlNYTENUT1ZwUU80aTNJSjBQYnh3dWFEcjg2UWJ6cFptV3MwRmc2TVJRVVUwM0tROEM4dmI2RjJnQjFBM3dsTXQ0MzdfV2J4aFQ1T25mMU1zOHhyRXhCNGdGaVBXWndpMFdxbDF3SU0zZ2R6Q0txdkJyLXVLdkN4b3pTQW1qSmtYaXNQUFFRWjQxZjA?oc=5"
+      }
+    ],
+    "image_url": null
+  },
+  {
     "id": "news-1ea76d425f6a",
     "title": "Canada commits $82 million for global ocean monitoring",
     "summary": "The Government of Canada has committed $82 million as the OceanEye Alliance secures $339 million for global ocean monitoring.",
