@@ -1,6 +1,7 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
-import { isAdmin } from "@/lib/admin";
-import { getCurrentUser, type CurrentUser } from "@/lib/auth";
+import { notFound } from "next/navigation";
+import { NotAdminError, requireAdmin } from "@/lib/admin";
+import type { CurrentUser } from "@/lib/auth";
 import { requireAdminPage } from "./requireAdminPage";
 
 vi.mock("next/navigation", () => ({
@@ -8,34 +9,34 @@ vi.mock("next/navigation", () => ({
     throw new Error("NEXT_NOT_FOUND");
   }),
 }));
-vi.mock("@/lib/auth", async (importOriginal) => ({
-  ...(await importOriginal<typeof import("@/lib/auth")>()),
-  getCurrentUser: vi.fn(),
+vi.mock("@/lib/admin", async (importOriginal) => ({
+  ...(await importOriginal<typeof import("@/lib/admin")>()),
+  requireAdmin: vi.fn(),
 }));
-vi.mock("@/lib/admin", () => ({ isAdmin: vi.fn() }));
 
 const TEAM: CurrentUser = { id: "auth0|team", email: "team@example.ca", name: "Team Member" };
 
 beforeEach(() => {
-  vi.mocked(isAdmin).mockReset();
+  vi.mocked(requireAdmin).mockReset();
+  vi.mocked(notFound).mockClear();
 });
 
 describe("requireAdminPage", () => {
   it("returns the admin", async () => {
-    vi.mocked(getCurrentUser).mockResolvedValue(TEAM);
-    vi.mocked(isAdmin).mockReturnValue(true);
+    vi.mocked(requireAdmin).mockResolvedValue(TEAM);
     await expect(requireAdminPage()).resolves.toEqual(TEAM);
   });
 
-  it("shows the not-found page to other users", async () => {
-    vi.mocked(getCurrentUser).mockResolvedValue(TEAM);
-    vi.mocked(isAdmin).mockReturnValue(false);
+  it("shows the not-found page when requireAdmin rejects a non-admin", async () => {
+    vi.mocked(requireAdmin).mockRejectedValue(new NotAdminError());
     await expect(requireAdminPage()).rejects.toThrow("NEXT_NOT_FOUND");
+    expect(notFound).toHaveBeenCalledOnce();
   });
 
-  it("shows the not-found page when nobody is logged in", async () => {
-    vi.mocked(getCurrentUser).mockResolvedValue(null);
-    await expect(requireAdminPage()).rejects.toThrow("NEXT_NOT_FOUND");
-    expect(isAdmin).not.toHaveBeenCalled();
+  it("rethrows errors other than NotAdminError", async () => {
+    const error = new Error("auth unavailable");
+    vi.mocked(requireAdmin).mockRejectedValue(error);
+    await expect(requireAdminPage()).rejects.toBe(error);
+    expect(notFound).not.toHaveBeenCalled();
   });
 });

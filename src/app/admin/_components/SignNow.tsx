@@ -15,6 +15,19 @@ export function SignNow({ campaign, members, teamGmail }: Props) {
   const [status, setStatus] = useState<string | null>(null);
   if (!campaign.petition) return null;
 
+  if (campaign.petition.status !== "open") {
+    const message = campaign.petition.status === "pending"
+      ? "This appears once ourcommons.ca shows the petition open for signature."
+      : "The petition is closed for signature, so there's nothing to send.";
+
+    return (
+      <section>
+        <h2 className="text-lg font-semibold">Tell members to sign</h2>
+        <p className="mt-3 text-sm text-muted">{message}</p>
+      </section>
+    );
+  }
+
   const email = buildSignNow({ campaign, petition: campaign.petition });
   const addresses = members.map((member) => member.email).filter((address): address is string => !!address);
   // No recipients in the link: a long member list doesn't fit in a URL, so they're pasted into BCC.
@@ -29,7 +42,7 @@ export function SignNow({ campaign, members, teamGmail }: Props) {
       <h2 className="text-lg font-semibold">Tell members to sign</h2>
       <div className="mt-3 rounded-xl border border-line bg-paper p-4 text-sm">
         <p className="font-semibold">{email.subject}</p>
-        <p className="mt-3 whitespace-pre-wrap">{email.body}</p>
+        <p className="mt-3 whitespace-pre-wrap wrap-anywhere">{email.body}</p>
       </div>
       <div className="mt-3 flex flex-wrap gap-2">
         <button
