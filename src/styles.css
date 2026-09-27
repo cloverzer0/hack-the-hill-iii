@@ -62,7 +62,7 @@
 .spending-context strong { display: block; margin: 7px 0 5px; color: var(--wm-ink); font: 500 28px 'DM Mono', monospace; letter-spacing: -.06em; }
 .spending-context small { font-size: 9px; }
 .department-filter { position: relative; display: flex; gap: 8px; overflow-x: auto; margin-top: 43px; padding: 0 34px 10px 0; scrollbar-width: thin; scrollbar-color: var(--wm-line-strong) transparent; }
-.department-filter::after { content: '→'; position: sticky; right: 0; flex: 0 0 26px; align-self: stretch; display: grid; place-items: center; margin-left: -26px; color: var(--wm-red); background: linear-gradient(90deg, transparent, var(--wm-paper) 45%); font: 14px 'DM Mono', monospace; pointer-events: none; }
+.department-filter::after { content: '→'; position: sticky; right: 0; flex: 0 0 26px; align-self: stretch; display: grid; place-items: center; margin-left: -26px; color: var(--wm-red); background: linear-gradient(90deg, transparent, var(--wm-canvas) 45%); font: 14px 'DM Mono', monospace; pointer-events: none; }
 .filter-chip { flex: 0 0 auto; padding: 9px 11px; border: 1px solid var(--wm-line); border-radius: 999px; color: var(--wm-muted); background: transparent; font: 10px 'DM Mono', monospace; cursor: pointer; }
 .filter-chip:hover, .filter-chip:focus-visible, .filter-chip.active { border-color: var(--wm-ink); color: var(--wm-ink); }
 .filter-chip.active { background: var(--wm-surface); box-shadow: 0 3px 9px rgba(42, 34, 25, .08); }
